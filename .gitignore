@@ -2,4 +2,5 @@
 # http://git-scm.com/docs/gitignore
 
 .DS_Store
-node_modules
+node_modules/
+platforms/
