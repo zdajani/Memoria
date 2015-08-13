@@ -45,7 +45,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-knomi': {
         templateUrl: 'templates/tab-knomi.html',
-        controller: 'DashCtrl'
+        controller: 'KnomiCtrl'
       }
     }
   })
@@ -55,7 +55,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
         'tab-questions': {
           templateUrl: 'templates/tab-questions.html',
-          controller: 'ChatsCtrl'
+          controller: 'QsCtrl'
         }
       }
     })
