@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['ngCordova'])
 
-.controller('KnomiCtrl', function($scope) {})
+.controller('KnomiCtrl', function($scope, $cordovaLocalNotification) {})
 
 .controller('QsCtrl', function($scope) {
   // With the new view caching in Ionic, Controllers are only called
