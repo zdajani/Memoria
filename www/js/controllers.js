@@ -1,7 +1,18 @@
 angular.module('starter.controllers', ['ngCordova'])
 
 .controller('KnomiCtrl', function($scope, $cordovaLocalNotification) {
-
+  $scope.notify = function() {
+    console.log('working')
+    var now = new Date().getTime();
+    var timeInSeconds = 7
+    _X_sec_from_now = new Date(now + timeInSeconds *1000);
+    $cordovaLocalNotification.schedule({
+      id: 1,
+      title: "Title",
+      text: "This is a notification",
+      at: _X_sec_from_now,
+    });
+  };
 })
 
 .controller('QsCtrl', function($scope) {
