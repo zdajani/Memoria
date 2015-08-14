@@ -1,7 +1,9 @@
 angular.module('starter.controllers', ['ngCordova'])
 
 .controller('KnomiCtrl', function($scope, $cordovaLocalNotification) {
+  $scope.visibilityControl = false;
   $scope.notify = function() {
+    $scope.visibilityControl = !$scope.visibilityControl;
     console.log('working')
     var now = new Date().getTime();
     var timeInSeconds = 7

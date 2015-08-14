@@ -1,0 +1,39 @@
+.gameArea {
+  background-image: url('../img/field.png');
+}
+
+.knomiContainer {
+  position: absolute;
+  margin-top: 50%;
+  margin-left: 35%;
+}
+
+.starterKnomi {
+  background-image: url('../img/starterrock.png');
+  background-size: 85% 85%;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  margin-left: 25px;
+  margin-top: 80px;
+}
+
+.speech {
+  position: absolute;
+  margin-left: 75px;
+  margin-top: -25px;
+}
+
+.speech img {
+  width: 10em;
+}
+
+.foodItem {
+  margin-top: 115%;
+  margin-left: 15%;
+}
+
+.foodItem img {
+  width: 3.5em;
+}
