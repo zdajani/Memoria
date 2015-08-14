@@ -8,9 +8,9 @@
     <div class="knomiContainer">
       <div class="speech" ng-show="visibilityControl" ><img src="./img/speech.png" /></div>
 
-      <div class="starterKnomi" ng-drop="true" ng-drop-success="onDropComplete()"></div>
+      <div class="starterKnomi" ng-drop="true" ng-drop-success="onDropComplete()" ng-hide="visibilityControl"></div>
 
-      <div class="knomileveltwo"></div>
+      <div class="knomileveltwo" ng-show="visibilityControl"></div>
     </div>
 
     <div class="foodItem" ng-repeat="item in foods" ng-drag="true" ng-drag-data="item" ng-hide="visibilityControl">
