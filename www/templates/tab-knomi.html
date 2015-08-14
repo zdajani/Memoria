@@ -10,7 +10,15 @@
       <div class="starterKnomi"></div>
     </div>
 
-    <div class="foodItem" ng-hide="visibilityControl"><img src="./img/sammich.png" /></div>
+    <div class="foodItem" ng-repeat="item in foods" ng-drag="true" ng-drag-data="item" ng-hide="visibilityControl">
+      <img src="./img/sammich.png" />
+    </div>
 
   </ion-content>
 </ion-view>
+
+
+
+<!--       <div ng-init="myVar='true'" id="food" ng-repeat="item in food" ng-drag="true" ng-drag-data="item" ng-drag-success="onDragSuccess1($data,$event)" ng-center-anchor="{{centerAnchor}}">
+        <img id="item" ng-src="{{item.location}}"/>
+      </div> -->
