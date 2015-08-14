@@ -2,7 +2,7 @@ exports.config = {
           capabilities: {
                   // You can use other browsers
                   // like firefox, phantoms, safari, IE (-_-)
-                  'browserName': 'chrome'
+                  'browserName': 'firefox'
           },
           specs: [
                    // We are going to make this file in a minute

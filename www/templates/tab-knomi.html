@@ -2,15 +2,15 @@
 
 <ion-view view-title="Knomi">
   <ion-content scroll="false" id="knomi-page" class="gameArea" >
-    <button class="button" ng-click="notify()">
+    <button id="notify" class="button" ng-click="notify()">
       Notify
     </button>
     <div class="knomiContainer">
-      <div class="speech" ><img src="./img/speech.png" /></div>
+      <div class="speech" ng-show="visibilityControl" ><img src="./img/speech.png" /></div>
       <div class="starterKnomi"></div>
     </div>
 
-    <div class="foodItem"><img src="./img/sammich.png" /></div>
+    <div class="foodItem" ng-hide="visibilityControl"><img src="./img/sammich.png" /></div>
 
   </ion-content>
 </ion-view>
