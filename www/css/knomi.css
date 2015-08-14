@@ -1,3 +1,14 @@
 .gameArea {
   background-image: url('../img/field.png');
 }
+
+.starterKnomi {
+  background-image: url('../img/starterrock.png');
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 80%;
+}
