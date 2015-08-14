@@ -7,7 +7,7 @@ exports.config = {
     
           specs: [
                    // We are going to make this file in a minute
-                'e2e/questionsTab.spec.js'
+                'e2e/addQuestionFeature.spec.js'
           ],
           jasmineNodeOpts: {
                   showColors: true,
