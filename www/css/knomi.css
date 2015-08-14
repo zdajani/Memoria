@@ -3,7 +3,7 @@
 }
 
 .knomiContainer {
-  position: fixed;
+  position: absolute;
   margin-top: 50%;
   margin-left: 35%;
 }
@@ -12,23 +12,28 @@
   background-image: url('../img/starterrock.png');
   background-size: 85% 85%;
   background-repeat: no-repeat;
+  position: absolute;
   width: 70px;
   height: 70px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 25px;
+  margin-top: 80px;
 }
 
 .speech {
-  position: relative;
-  margin-left: 55%;
-  margin-top: 25%;
+  position: absolute;
+  margin-left: 75px;
+  margin-top: -25px;
 }
 
 .speech img {
-  width: 7em;
+  width: 10em;
 }
 
 .foodItem {
-  margin-top: 110%;
+  margin-top: 115%;
   margin-left: 15%;
+}
+
+.foodItem img {
+  width: 3.5em;
 }
