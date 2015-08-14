@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ngCordova'])
+angular.module('starter.controllers', ['ngCordova', 'ngDraggable'])
 
 .controller('KnomiCtrl', function($scope, $cordovaLocalNotification) {
   $scope.visibilityControl = false;
