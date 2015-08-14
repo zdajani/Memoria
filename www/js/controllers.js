@@ -25,6 +25,17 @@ angular.module('starter.controllers', ['ngCordova'])
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+  
+  $scope.items = [];
+
+    $scope.addQuestion = function(){
+      $scope.items.push({
+      question: $scope.items.question,
+      answer: $scope.items.answer,
+      date: Date.now(),
+      interval: 5 * 1000
+      });
+    };
 
 
 })
