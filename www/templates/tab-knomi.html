@@ -7,10 +7,16 @@
     </button>
     <div class="knomiContainer">
       <div class="speech" ng-show="visibilityControl" ><img src="./img/speech.png" /></div>
-      <div class="starterKnomi"></div>
+
+      <div class="starterKnomi" ng-drop="true" ng-drop-success="onDropComplete()" ng-hide="visibilityControl"></div>
+
+      <div class="knomileveltwo" ng-show="visibilityControl"></div>
     </div>
 
-    <div class="foodItem" ng-hide="visibilityControl"><img src="./img/sammich.png" /></div>
+    <div class="foodItem" ng-repeat="item in foods" ng-drag="true" ng-drag-data="item" ng-hide="visibilityControl">
+      <img ng-src="{{item.location}}" />
+    </div>
+
 
   </ion-content>
 </ion-view>

@@ -37,3 +37,27 @@
 .foodItem img {
   width: 3.5em;
 }
+
+.knomileveltwo {
+  position: absolute;
+  margin-top: 70px;
+  margin-left: 15px;
+
+  width: 80px;
+  height: 76px;
+  background-repeat: no-repeat;
+  background-image: url("../img/level2rock.png");
+
+  -webkit-animation: play .8s steps(12) infinite;
+          animation: play .8s steps(12) infinite;
+}
+
+@-webkit-keyframes play {
+  from { background-position:    0px; }
+  to { background-position: -972px; }
+}
+
+@keyframes play {
+  from { background-position:    0px; }
+  to { background-position: -972px; }
+}
