@@ -28,7 +28,7 @@ angular.module('starter.controllers', ['ngCordova'])
 })
 
 
-.controller('AccountCtrl', function($scope) {
+.controller('AboutCtrl', function($scope) {
   $scope.settings = {
     enableFriends: true
   };
