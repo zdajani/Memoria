@@ -2,11 +2,11 @@ exports.config = {
           capabilities: {
                   // You can use other browsers
                   // like firefox, phantoms, safari, IE (-_-)
-                  'browserName': 'chrome' 
+                  'browserName': 'chrome'
           },
           specs: [
                    // We are going to make this file in a minute
-                'e2e/knomiButton.spec.js'
+                'e2e/*.spec.js'
           ],
           jasmineNodeOpts: {
                   showColors: true,
