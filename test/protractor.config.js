@@ -2,12 +2,12 @@ exports.config = {
           capabilities: {
                   // You can use other browsers
                   // like firefox, phantoms, safari, IE (-_-)
-                  'browserName': 'firefox' 
+                  'browserName': 'firefox'
           },
     
           specs: [
                    // We are going to make this file in a minute
-                'e2e/addQuestionFeature.spec.js'
+                'e2e/*.spec.js'
           ],
           jasmineNodeOpts: {
                   showColors: true,
