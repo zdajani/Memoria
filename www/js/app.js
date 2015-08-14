@@ -59,6 +59,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
       }
     })
+    
+  .state('tab.addQuestion', {
+      url: '/add-question',
+      views: {
+        'tab-questions': {
+          templateUrl: 'templates/add-question.html',
+          controller: 'QsCtrl'
+        }
+      }
+    })
 
   .state('tab.about', {
     url: '/about',
