@@ -1,10 +1,13 @@
 angular.module('starter.controllers', ['ngCordova', 'ngDraggable'])
 
-.controller('KnomiCtrl', function($scope, $cordovaLocalNotification) {
+.controller('KnomiCtrl', function($scope, $cordovaLocalNotification, foodFactory) {
+  $scope.foods = [foodFactory.randomFood()]
   $scope.visibilityControl = false;
+
   $scope.notify = function() {
     $scope.visibilityControl = !$scope.visibilityControl;
     console.log('working')
+    console.log($scope.foods)
     var now = new Date().getTime();
     var timeInSeconds = 7
     _X_sec_from_now = new Date(now + timeInSeconds *1000);

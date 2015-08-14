@@ -11,7 +11,7 @@
     </div>
 
     <div class="foodItem" ng-repeat="item in foods" ng-drag="true" ng-drag-data="item" ng-hide="visibilityControl">
-      <img src="./img/sammich.png" />
+      <img ng-src="{{item.location}}" />
     </div>
 
   </ion-content>
