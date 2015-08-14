@@ -1,3 +1,4 @@
+
 describe('Knomi', function() {
   beforeEach(function() {
     browser.get('http://localhost:8100/#/tab/knomi');
@@ -13,7 +14,11 @@ describe('Knomi', function() {
   });
 
   it('has no food and has speech when notify', function() {
-    element(by.id('notify')).click().then(function() {
+      browser
+        .actions()
+        .dragAndDrop(element(by.className("foodItem")), element(by.className("starterKnomi")))
+        .perform()
+        .then(function() {
       browser.sleep(3000);
       expect(hasClass(element(by.className('foodItem')), 'ng-hide')).toBe(true);
       expect(hasClass(element(by.className('speech')), 'ng-hide')).toBe(false);
