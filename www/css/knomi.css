@@ -2,13 +2,28 @@
   background-image: url('../img/field.png');
 }
 
+.knomiContainer {
+  position: fixed;
+  margin-top: 50%;
+  margin-left: 35%;
+}
+
 .starterKnomi {
   background-image: url('../img/starterrock.png');
+  background-size: 85% 85%;
   background-repeat: no-repeat;
-  width: 40px;
-  height: 40px;
-  position: relative;
+  width: 70px;
+  height: 70px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 80%;
+}
+
+.speech {
+  position: relative;
+  margin-left: 55%;
+  margin-top: 25%;
+}
+
+.speech img {
+  width: 7em;
 }
