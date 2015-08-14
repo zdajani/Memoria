@@ -6,6 +6,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable'])
 
   $scope.notify = function() {
     console.log('working')
+    alert('Notification sent!')
     var now = new Date().getTime();
     var timeInSeconds = 7
     _X_sec_from_now = new Date(now + timeInSeconds *1000);

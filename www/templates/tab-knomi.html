@@ -9,17 +9,14 @@
       <div class="speech" ng-show="visibilityControl" ><img src="./img/speech.png" /></div>
 
       <div class="starterKnomi" ng-drop="true" ng-drop-success="onDropComplete()"></div>
+
+      <div class="knomileveltwo"></div>
     </div>
 
     <div class="foodItem" ng-repeat="item in foods" ng-drag="true" ng-drag-data="item" ng-hide="visibilityControl">
       <img ng-src="{{item.location}}" />
     </div>
 
+
   </ion-content>
 </ion-view>
-
-
-
-<!--       <div ng-init="myVar='true'" id="food" ng-repeat="item in food" ng-drag="true" ng-drag-data="item" ng-drag-success="onDragSuccess1($data,$event)" ng-center-anchor="{{centerAnchor}}">
-        <img id="item" ng-src="{{item.location}}"/>
-      </div> -->
