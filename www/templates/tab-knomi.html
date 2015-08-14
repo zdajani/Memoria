@@ -7,7 +7,8 @@
     </button>
     <div class="knomiContainer">
       <div class="speech" ng-show="visibilityControl" ><img src="./img/speech.png" /></div>
-      <div class="starterKnomi"></div>
+
+      <div class="starterKnomi" ng-drop="true" ng-drop-success="onDropComplete()"></div>
     </div>
 
     <div class="foodItem" ng-repeat="item in foods" ng-drag="true" ng-drag-data="item" ng-hide="visibilityControl">

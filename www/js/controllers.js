@@ -5,9 +5,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable'])
   $scope.visibilityControl = false;
 
   $scope.notify = function() {
-    $scope.visibilityControl = !$scope.visibilityControl;
     console.log('working')
-    console.log($scope.foods)
     var now = new Date().getTime();
     var timeInSeconds = 7
     _X_sec_from_now = new Date(now + timeInSeconds *1000);
@@ -17,6 +15,17 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable'])
       text: "This is a notification",
       at: _X_sec_from_now,
     });
+  };
+
+  $scope.onDropComplete = function(){
+    $scope.visibilityControl = !$scope.visibilityControl;
+    setTimeout(function ()
+    {
+      $scope.$apply(function()
+      {
+        $scope.visibilityControl = !$scope.visibilityControl;
+      });
+    }, 1000);
   };
 })
 
