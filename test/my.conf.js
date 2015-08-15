@@ -17,8 +17,10 @@ module.exports = function(config) {
     files: [
       '../www/lib/angular/angular.js',
       '../www/lib/ngCordova/dist/ng-cordova.min.js',
-      '../www/js/*.js',
       '../www/lib/angular-mocks/angular-mocks.js',
+      "https://cdn.firebase.com/js/client/2.2.4/firebase.js",
+      "https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js",
+      '../www/js/*.js',
       '**/*tests.js'
       
     ],
@@ -60,7 +62,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
 
 
     // Continuous Integration mode
