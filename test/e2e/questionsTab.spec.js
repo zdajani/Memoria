@@ -1,7 +1,7 @@
 describe('questions tab', function(){
 
   var goToAddQuestion = element(by.id('goAddQbtn'));
-  var question = element(by.className('questionList'));
+  var question = element(by.className('item-content'));
 
   beforeEach(function() {
     browser.get('http://localhost:8100');
@@ -20,7 +20,7 @@ describe('questions tab', function(){
 
   it('should take you to answer the question when you click on the question', function() {
     question.click();
-    expect(browser.getLocationAbsUrl()).toMatch("/tab/questions/*");
+    expect(browser.getLocationAbsUrl()).toMatch("/tab/questions/1439381703628");
   })
 
 });
