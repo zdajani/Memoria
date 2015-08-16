@@ -1,8 +1,36 @@
 angular.module('starter.controllers', ['ngCordova', 'ngDraggable'])
 
-.controller('KnomiCtrl', function($scope, $cordovaLocalNotification, foodFactory) {
+.controller('KnomiCtrl', function($scope, $cordovaLocalNotification, foodFactory, $ionicModal) {
   $scope.foods = [foodFactory.randomFood()]
   $scope.visibilityControl = false;
+
+  $ionicModal.fromTemplateUrl('my-modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+  $scope.openModal = function() {
+    console.log('modal')
+    $scope.modal.show();
+  };
+
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+
+  $scope.$on('modal.hidden', function() {
+    // things to do on hide of modal
+  });
+
+  $scope.$on('modal.removed', function() {
+    // things to do on removing of modal
+  })
 
   $scope.notify = function() {
     console.log('working')
