@@ -61,14 +61,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     })
 
   .state('tab.question-answer', {
-    url: '/questions/:questionDate',
+    url: '/questions/:studyItemId',
     views: {
       'tab-questions': {
         templateUrl: 'templates/question-answer.html',
         controller: 'questionAnswerCtrl'
+      
       }
     }
   })
+    // questionAnswerCtrl
 
   .state('tab.addQuestion', {
       url: '/add-question',

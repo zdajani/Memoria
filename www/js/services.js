@@ -6,6 +6,8 @@ angular.module('starter.services', [])
   return $firebaseArray(itemRef);
 }])
 
+
+
 // .factory('Chats', function() {
 //   // Might use a resource here that returns a JSON array
 //

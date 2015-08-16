@@ -1,7 +1,7 @@
 angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
 .controller('KnomiCtrl', function($scope, $cordovaLocalNotification, foodFactory, $ionicModal) {
-  $scope.foods = [foodFactory.randomFood()]
+  $scope.foods = [foodFactory.randomFood()];
   $scope.visibilityControl = false;
 
   $ionicModal.fromTemplateUrl('my-modal.html', {
@@ -12,7 +12,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   });
 
   $scope.openModal = function() {
-    console.log('modal')
+    console.log('modal');
     $scope.modal.show();
   };
 
@@ -30,12 +30,12 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
   $scope.$on('modal.removed', function() {
     // things to do on removing of modal
-  })
+  });
 
   $scope.notify = function() {
-    console.log('working')
+    console.log('working');
     var now = new Date().getTime();
-    var timeInSeconds = 7
+    var timeInSeconds = 7;
     _X_sec_from_now = new Date(now + timeInSeconds *1000);
     $cordovaLocalNotification.schedule({
       id: 1,
@@ -58,13 +58,6 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 })
 
 .controller('QsCtrl', function($scope, QuestionFactory) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
 
   $scope.items = QuestionFactory;
 
@@ -77,16 +70,14 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     });
   };
 
-  var ref = new Firebase('https://studymemoria.firebaseio.com/MyStudies');
-
-  ref.on("value", function(snapshot){
-    questionsArray = (snapshot.val());
-    $scope.questions = questionsArray;
-  });
-
 })
 
-.controller('questionAnswerCtrl', function($scope) {
+.controller('questionAnswerCtrl', function($scope, $stateParams, QuestionFactory) {
+  
+    var list = QuestionFactory;
+    var studyItem = list.$getRecord($stateParams.studyItemId);
+    
+    $scope.question = studyItem.question;
 
 })
 

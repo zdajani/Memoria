@@ -1,6 +1,7 @@
 describe('recall-tab', function(){
 
   var question = element(by.className('item-content'));
+  var studyItemQ = element(by.id('questionAnswer'))
 
   beforeEach(function() {
     browser.get('http://localhost:8100');
@@ -8,7 +9,7 @@ describe('recall-tab', function(){
 
   it('should show the selected question', function() {
     question.click();
-    expect(element(by.id('question').getText()).toContain('What is the capital of Palestine?'))
+    expect((studyItemQ).getText()).toContain('What is the capital of Palestine?');
   })
 
 
