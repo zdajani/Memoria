@@ -9,6 +9,10 @@ exports.config = {
                    // We are going to make this file in a minute
                 'e2e/*.spec.js'
           ],
+          exclude: [
+            
+            'e2e/addQuestionFeature.spec.js'
+          ],
           jasmineNodeOpts: {
                   showColors: true,
                  defaultTimeoutInterval: 30000,
