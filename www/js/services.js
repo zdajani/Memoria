@@ -5,7 +5,6 @@ angular.module('starter.services', [])
   var itemRef =  new Firebase('https://studymemoria.firebaseio.com/MyStudies');
   return $firebaseArray(itemRef);
 }])
-
 // .factory('Chats', function() {
 //   // Might use a resource here that returns a JSON array
 //

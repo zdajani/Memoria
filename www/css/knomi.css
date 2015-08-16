@@ -2,7 +2,7 @@
   background-image: url('../img/field.png');
 }
 
-.points {
+.userPoints {
   color: white;
   position: absolute;
   font-size: 20px;
