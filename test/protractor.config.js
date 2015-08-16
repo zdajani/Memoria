@@ -4,6 +4,7 @@ exports.config = {
                   // like firefox, phantoms, safari, IE (-_-)
                   'browserName': 'firefox'
           },
+    
           specs: [
                    // We are going to make this file in a minute
                 'e2e/*.spec.js'
