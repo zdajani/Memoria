@@ -5,6 +5,7 @@ describe('Knomi', function() {
     var height = 700;
     browser.driver.manage().window().setSize(width, height);
     browser.get('http://localhost:8100/#/tab/knomi');
+    element(by.id('notify')).click();
     browser.sleep(3000);
   });
 
@@ -35,7 +36,6 @@ describe('Knomi', function() {
   };
 
   it('displays points', function() {
-    element(by.id('notify')).click()
     var pointsSpan = element(by.className('userPoints'))
     expect(pointsSpan.getText()).toContain('10')
   })

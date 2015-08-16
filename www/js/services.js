@@ -6,6 +6,16 @@ angular.module('starter.services', [])
   return $firebaseArray(itemRef);
 }])
 
+.factory('PointsFactory', ['$firebaseObject', function($firebaseObject) {
+  var itemRef =  new Firebase('https://studymemoria.firebaseio.com/Points/user_points');
+  return $firebaseObject(itemRef);
+}])
+
+.factory('PowerFactory', ['$firebaseObject', function($firebaseObject) {
+  var itemRef =  new Firebase('https://studymemoria.firebaseio.com/Points/knomi_power');
+  return $firebaseObject(itemRef);
+}])
+
 .factory('foodFactory', function(){
   var food = [{
     id: 0,
