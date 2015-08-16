@@ -7,7 +7,6 @@ var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
 var karma = require('karma').server;
-var protractor = require("gulp-protractor").protractor;
 
 var paths = {
   sass: ['./scss/**/*.scss']
@@ -38,16 +37,6 @@ gulp.task('test', function(done) {
     }, function() {
         done();
     });
-});
-
-gulp.task('ptests', function(done) {
-
-  gulp.src(["./test/e2e/*.js"])
-      .pipe(protractor({
-          configFile: "test/protractor.config.js",
-          args: ['--baseUrl', 'http://127.0.0.1:8000']
-      }))
-      .on('error', function(e) { throw e });
 });
 
 

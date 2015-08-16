@@ -16,13 +16,14 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       '../www/lib/angular/angular.js',
-      '../www/lib/ngCordova/dist/ng-cordova.min.js',
       '../www/lib/angular-mocks/angular-mocks.js',
+      '../www/lib/ngDraggable/ngDraggable.js',
+      '../www/lib/ngCordova/dist/ng-cordova.min.js',
       "https://cdn.firebase.com/js/client/2.2.4/firebase.js",
       "https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js",
       '../www/js/*.js',
       '**/*tests.js'
-      
+
     ],
 
 
