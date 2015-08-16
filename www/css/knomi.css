@@ -2,6 +2,38 @@
   background-image: url('../img/field.png');
 }
 
+.userPoints {
+  color: white;
+  position: absolute;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-left: 200px;
+}
+
+.heart1 {
+  position: absolute;
+  width: 35px;
+}
+
+.heart2 {
+  position: absolute;
+  width: 35px;
+  margin-left: 35px;
+}
+
+.heart3 {
+  position: absolute;
+  width: 35px;
+  margin-left: 70px;
+}
+
+.heart4 {
+  position: absolute;
+  width: 35px;
+  margin-left: 105px;
+}
+
 .knomiContainer {
   position: absolute;
   margin-top: 50%;

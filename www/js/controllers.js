@@ -1,8 +1,21 @@
 angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
-.controller('KnomiCtrl', function($scope, $cordovaLocalNotification, foodFactory, $ionicModal) {
+.controller('KnomiCtrl', function($scope, $cordovaLocalNotification, foodFactory, $ionicModal, $firebaseArray) {
   $scope.foods = [foodFactory.randomFood()];
   $scope.visibilityControl = false;
+
+
+
+  $scope.feed = function() {
+    $scope.health += 1
+    $scope.points -= 5
+    var newData = {knomi_power: $scope.health, user_points: $scope.points}
+    console.log(newData)
+    itemRef.update(newData)
+    if ($scope.points < 1) {
+      $scope.openModal();
+    };
+  };
 
   $ionicModal.fromTemplateUrl('my-modal.html', {
     scope: $scope,
@@ -33,7 +46,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   });
 
   $scope.notify = function() {
-    console.log('working');
+    itemRef.update({knomi_power: 0, user_points: 10})
     var now = new Date().getTime();
     var timeInSeconds = 7;
     _X_sec_from_now = new Date(now + timeInSeconds *1000);
@@ -55,6 +68,13 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       });
     }, 10000);
   };
+  var itemRef =  new Firebase('https://studymemoria.firebaseio.com/Points');
+  itemRef.on("value", function(snapshot) {
+    allData = (snapshot.val());
+    console.log(allData.user_points);
+    $scope.points = allData.user_points;
+    $scope.health = allData.knomi_power;
+  });
 })
 
 .controller('QsCtrl', function($scope, QuestionFactory) {
