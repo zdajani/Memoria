@@ -65,7 +65,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
-  
+
   $scope.items = QuestionFactory;
 
   $scope.addQuestion = function(){
@@ -77,6 +77,13 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     });
   };
 
+  var ref = new Firebase('https://studymemoria.firebaseio.com/MyStudies');
+
+  ref.on("value", function(snapshot){
+    questionsArray = (snapshot.val());
+    $scope.questions = questionsArray;
+    console.log(questionsArray)
+  });
 
 })
 

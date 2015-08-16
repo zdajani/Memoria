@@ -4,9 +4,14 @@
     <ion-nav-view name="add-question"></ion-nav-view>
   </ion-nav-buttons>
   <ion-content>
-    
-    
-    
+
+    <ion-list>
+
+      <ion-item class="questionList" ng-repeat="question in questions" href="#/tab/questions/{{question.date}}">
+        <p>{{question.question}}</p>
+      </ion-item>
+
+    </ion-list>
 
   </ion-content>
 </ion-view>
