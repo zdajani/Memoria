@@ -1,8 +1,15 @@
 <ion-view view-title="Add Question">
   <ion-content>
-    
-    
-    
-
+    <div class="list list-inset">
+      <label class="item item-input">   
+        <input type="text" placeholder="Question" ng-model="items.question">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Answer" ng-model="items.answer">
+      </label>
+      <div class="padding">
+        <a href="#/questions-tab" ng-click="addQuestion()" class="button button-block button-assertive">Submit</a>
+      </div>
+    </div>
   </ion-content>
 </ion-view>

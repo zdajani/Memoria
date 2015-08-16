@@ -38,7 +38,8 @@
                             "xml": false,
                             "count": 1
                         }
-                    ]
+                    ],
+                    "AudioToolbox.framework": []
                 }
             }
         }

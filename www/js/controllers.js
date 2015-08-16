@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ngCordova', 'ngDraggable'])
+angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
 .controller('KnomiCtrl', function($scope, $cordovaLocalNotification, foodFactory) {
   $scope.foods = [foodFactory.randomFood()]
@@ -29,7 +29,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable'])
   };
 })
 
-.controller('QsCtrl', function($scope) {
+.controller('QsCtrl', function($scope, QuestionFactory) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -37,6 +37,17 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable'])
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+  
+  $scope.items = QuestionFactory;
+
+  $scope.addQuestion = function(){
+    $scope.items.$add({
+    question: $scope.items.question,
+    answer: $scope.items.answer,
+    date: Date.now(),
+    interval: 5 * 1000
+    });
+  };
 
 
 })
