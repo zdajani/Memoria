@@ -57,7 +57,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     itemRef.update({knomi_power: 0, user_points: 10})
     var now = new Date().getTime();
     var timeInSeconds = 7;
-    _X_sec_from_now = new Date(now + timeInSeconds *1000);
+    _X_se c_from_now = new Date(now + timeInSeconds *1000);
     $cordovaLocalNotification.schedule({
       id: 1,
       title: "Title",
