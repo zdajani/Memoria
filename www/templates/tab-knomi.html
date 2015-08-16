@@ -2,7 +2,7 @@
 
 <ion-view view-title="Knomi">
   <ion-content scroll="false" id="knomi-page" class="gameArea" >
-    <button id="notify" class="button" ng-click="notify()">
+    <button id="notify" class="button" ng-click="openModal(); notify()">
       Notify
     </button>
     <div class="knomiContainer">
@@ -17,6 +17,21 @@
       <img ng-src="{{item.location}}" />
     </div>
 
+    <script id="my-modal.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar>
+          <h1 class="title">You did it!</h1>
+        </ion-header-bar>
 
+        <ion-content>
+          <div class="knomiContainer">
+          <p>YOU SO CLEVER!</p>
+            <div class="knomileveltwo"></div>
+            <button id="okay" class="button" ng-click="closeModal()">Okay</button>
+          </div>
+        </ion-content>
+
+      </ion-modal-view>
+    </script>
   </ion-content>
 </ion-view>

@@ -52,6 +52,11 @@
           animation: play .8s steps(12) infinite;
 }
 
+#okay {
+  margin-left: 25px;
+  margin-top: 150px;
+}
+
 @-webkit-keyframes play {
   from { background-position:    0px; }
   to { background-position: -972px; }
