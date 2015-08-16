@@ -87,9 +87,18 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     });
   };
 
+  var ref = new Firebase('https://studymemoria.firebaseio.com/MyStudies');
+
+  ref.on("value", function(snapshot){
+    questionsArray = (snapshot.val());
+    $scope.questions = questionsArray;
+  });
 
 })
 
+.controller('questionAnswerCtrl', function($scope) {
+
+})
 
 .controller('AboutCtrl', function($scope) {
   $scope.settings = {
