@@ -1,6 +1,9 @@
-angular.module('starter.controllers', ['ngCordova'])
+angular.module('starter.controllers', ['ngCordova', 'ngDraggable'])
 
-.controller('KnomiCtrl', function($scope, $cordovaLocalNotification) {
+.controller('KnomiCtrl', function($scope, $cordovaLocalNotification, foodFactory) {
+  $scope.foods = [foodFactory.randomFood()]
+  $scope.visibilityControl = false;
+
   $scope.notify = function() {
     console.log('working')
     var now = new Date().getTime();
@@ -12,6 +15,17 @@ angular.module('starter.controllers', ['ngCordova'])
       text: "This is a notification",
       at: _X_sec_from_now,
     });
+  };
+
+  $scope.onDropComplete = function(){
+    $scope.visibilityControl = !$scope.visibilityControl;
+    setTimeout(function ()
+    {
+      $scope.$apply(function()
+      {
+        $scope.visibilityControl = !$scope.visibilityControl;
+      });
+    }, 10000);
   };
 })
 
