@@ -9,6 +9,9 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   $scope.feed = function() {
     $scope.health += 1
     $scope.points -= 5
+    var newData = {knomi_power: $scope.health, user_points: $scope.points}
+    console.log(newData)
+    itemRef.update(newData)
     if ($scope.points < 1) {
       $scope.openModal();
     };
@@ -43,6 +46,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   })
 
   $scope.notify = function() {
+    itemRef.update({knomi_power: 0, user_points: 10})
     console.log('working')
     var now = new Date().getTime();
     var timeInSeconds = 7
