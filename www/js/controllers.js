@@ -3,6 +3,16 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 .controller('KnomiCtrl', function($scope, $cordovaLocalNotification, foodFactory, $ionicModal) {
   $scope.foods = [foodFactory.randomFood()]
   $scope.visibilityControl = false;
+  $scope.health = 0;
+  $scope.points = 10;
+
+  $scope.feed = function() {
+    $scope.health += 1
+    $scope.points -= 5
+    if ($scope.points < 1) {
+      $scope.openModal();
+    };
+  }
 
   $ionicModal.fromTemplateUrl('my-modal.html', {
     scope: $scope,
@@ -65,7 +75,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
-  
+
   $scope.items = QuestionFactory;
 
   $scope.addQuestion = function(){
