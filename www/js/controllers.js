@@ -82,11 +82,13 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   ref.on("value", function(snapshot){
     questionsArray = (snapshot.val());
     $scope.questions = questionsArray;
-    console.log(questionsArray)
   });
 
 })
 
+.controller('questionAnswerCtrl', function($scope) {
+
+})
 
 .controller('AboutCtrl', function($scope) {
   $scope.settings = {

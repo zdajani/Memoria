@@ -7,8 +7,9 @@
 
     <ion-list>
 
-      <ion-item class="questionList" ng-repeat="question in questions" href="#/tab/questions/{{question.date}}">
+      <ion-item class="questionList item-icon-right" ng-repeat="question in questions" type="item-text-wrap" href="#/tab/questions/{{question.date}}">
         <p>{{question.question}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
       </ion-item>
 
     </ion-list>
