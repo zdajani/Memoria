@@ -31,6 +31,13 @@ describe('Knomi', function() {
       });
   };
 
+  it('displays points', function() {
+    var pointsSpan = element(by.className('userPoints'))
+    expect(pointsSpan.getText()).toContain('10')
+  })
+
+
+
 });
 
 
