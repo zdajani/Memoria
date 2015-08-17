@@ -36,23 +36,14 @@ describe('Knomi', function() {
   // };
 
   it('displays points', function() {
-    element(by.id('notify')).click();
     var pointsSpan = element(by.className('userPoints'))
     expect(pointsSpan.getText()).toContain('10')
   })
 
-  it('reduces your points by 5 when you feed it', function() {
-    var pointsSpan = element(by.className('userPoints'))
+  it('reduces your points by 5 when buy food', function() {
     element(by.id('foodCart')).click()
-    browser
-      .actions()
-      .dragAndDrop(element(by.className("foodItem")), element(by.className("starterKnomi")))
-      .perform()
-      .then(function() {
-        browser.sleep(3000);
-        expect(pointsSpan.getText()).toContain('5');
-        element(by.id('notify')).click();
-      })
+    var pointsSpan = element(by.className('userPoints'))
+    expect(pointsSpan.getText()).toContain('5');
   })
 
   it('has a help button which tells you how to feed your knomi', function() {

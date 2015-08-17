@@ -14,8 +14,8 @@ describe('Question controller', function(){
     describe('adding questions', function(){
       
       it('can add a question and answer', function(){
-        scope.items.question = "What is the capital?"
-        scope.items.answer = "example"
+        scope.items.question = "What is the capital?";
+        scope.items.answer = "example";
         // scope.addQuestion();
         
         expect(scope.items.question).toContain(scope.items.question);

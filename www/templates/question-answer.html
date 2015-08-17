@@ -1,11 +1,16 @@
-<ion-view  view-title="Can you recall?">
+<ion-view  view-title="Can You Recall?">
   <ion-content id="questionAnswer">
+    <div class="card">
+      <div class="item item-text-wrap">
+      {{studyItem.question}}
+      </div>
+    </div>
     <div class="padding">
-      {{question}}
       <label class="item item-input">
         <input type="text" placeholder="Answer" ng-model='answer'>
       </label>
-      <a class="button button-block button-energized">Submit</a>
+        <button class="button button-block button-energized" ng-click="validateAnswer(answer)">Submit</button>
     </div>
   </ion-content>
 </ion-view>
+

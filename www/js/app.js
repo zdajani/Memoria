@@ -78,21 +78,31 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       'tab-questions': {
         templateUrl: 'templates/question-answer.html',
         controller: 'questionAnswerCtrl'
-
       }
     }
   })
-    // questionAnswerCtrl
+  
+  .state("correctAnswerModal", {
+    views: {
+      templateUrl: "modals/correctAnswerModal.html"
+    },
+  })
+  
+  .state("wrongAnswerModal", {
+    views: {
+      templateUrl: "modals/wrongAnswerModal.html"
+    },
+  })
 
   .state('tab.addQuestion', {
-      url: '/add-question',
-      views: {
-        'tab-questions': {
-          templateUrl: 'templates/add-question.html',
-          controller: 'QsCtrl'
-        }
+    url: '/add-question',
+    views: {
+      'tab-questions': {
+        templateUrl: 'templates/add-question.html',
+        controller: 'QsCtrl'
       }
-    })
+    }
+  })
 
   .state('tab.about', {
     url: '/about',

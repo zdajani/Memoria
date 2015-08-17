@@ -43,11 +43,11 @@ angular.module('starter.services', [])
      });
 
     return promise;
-  }
+  };
 
   return {
     init: init
-  }
+  };
 
 })
 
@@ -81,4 +81,44 @@ angular.module('starter.services', [])
       food.pop()
     }
   };
-});
+})
+
+.factory('timerFactory', function(){
+  
+  var time_array = [ 0, 5, 25, 120, 600, 3600];
+  
+  return {
+    addTime: function (questionId) {
+      var intervalRef = new Firebase('https://studymemoria.firebaseio.com/MyStudies/'+ questionId + '/interval');
+      intervalRef.transaction(function(current_value) {
+        var i = time_array.indexOf(current_value);
+        return (current_value = time_array[i + 1]);
+      });
+    },
+    minusTime: function (questionId) {
+      var intervalRef = new Firebase('https://studymemoria.firebaseio.com/MyStudies/'+ questionId + '/interval');
+      intervalRef.transaction(function(current_value) {
+        var i = time_array.indexOf(current_value);
+        if (current_value > 5) { 
+          return (current_value = time_array[i - 1]);
+        } else {
+          return current_value;
+        }
+      });
+    }
+  };  
+})
+
+// .service('PopUpService', function($ionicPopup, $rootScope) {
+// 
+//   $scope.showAlert = function(setTitle) {
+//     var alertPopup = $ionicPopup.alert({
+//       title: setTitle,
+//       templateUrl: 
+//     })
+//       alertPopup.then(function(res) {
+//         console.log('Thank you for not eating my delicious ice cream cone');
+//     });
+//   };
+//   
+// })
