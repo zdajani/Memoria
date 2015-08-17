@@ -48,7 +48,7 @@
   width: 70px;
   height: 70px;
   margin-left: 25px;
-  margin-top: 80px;
+  margin-top: 70px;
 }
 
 .speech {
@@ -62,12 +62,45 @@
 }
 
 .foodItem {
-  margin-top: 115%;
+  margin-top: 100%;
   margin-left: 15%;
 }
 
 .foodItem img {
   width: 3.5em;
+}
+
+#foodCart img {
+  width: 3.5em;
+}
+
+#moneySack {
+  float: right;
+  margin-top: 15px;
+  margin-right: 10px;
+}
+
+#moneySack div {
+  margin-left: 5px;
+  width: 3em;
+}
+
+.numberInfo {
+  color: green;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #E8FAF1;
+  border-radius: 10px;
+  opacity: 0.8;
+}
+
+#okay {
+  margin-top: 260px;
+  border-radius: 15px;
+  background-color: #FAF3E3;
+  border-color: #8A8660;
+  color: #8A8660;
+  box-shadow: 5px 5px 2px #969478;
 }
 
 .knomileveltwo {
@@ -84,11 +117,6 @@
           animation: play .8s steps(12) infinite;
 }
 
-#okay {
-  margin-left: 25px;
-  margin-top: 150px;
-}
-
 @-webkit-keyframes play {
   from { background-position:    0px; }
   to { background-position: -972px; }
@@ -97,4 +125,41 @@
 @keyframes play {
   from { background-position:    0px; }
   to { background-position: -972px; }
+}
+
+#vendorModal {
+  background-repeat: no-repeat;
+  background-image: url("../img/parchment-background.png");
+  background-size: 100% 100%;
+  background-color: #FAF3E3;
+}
+
+.vendor {
+  text-align: center;
+  margin-left: 30px;
+  font-size: 16px;
+  margin-top: 80px;
+  width: 80%;
+}
+
+#vendorImage {
+  position: absolute;
+  margin-left: 70px;
+  width: 189px;
+  height: 230px;
+  background-repeat: no-repeat;
+  background-image: url("../img/vendorspritesheet4.png");
+
+  -webkit-animation: vendor .3s steps(4) infinite;
+          animation: vendor .3s steps(4) infinite;
+}
+
+@-webkit-keyframes vendor {
+  from { background-position:    0px; }
+  to { background-position: -756px; }
+}
+
+@keyframes vendor {
+  from { background-position:    0px; }
+  to { background-position: -756px; }
 }

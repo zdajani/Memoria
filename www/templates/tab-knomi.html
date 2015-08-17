@@ -1,9 +1,16 @@
 <link href="css/knomi.css" rel="stylesheet">
 
 <ion-view view-title="Knomi">
-  <ion-content scroll="false" id="knomi-page" class="gameArea" >
+  <ion-nav-buttons side="right">
     <button id="notify" class="button" ng-click="notify()">
       Notify
+    </button>
+
+  </ion-nav-buttons>
+  <ion-content scroll="false" id="knomi-page" class="gameArea" >
+
+    <button id="foodCart" style="border: 0; background: transparent" ng-click="exampleModal()">
+      <img src="./img/vendor.png" /><div class="numberInfo">$5</div>
     </button>
 
     <img ng-if="health > 0" class="heart1" src="./img/beating.gif">
@@ -11,7 +18,10 @@
     <img ng-if="health > 2" class="heart3" src="./img/beating.gif">
     <img ng-if="health > 3" class="heart4" src="./img/beating.gif">
 
-    <span class="userPoints" >Points: {{points}}</span>
+    <button id="moneySack" style="border: 0; background: transparent" >
+      <img src="./img/bag.png" />
+      <div class="userPoints numberInfo" >${{points}}</div>
+    </button>
 
     <div class="knomiContainer">
       <div class="speech" ng-show="visibilityControl" ><img src="./img/speech.png" /></div>
@@ -27,15 +37,13 @@
 
     <script id="my-modal.html" type="text/ng-template">
       <ion-modal-view>
-        <ion-header-bar>
-          <h1 class="title">You are broke!</h1>
-        </ion-header-bar>
 
-        <ion-content>
-          <div class="knomiContainer">
-          <p>Mommy, are we poor?</p>
-            <div class="knomileveltwo"></div>
-            <p>Answer more questions for more points, or your knomi will starve and turn back into an ordinary rock!</p>
+        <ion-content class="padding" id="vendorModal">
+          <div class="vendor">
+          <h3>You can buy food from me</h3>
+            <p>You can earn money by answering questions</p>
+            <p>Feed your Knomi to give him health</p>
+            <div id="vendorImage"></div>
             <button id="okay" class="button" ng-click="closeModal()">Okay</button>
           </div>
         </ion-content>

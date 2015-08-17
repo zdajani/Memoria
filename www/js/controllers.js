@@ -26,11 +26,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     $scope.health += 1
     $scope.points -= 5
     var newData = {knomi_power: $scope.health, user_points: $scope.points}
-    console.log(newData)
     itemRef.update(newData)
-    if ($scope.points < 1) {
-      $scope.openModal();
-    };
   };
 
   $scope.notify = function() {
