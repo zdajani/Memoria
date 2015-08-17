@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
-.controller('KnomiCtrl', function($scope, $cordovaLocalNotification, foodFactory, PointsFactory, PowerFactory, $ionicModal, $firebaseArray) {
+.controller('KnomiCtrl', function($scope, $cordovaLocalNotification, foodFactory, PointsFactory, PowerFactory, $firebaseArray, ModalService) {
   $scope.foods = [foodFactory.randomFood()];
   $scope.visibilityControl = false;
 
@@ -11,6 +11,14 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   PowerFactory.$loaded().then(function() {
     $scope.health = PowerFactory.$value
   })
+
+  $scope.modal1 = function() {
+    ModalService
+      .init('my-modal.html', $scope)
+      .then(function(modal) {
+        modal.show();
+      });
+  };
 
   var itemRef =  new Firebase('https://studymemoria.firebaseio.com/Points');
 
@@ -24,34 +32,6 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       $scope.openModal();
     };
   };
-
-  // $ionicModal.fromTemplateUrl('my-modal.html', {
-  //   scope: $scope,
-  //   animation: 'slide-in-up'
-  // }).then(function(modal) {
-  //   $scope.modal = modal;
-  // });
-  //
-  // $scope.openModal = function() {
-  //   console.log('modal');
-  //   $scope.modal.show();
-  // };
-  //
-  // $scope.closeModal = function() {
-  //   $scope.modal.hide();
-  // };
-  //
-  // $scope.$on('$destroy', function() {
-  //   $scope.modal.remove();
-  // });
-  //
-  // $scope.$on('modal.hidden', function() {
-  //   // things to do on hide of modal
-  // });
-  //
-  // $scope.$on('modal.removed', function() {
-  //   // things to do on removing of modal
-  // });
 
   $scope.notify = function() {
     itemRef.update({knomi_power: 0, user_points: 10})
