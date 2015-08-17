@@ -49,12 +49,14 @@ describe('Knomi', function() {
       .perform()
       .then(function() {
         browser.sleep(3000);
-        expect(pointsSpan.getText()).toContain('5')
-        element(by.id('notify')).click()
+        expect(pointsSpan.getText()).toContain('5');
+        element(by.id('notify')).click();
       })
   })
 
+  it('has a food cart which tells you how to feed your knomi', function() {
+    element(by.id('foodCart')).click();
+    expect(element(by.id('foodModal')).getText()).toContain('You can buy food from me');
+  })
+
 });
-
-
-// page.find('#profile-avatar')['src'].should have_content 'default.png'
