@@ -9,8 +9,8 @@
   </ion-nav-buttons>
   <ion-content scroll="false" id="knomi-page" class="gameArea" >
 
-    <button id="foodCart" type="submit" style="border: 0; background: transparent" ng-click="exampleModal()">
-      <img src="./img/vendor.png" /><div>$5</div>
+    <button id="foodCart" style="border: 0; background: transparent" ng-click="exampleModal()">
+      <img src="./img/vendor.png" /><div class="numberInfo">$5</div>
     </button>
 
     <img ng-if="health > 0" class="heart1" src="./img/beating.gif">
@@ -18,7 +18,10 @@
     <img ng-if="health > 2" class="heart3" src="./img/beating.gif">
     <img ng-if="health > 3" class="heart4" src="./img/beating.gif">
 
-    <span class="userPoints" >Points: {{points}}</span>
+    <button id="moneySack" style="border: 0; background: transparent" >
+      <img src="./img/bag.png" />
+      <div class="userPoints numberInfo" >${{points}}</div>
+    </button>
 
     <div class="knomiContainer">
       <div class="speech" ng-show="visibilityControl" ><img src="./img/speech.png" /></div>

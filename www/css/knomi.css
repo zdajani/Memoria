@@ -74,7 +74,18 @@
   width: 3.5em;
 }
 
-#foodCart div {
+#moneySack {
+  float: right;
+  margin-top: 15px;
+  margin-right: 10px;
+}
+
+#moneySack div {
+  margin-left: 5px;
+  width: 3em;
+}
+
+.numberInfo {
   color: green;
   font-size: 15px;
   font-weight: bold;
