@@ -81,32 +81,47 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 })
 
 .controller('questionAnswerCtrl', function($scope, $stateParams, QuestionFactory, ModalService, timerFactory) {
-    var list = QuestionFactory;
-    var studyItem = list.$getRecord($stateParams.studyItemId);
+  var list = QuestionFactory;
+  var studyItem = list.$getRecord($stateParams.studyItemId);
     
-    $scope.question = studyItem.question;
-
-    
-    $scope.validateAnswer = function(answer) {
-      if (answer === studyItem.answer)
-      { ModalService
-          .init('modals/correctAnswer-modal.html', $scope)
-          .then(function(modal) {
-            modal.show();
-        });
-        timerFactory.addTime($stateParams.studyItemId);
-      } else {
-        ModalService
-            .init('modals/wrongAnswer-modal.html', $scope)
-            .then(function(modal) {
-              modal.show();
-          });
-          timerFactory.minusTime($stateParams.studyItemId);
-      }
-    };
+  $scope.studyItem = studyItem;
   
-    
+  $scope.validateAnswer = function(answer) {
+    if (answer === studyItem.answer) {
+      ModalService
+        .init('modals/correctAnswer-modal.html', $scope)
+        .then(function(modal) {
+          modal.show();
+      });
+      timerFactory.addTime($stateParams.studyItemId);
+      addPoints();
+    } 
+    else {
+      ModalService
+        .init('modals/wrongAnswer-modal.html', $scope)
+        .then(function(modal) {
+          modal.show();
+        });
+      timerFactory.minusTime($stateParams.studyItemId);
+      reducePower();
+    }
+  };
+  
+  var addPoints = function() {
+    var pointsRef =  new Firebase('https://studymemoria.firebaseio.com/Points/user_points');
+    pointsRef.transaction(function(current_value) {
+      return (current_value += 5);
+    });
+  };
+  var reducePower = function() {
+    var powerRef =  new Firebase('https://studymemoria.firebaseio.com/Points/knomi_power');
+    powerRef.transaction(function(current_value) {
+      return (current_value -= 1);
+    });
+  };
 })
+
+
 
 .controller('AboutCtrl', function($scope) {
   $scope.settings = {

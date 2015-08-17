@@ -81,7 +81,7 @@ angular.module('starter.services', [])
   return {
     addTime: function (questionId) {
       var intervalRef = new Firebase('https://studymemoria.firebaseio.com/MyStudies/'+ questionId + '/interval');
-      timer.transaction(function(current_value) {
+      intervalRef.transaction(function(current_value) {
         var i = time_array.indexOf(current_value);
         return (current_value = time_array[i + 1]);
       });
@@ -97,8 +97,19 @@ angular.module('starter.services', [])
         }
       });
     }
-  };
-  
-  
-  
-});
+  };  
+})
+
+// .service('PopUpService', function($ionicPopup, $rootScope) {
+// 
+//   $scope.showAlert = function(setTitle) {
+//     var alertPopup = $ionicPopup.alert({
+//       title: setTitle,
+//       templateUrl: 
+//     })
+//       alertPopup.then(function(res) {
+//         console.log('Thank you for not eating my delicious ice cream cone');
+//     });
+//   };
+//   
+// })
