@@ -56,7 +56,7 @@ describe('Knomi', function() {
 
   it('has a food cart which tells you how to feed your knomi', function() {
     element(by.id('foodCart')).click();
-    expect(element(by.id('foodModal')).getText()).toContain('You can buy food from me');
+    expect(element(by.id('vendorModal')).getText()).toContain('You can buy food from me');
   })
 
 });
