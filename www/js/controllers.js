@@ -89,19 +89,43 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     $scope.validateAnswer = function(answer) {
       if (answer === studyItem.answer)
       { ModalService
-          .init('correctAnswer.html', $scope)
+          .init('correctAnswerModal.html', $scope)
           .then(function(modal) {
             modal.show();
         });
+        addTime();
       } else {
         ModalService
             .init('wrongAnswer.html', $scope)
             .then(function(modal) {
               modal.show();
           });
+          minusTime();
       }
-      
     };
+  
+    var id = studyItem.$id
+    var intervalRef = new Firebase('https://studymemoria.firebaseio.com/MyStudies/'+ id + '/interval');
+  
+    var addTime = function () {
+      intervalRef.transaction(function(current_value) {
+        var i = time_array.indexOf(current_value);
+        return (current_value = time_array[i + 1]);
+      });
+    };
+    
+    var minusTime = function () {
+      intervalRef.transaction(function(current_value) {
+      var i = time_array.indexOf(current_value);
+      if (current_value > 5) { 
+        return (current_value = time_array[i - 1]);
+      } else {
+        return current_value;
+      }
+      });
+    };
+    
+    var time_array = [ 0, 5, 25, 120, 600, 3600];
     
 })
 

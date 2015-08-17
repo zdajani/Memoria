@@ -66,7 +66,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       'tab-questions': {
         templateUrl: 'templates/question-answer.html',
         controller: 'questionAnswerCtrl'
-      
       }
     }
   })
