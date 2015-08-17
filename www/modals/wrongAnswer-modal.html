@@ -1,13 +1,16 @@
 <ion-modal-view>
-  <ion-header-bar>
-    <h1 class="title">Wrong!</h1>
+  <ion-header-bar class="bar bar-header bar-assertive">
+    <h1 class="title">Incorrect!</h1>
   </ion-header-bar>
   <ion-content class="padding">
-    <p>you suck</p>
-      <div></div>
-      {{studyItem.answer}}
-      <p>Answer more questions for more points, or your knomi will starve and turn back into an ordinary rock!</p>
-      <button id="okay" class="button" ng-click="closeModal()">Okay</button>
-    </div>
+    <p>The correct answer is:
+      <b>{{studyItem.answer}}</b>
+    </p>
+    <p>The next time this question will be available is in {{studyItem.interval}}</p>
+    
+    <p>Answer more questions for more points, or your knomi will starve and turn back into an ordinary rock!</p>
+  
+    <a href="#/tab/questions" class="button button-block button-energized" ng-click=closeModal()>Answer Another Question</a>
+    <a href="#/tab/knomi" class="button button-block button-royal" ng-click=closeModal()>Play with Knomi</a>
   </ion-content>
 </ion-modal-view>

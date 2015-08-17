@@ -80,10 +80,12 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
 })
 
-.controller('questionAnswerCtrl', function($scope, $stateParams, QuestionFactory, ModalService, timerFactory) {
+.controller('questionAnswerCtrl', function($scope, $stateParams, QuestionFactory, ModalService, timerFactory, PointsFactory) {
   var list = QuestionFactory;
   var studyItem = list.$getRecord($stateParams.studyItemId);
-    
+  var points = PointsFactory
+  $scope.points = points
+  
   $scope.studyItem = studyItem;
   
   $scope.validateAnswer = function(answer) {
