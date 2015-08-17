@@ -148,18 +148,18 @@
   width: 189px;
   height: 230px;
   background-repeat: no-repeat;
-  background-image: url("../img/vendorspritesheet4.png");
+  background-image: url("../img/vendorspritesheet5.png");
 
-  -webkit-animation: vendor .3s steps(4) infinite;
-          animation: vendor .3s steps(4) infinite;
+  -webkit-animation: vendor .7s steps(16) infinite;
+          animation: vendor .7s steps(16) infinite;
 }
 
 @-webkit-keyframes vendor {
   from { background-position:    0px; }
-  to { background-position: -756px; }
+  to { background-position: -3024px; }
 }
 
 @keyframes vendor {
   from { background-position:    0px; }
-  to { background-position: -756px; }
+  to { background-position: -3024px; }
 }
