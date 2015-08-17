@@ -11,27 +11,43 @@
   margin-left: 200px;
 }
 
-.heart1 {
+.health1 {
+  margin-top: 25px;
   position: absolute;
   width: 35px;
 }
 
-.heart2 {
+.health2 {
+  margin-top: 25px;
   position: absolute;
   width: 35px;
   margin-left: 35px;
 }
 
-.heart3 {
+.health3 {
+  margin-top: 25px;
   position: absolute;
   width: 35px;
   margin-left: 70px;
 }
 
-.heart4 {
+.health4 {
+  margin-top: 25px;
   position: absolute;
   width: 35px;
   margin-left: 105px;
+}
+.health5 {
+  margin-top: 25px;
+  position: absolute;
+  width: 35px;
+  margin-left: 135px;
+}
+.health6 {
+  margin-top: 25px;
+  position: absolute;
+  width: 35px;
+  margin-left: 170px;
 }
 
 .knomiContainer {
