@@ -11,7 +11,7 @@ describe('recall-tab', function(){
     question.click();
     expect((studyItemQ).getText()).toContain('What is the capital of Palestine?');
   })
-
+  
 
 
 });

@@ -80,52 +80,31 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
 })
 
-.controller('questionAnswerCtrl', function($scope, $stateParams, QuestionFactory, ModalService) {
+.controller('questionAnswerCtrl', function($scope, $stateParams, QuestionFactory, ModalService, timerFactory) {
     var list = QuestionFactory;
     var studyItem = list.$getRecord($stateParams.studyItemId);
     
     $scope.question = studyItem.question;
+
     
     $scope.validateAnswer = function(answer) {
       if (answer === studyItem.answer)
       { ModalService
-          .init('correctAnswerModal.html', $scope)
+          .init('modals/correctAnswer-modal.html', $scope)
           .then(function(modal) {
             modal.show();
         });
-        addTime();
+        timerFactory.addTime($stateParams.studyItemId);
       } else {
         ModalService
-            .init('wrongAnswer.html', $scope)
+            .init('modals/wrongAnswer-modal.html', $scope)
             .then(function(modal) {
               modal.show();
           });
-          minusTime();
+          timerFactory.minusTime($stateParams.studyItemId);
       }
     };
   
-    var id = studyItem.$id
-    var intervalRef = new Firebase('https://studymemoria.firebaseio.com/MyStudies/'+ id + '/interval');
-  
-    var addTime = function () {
-      intervalRef.transaction(function(current_value) {
-        var i = time_array.indexOf(current_value);
-        return (current_value = time_array[i + 1]);
-      });
-    };
-    
-    var minusTime = function () {
-      intervalRef.transaction(function(current_value) {
-      var i = time_array.indexOf(current_value);
-      if (current_value > 5) { 
-        return (current_value = time_array[i - 1]);
-      } else {
-        return current_value;
-      }
-      });
-    };
-    
-    var time_array = [ 0, 5, 25, 120, 600, 3600];
     
 })
 
