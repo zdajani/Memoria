@@ -35,6 +35,12 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
   $scope.notify = function() {
     itemRef.update({knomi_power: 0, user_points: 10})
+    itemRef.on("value", function(snapshot) {
+      allData = (snapshot.val());
+      console.log(allData.user_points);
+      $scope.points = allData.user_points;
+      $scope.health = allData.knomi_power;
+    });
     var now = new Date().getTime();
     var timeInSeconds = 7;
     _X_sec_from_now = new Date(now + timeInSeconds *1000);

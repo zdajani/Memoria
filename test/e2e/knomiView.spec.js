@@ -36,6 +36,7 @@ describe('Knomi', function() {
   };
 
   it('displays points', function() {
+    element(by.id('notify')).click();
     var pointsSpan = element(by.className('userPoints'))
     expect(pointsSpan.getText()).toContain('10')
   })
