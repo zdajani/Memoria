@@ -53,7 +53,7 @@ angular.module('starter.services', [])
 
 
 .factory('foodFactory', function(){
-  var food = [{
+  var availableFoods = [{
     id: 0,
     name: 'Sandwich',
     location: './img/sammich.png'
@@ -67,9 +67,18 @@ angular.module('starter.services', [])
     location: './img/taco.png'
   }];
 
+  var food = [];
+
   return {
-    randomFood: function() {
-      return food[Math.floor(Math.random() * food.length)];
+    food: function() {
+      return food;
+    },
+    addFood: function() {
+      var randomFood = availableFoods[Math.floor(Math.random() * availableFoods.length)]
+      food.push(randomFood)
+    },
+    removeFood: function() {
+      food.pop()
     }
   };
 });
