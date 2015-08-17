@@ -28,7 +28,7 @@
   width: 189px;
   height: 230px;
   background-repeat: no-repeat;
-  background-image: url("../img/vendorspritesheet5.png");
+  background-image: url("../img/walkingleft.png");
 
   -webkit-animation: vendor .7s steps(16) infinite;
           animation: vendor .7s steps(16) infinite;
