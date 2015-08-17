@@ -22,6 +22,17 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       });
   };
 
+  $scope.foodModal = function(points) {
+    console.log(points);
+    if (points < 5) {
+      ModalService
+        .init('modals/food-modal.html', $scope)
+        .then(function(modal) {
+          modal.show();
+        });
+    }
+  };
+
   var itemRef =  new Firebase('https://studymemoria.firebaseio.com/Points');
 
   $scope.feed = function() {
