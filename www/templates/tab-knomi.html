@@ -1,46 +1,42 @@
 <link href="css/knomi.css" rel="stylesheet">
 
 <ion-view view-title="Knomi">
-  <ion-content scroll="false" id="knomi-page" class="gameArea" >
+  <ion-nav-buttons side="right">
+
+    <button id="help" class="button button-icon ion-help-circled" ng-click="vendorModal()"></button>
     <button id="notify" class="button" ng-click="notify()">
       Notify
     </button>
 
-    <img ng-if="health > 0" class="heart1" src="./img/beating.gif">
-    <img ng-if="health > 1" class="heart2" src="./img/beating.gif">
-    <img ng-if="health > 2" class="heart3" src="./img/beating.gif">
-    <img ng-if="health > 3" class="heart4" src="./img/beating.gif">
+  </ion-nav-buttons>
+  <ion-content scroll="false" id="knomi-page" class="gameArea" >
 
-    <span class="userPoints" >Points: {{points}}</span>
+    <button id="foodCart" style="border: 0; background: transparent" ng-click="foodModal(points.$value)">
+      <img src="./img/vendor.png" /><div class="numberInfo">$5</div>
+    </button>
+
+    <img ng-if="power.$value > 0" class="health1" src="./img/power1.png">
+    <img ng-if="power.$value > 1" class="health2" src="./img/power1.png">
+    <img ng-if="power.$value > 2" class="health3" src="./img/power2.png">
+    <img ng-if="power.$value > 3" class="health4" src="./img/power2.png">
+    <img ng-if="power.$value > 4" class="health5" src="./img/power2.png">
+    <img ng-if="power.$value > 5" class="health6" src="./img/power3.png">
+
+    <button id="moneySack" style="border: 0; background: transparent" >
+      <img src="./img/bag.png" />
+      <div class="userPoints numberInfo" >${{points.$value}}</div>
+    </button>
 
     <div class="knomiContainer">
-      <div class="speech" ng-show="visibilityControl" ><img src="./img/speech.png" /></div>
 
-      <div class="starterKnomi" ng-drop="true" ng-drop-success="onDropComplete(); feed();" ng-hide="visibilityControl"></div>
+      <div class="starterKnomi" ng-if="power.$value === 0" ng-drop="true" ng-drop-success="onDropComplete()"></div>
 
-      <div class="knomileveltwo" ng-show="visibilityControl"></div>
+      <div class="knomileveltwo" ng-if="power.$value > 0" ng-drop="true" ng-drop-success="onDropComplete()"></div>
     </div>
 
-    <div class="foodItem" ng-repeat="item in foods" ng-drag="true" ng-drag-data="item" ng-hide="visibilityControl">
+    <div class="foodItem" ng-repeat="item in foods" ng-drag="true" ng-drag-data="item">
       <img ng-src="{{item.location}}" />
     </div>
 
-    <script id="my-modal.html" type="text/ng-template">
-      <ion-modal-view>
-        <ion-header-bar>
-          <h1 class="title">You are broke!</h1>
-        </ion-header-bar>
-
-        <ion-content>
-          <div class="knomiContainer">
-          <p>Mommy, are we poor?</p>
-            <div class="knomileveltwo"></div>
-            <p>Answer more questions for more points, or your knomi will starve and turn back into an ordinary rock!</p>
-            <button id="okay" class="button" ng-click="closeModal()">Okay</button>
-          </div>
-        </ion-content>
-
-      </ion-modal-view>
-    </script>
   </ion-content>
 </ion-view>
