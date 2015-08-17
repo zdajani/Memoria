@@ -14,7 +14,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     $scope.health = PowerFactory.$value
   })
 
-  vendorModal = function() {
+  $scope.vendorModal = function() {
     ModalService
       .init('vendor-modal.html', $scope)
       .then(function(modal) {
@@ -22,16 +22,16 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       });
   };
 
-  if(newUser) {
-    setTimeout(function ()
-    {
-      $scope.$apply(function()
-      {
-        vendorModal();
-        newUser = false;
-      });
-    }, 3000);
-  }
+  // if(newUser) {
+  //   setTimeout(function ()
+  //   {
+  //     $scope.$apply(function()
+  //     {
+  //       vendorModal();
+  //       newUser = false;
+  //     });
+  //   }, 3000);
+  // }
 
   var itemRef =  new Firebase('https://studymemoria.firebaseio.com/Points');
 
