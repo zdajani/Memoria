@@ -4,6 +4,8 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   $scope.foods = [foodFactory.randomFood()];
   $scope.visibilityControl = false;
 
+  var newUser = true
+
   PointsFactory.$loaded().then(function() {
     $scope.points = PointsFactory.$value
   })
@@ -12,13 +14,24 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     $scope.health = PowerFactory.$value
   })
 
-  $scope.vendorModal = function() {
+  vendorModal = function() {
     ModalService
       .init('vendor-modal.html', $scope)
       .then(function(modal) {
         modal.show();
       });
   };
+
+  if(newUser) {
+    setTimeout(function ()
+    {
+      $scope.$apply(function()
+      {
+        vendorModal();
+        newUser = false;
+      });
+    }, 3000);
+  }
 
   var itemRef =  new Firebase('https://studymemoria.firebaseio.com/Points');
 
