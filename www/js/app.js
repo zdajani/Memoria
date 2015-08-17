@@ -50,6 +50,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
+  .state('vendorModal', {
+    views: {
+      templateUrl: 'modals/vendor-modal.html'
+    }
+  })
+
+  .state('foodModal', {
+    views: {
+      templateUrl: 'modals/food-modal.html'
+    }
+  })
+
   .state('tab.questions', {
       url: '/questions',
       views: {
@@ -66,7 +78,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       'tab-questions': {
         templateUrl: 'templates/question-answer.html',
         controller: 'questionAnswerCtrl'
-      
+
       }
     }
   })

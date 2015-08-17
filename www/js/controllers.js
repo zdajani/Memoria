@@ -1,8 +1,10 @@
 angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
 .controller('KnomiCtrl', function($scope, $cordovaLocalNotification, foodFactory, PointsFactory, PowerFactory, $firebaseArray, ModalService) {
-  $scope.foods = [foodFactory.randomFood()];
-  $scope.visibilityControl = false;
+  $scope.foods = foodFactory.food();
+  // $scope.visibilityControl = false;
+
+  var newUser = true
 
   PointsFactory.$loaded().then(function() {
     $scope.points = PointsFactory.$value
@@ -12,12 +14,24 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     $scope.health = PowerFactory.$value
   })
 
-  $scope.exampleModal = function() {
+  $scope.vendorModal = function() {
     ModalService
-      .init('my-modal.html', $scope)
+      .init('modals/vendor-modal.html', $scope)
       .then(function(modal) {
         modal.show();
       });
+  };
+
+  $scope.foodModal = function(points) {
+    if (points < 5) {
+      ModalService
+        .init('modals/food-modal.html', $scope)
+        .then(function(modal) {
+          modal.show();
+        });
+    } else {
+      foodFactory.addFood();
+    }
   };
 
   var itemRef =  new Firebase('https://studymemoria.firebaseio.com/Points');
@@ -26,11 +40,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     $scope.health += 1
     $scope.points -= 5
     var newData = {knomi_power: $scope.health, user_points: $scope.points}
-    console.log(newData)
     itemRef.update(newData)
-    if ($scope.points < 1) {
-      $scope.openModal();
-    };
   };
 
   $scope.notify = function() {
@@ -53,14 +63,15 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   };
 
   $scope.onDropComplete = function(){
-    $scope.visibilityControl = !$scope.visibilityControl;
-    setTimeout(function ()
-    {
-      $scope.$apply(function()
-      {
-        $scope.visibilityControl = !$scope.visibilityControl;
-      });
-    }, 10000);
+    foodFactory.removeFood();
+    // $scope.visibilityControl = !$scope.visibilityControl;
+    // setTimeout(function ()
+    // {
+    //   $scope.$apply(function()
+    //   {
+    //     $scope.visibilityControl = !$scope.visibilityControl;
+    //   });
+    // }, 10000);
   };
 
 })
