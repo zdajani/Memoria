@@ -110,15 +110,6 @@
   opacity: 0.8;
 }
 
-#okay {
-  margin-top: 260px;
-  border-radius: 15px;
-  background-color: #FAF3E3;
-  border-color: #8A8660;
-  color: #8A8660;
-  box-shadow: 5px 5px 2px #969478;
-}
-
 .knomileveltwo {
   position: absolute;
   margin-top: 70px;
@@ -141,41 +132,4 @@
 @keyframes play {
   from { background-position:    0px; }
   to { background-position: -972px; }
-}
-
-#vendorModal {
-  background-repeat: no-repeat;
-  background-image: url("../img/parchment-background.png");
-  background-size: 100% 100%;
-  background-color: #FAF3E3;
-}
-
-.vendor {
-  text-align: center;
-  margin-left: 30px;
-  font-size: 16px;
-  margin-top: 80px;
-  width: 80%;
-}
-
-#vendorImage {
-  position: absolute;
-  margin-left: 70px;
-  width: 189px;
-  height: 230px;
-  background-repeat: no-repeat;
-  background-image: url("../img/vendorspritesheet5.png");
-
-  -webkit-animation: vendor .7s steps(16) infinite;
-          animation: vendor .7s steps(16) infinite;
-}
-
-@-webkit-keyframes vendor {
-  from { background-position:    0px; }
-  to { background-position: -3024px; }
-}
-
-@keyframes vendor {
-  from { background-position:    0px; }
-  to { background-position: -3024px; }
 }
