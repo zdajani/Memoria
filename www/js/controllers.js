@@ -2,7 +2,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
 .controller('KnomiCtrl', function($scope, $cordovaLocalNotification, foodFactory, PointsFactory, PowerFactory, $firebaseArray, ModalService) {
   $scope.foods = foodFactory.food();
-  $scope.visibilityControl = false;
+  // $scope.visibilityControl = false;
 
   var newUser = true
 
@@ -64,14 +64,14 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
   $scope.onDropComplete = function(){
     foodFactory.removeFood();
-    $scope.visibilityControl = !$scope.visibilityControl;
-    setTimeout(function ()
-    {
-      $scope.$apply(function()
-      {
-        $scope.visibilityControl = !$scope.visibilityControl;
-      });
-    }, 10000);
+    // $scope.visibilityControl = !$scope.visibilityControl;
+    // setTimeout(function ()
+    // {
+    //   $scope.$apply(function()
+    //   {
+    //     $scope.visibilityControl = !$scope.visibilityControl;
+    //   });
+    // }, 10000);
   };
 
 })
