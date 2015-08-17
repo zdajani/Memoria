@@ -12,7 +12,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     $scope.health = PowerFactory.$value
   })
 
-  $scope.modal1 = function() {
+  $scope.exampleModal = function() {
     ModalService
       .init('my-modal.html', $scope)
       .then(function(modal) {
