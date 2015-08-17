@@ -43,11 +43,11 @@ angular.module('starter.services', [])
      });
 
     return promise;
-  }
+  };
 
   return {
     init: init
-  }
+  };
 
 })
 

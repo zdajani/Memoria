@@ -5,12 +5,12 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   $scope.visibilityControl = false;
 
   PointsFactory.$loaded().then(function() {
-    $scope.points = PointsFactory.$value
-  })
+    $scope.points = PointsFactory.$value;
+  });
 
   PowerFactory.$loaded().then(function() {
-    $scope.health = PowerFactory.$value
-  })
+    $scope.health = PowerFactory.$value;
+  });
 
   $scope.exampleModal = function() {
     ModalService
@@ -23,18 +23,18 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   var itemRef =  new Firebase('https://studymemoria.firebaseio.com/Points');
 
   $scope.feed = function() {
-    $scope.health += 1
-    $scope.points -= 5
-    var newData = {knomi_power: $scope.health, user_points: $scope.points}
-    console.log(newData)
-    itemRef.update(newData)
+    $scope.health += 1;
+    $scope.points -= 5;
+    var newData = {knomi_power: $scope.health, user_points: $scope.points};
+    console.log(newData);
+    itemRef.update(newData);
     if ($scope.points < 1) {
       $scope.openModal();
-    };
+    }
   };
 
   $scope.notify = function() {
-    itemRef.update({knomi_power: 0, user_points: 10})
+    itemRef.update({knomi_power: 0, user_points: 10});
     itemRef.on("value", function(snapshot) {
       allData = (snapshot.val());
       console.log(allData.user_points);
@@ -80,13 +80,29 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
 })
 
-.controller('questionAnswerCtrl', function($scope, $stateParams, QuestionFactory) {
-
+.controller('questionAnswerCtrl', function($scope, $stateParams, QuestionFactory, ModalService) {
     var list = QuestionFactory;
     var studyItem = list.$getRecord($stateParams.studyItemId);
-
+    
     $scope.question = studyItem.question;
-
+    
+    $scope.validateAnswer = function(answer) {
+      if (answer === studyItem.answer)
+      { ModalService
+          .init('correctAnswer.html', $scope)
+          .then(function(modal) {
+            modal.show();
+        });
+      } else {
+        ModalService
+            .init('wrongAnswer.html', $scope)
+            .then(function(modal) {
+              modal.show();
+          });
+      }
+      
+    };
+    
 })
 
 .controller('AboutCtrl', function($scope) {
