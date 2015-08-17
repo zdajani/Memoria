@@ -12,9 +12,9 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     $scope.health = PowerFactory.$value
   })
 
-  $scope.exampleModal = function() {
+  $scope.vendorModal = function() {
     ModalService
-      .init('my-modal.html', $scope)
+      .init('vendor-modal.html', $scope)
       .then(function(modal) {
         modal.show();
       });

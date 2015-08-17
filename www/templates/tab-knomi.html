@@ -9,7 +9,7 @@
   </ion-nav-buttons>
   <ion-content scroll="false" id="knomi-page" class="gameArea" >
 
-    <button id="foodCart" style="border: 0; background: transparent" ng-click="exampleModal()">
+    <button id="foodCart" style="border: 0; background: transparent" ng-click="vendorModal()">
       <img src="./img/vendor.png" /><div class="numberInfo">$5</div>
     </button>
 
@@ -35,7 +35,7 @@
       <img ng-src="{{item.location}}" />
     </div>
 
-    <script id="my-modal.html" type="text/ng-template">
+    <script id="vendor-modal.html" type="text/ng-template">
       <ion-modal-view>
 
         <ion-content class="padding" id="vendorModal">
