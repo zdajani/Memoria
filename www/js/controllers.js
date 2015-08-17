@@ -47,15 +47,16 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     });
   };
 
-  var itemRef =  new Firebase('https://studymemoria.firebaseio.com/Points');
+  
 
   $scope.notify = function() {
-    itemRef.update({knomi_power: 0, user_points: 10});
-    itemRef.on("value", function(snapshot) {
-      allData = (snapshot.val());
-      console.log(allData.user_points);
-      $scope.points = allData.user_points;
-      $scope.health = allData.knomi_power;
+    var pointsRef =  new Firebase('https://studymemoria.firebaseio.com/Points/user_points');
+    pointsRef.transaction(function(current_value) {
+      return (current_value = 10);
+    });
+    var powerRef =  new Firebase('https://studymemoria.firebaseio.com/Points/knomi_power');
+    powerRef.transaction(function(current_value) {
+      return (current_value = 0);
     });
     var now = new Date().getTime();
     var timeInSeconds = 7;
@@ -67,6 +68,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       at: _X_sec_from_now,
     });
   };
+  
 })
 
 .controller('QsCtrl', function($scope, QuestionFactory) {
