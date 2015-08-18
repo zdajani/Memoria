@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
+angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase', 'timer'])
 
 .controller('KnomiCtrl', function($scope, $cordovaLocalNotification, foodFactory, PointsFactory, PowerFactory, $firebaseArray, ModalService) {
   $scope.foods = foodFactory.food();
@@ -94,14 +94,20 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       at: scheduledTime
     });
   };
+  
+  var addTime = 
+  $scope.timerRunning = true;
+  $scope.intervalTime = function(item) {
+    return (item.interval).toString();
+  };
 
   $scope.questionLink = function(item) {
     if(item.isAvailable) {
-      return "#/tab/questions/" + item.$id
+      return "#/tab/questions/" + item.$id;
     } else {
-      return "#"
+      return "#";
     }
-  }
+  };
 
 })
 

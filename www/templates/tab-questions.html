@@ -8,10 +8,13 @@
     <ion-list>
 
       <ion-item class="questionList item-icon-right" ng-repeat="item in items" type="item-text-wrap" ng-href={{questionLink(item)}}>
-        <p>{{item.question}}</p>
+        <p>
+        {{item.question}}<br> 
+        Time = <timer countdown=intervalTime(item) interval=1000></timer>
+      </p>
+      
         <i class="icon ion-chevron-right icon-accessory"></i>
       </ion-item>
-
     </ion-list>
 
   </ion-content>
