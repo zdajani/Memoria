@@ -73,20 +73,6 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
 .controller('QsCtrl', function($scope, QuestionFactory, $cordovaLocalNotification) {
 
-
-  var qRef =  new Firebase('https://studymemoria.firebaseio.com/MyStudies');
-
-  qRef.on("value", function(snapshot) {
-    var availableCount = 0;
-    snapshot.forEach(function(question) {
-      if (question.child('isAvailable').val()) {
-        availableCount += 1
-      }
-    })
-    $scope.availableQuestions = availableCount;
-  });
-
-
   $scope.items = QuestionFactory;
 
   $scope.addQuestion = function(){
@@ -168,7 +154,22 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   };
 })
 
+.controller('TabCtrl', function($scope) {
 
+  var qRef =  new Firebase('https://studymemoria.firebaseio.com/MyStudies');
+
+  qRef.on("value", function(snapshot) {
+    var availableCount = 0;
+    snapshot.forEach(function(question) {
+      if (question.child('isAvailable').val()) {
+        availableCount += 1
+      }
+    })
+    $scope.availableQuestions = availableCount;
+  });
+
+
+})
 
 .controller('AboutCtrl', function($scope) {
   $scope.settings = {
