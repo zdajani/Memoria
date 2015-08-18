@@ -83,12 +83,16 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     interval: 5
     });
   };
-  // 
-  // $scope.questionNotify = function (question, interval) {
-  //   var list = QuestionFactory
-  //   var now = new Date().getTime();
-  //   var secondsLater = interval
-  // }
+  $scope.addQuestionNotify = function () {
+    var now = new Date().getTime();
+    var scheduledTime = new Date(now + (5 * 1000));
+    $cordovaLocalNotification.schedule({
+      id: 1,
+      title: "It's time to answer a question!",
+      text: $scope.items.question,
+      at: scheduledTime
+    });
+  };
   
 
 })
@@ -126,7 +130,6 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   };
   
   var questionNotify = function (time) {
-    var list = QuestionFactory;
     var now = new Date().getTime();
     var scheduledTime = new Date(now + (time * 1000));
     $cordovaLocalNotification.schedule({
