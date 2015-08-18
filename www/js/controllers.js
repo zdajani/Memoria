@@ -71,7 +71,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   
 })
 
-.controller('QsCtrl', function($scope, QuestionFactory) {
+.controller('QsCtrl', function($scope, QuestionFactory, $cordovaLocalNotification) {
 
   $scope.items = QuestionFactory;
 
@@ -80,13 +80,20 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     question: $scope.items.question,
     answer: $scope.items.answer,
     date: Date.now(),
-    interval: 5 * 1000
+    interval: 5
     });
   };
+  // 
+  // $scope.questionNotify = function (question, interval) {
+  //   var list = QuestionFactory
+  //   var now = new Date().getTime();
+  //   var secondsLater = interval
+  // }
+  
 
 })
 
-.controller('questionAnswerCtrl', function($scope, $stateParams, QuestionFactory, ModalService, timerFactory, PointsFactory) {
+.controller('questionAnswerCtrl', function($scope, $stateParams, QuestionFactory, ModalService, timerFactory, PointsFactory, $cordovaLocalNotification) {
   var list = QuestionFactory;
   var studyItem = list.$getRecord($stateParams.studyItemId);
   var points = PointsFactory;
@@ -103,6 +110,8 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       });
       timerFactory.addTime($stateParams.studyItemId);
       addPoints();
+        console.log(timerFactory.addNotificationTime(studyItem.interval));
+      questionNotify(timerFactory.addNotificationTime(studyItem.interval));
     } 
     else {
       ModalService
@@ -112,7 +121,20 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
         });
       timerFactory.minusTime($stateParams.studyItemId);
       reducePower();
+      questionNotify(timerFactory.minusNotificationTime(studyItem.interval));
     }
+  };
+  
+  var questionNotify = function (time) {
+    var list = QuestionFactory;
+    var now = new Date().getTime();
+    var scheduledTime = new Date(now + (time * 1000));
+    $cordovaLocalNotification.schedule({
+      id: studyItem.date,
+      title: "It's time to answer a question!",
+      text: studyItem.question,
+      at: scheduledTime
+    });
   };
   
   var addPoints = function() {
