@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase', 'timer'])
 
-.controller('KnomiCtrl', function($scope, $cordovaLocalNotification, foodFactory, PointsFactory, PowerFactory, $firebaseArray, ModalService) {
+.controller('KnomiCtrl', function($scope, $cordovaLocalNotification, foodFactory, PointsFactory, PowerFactory, $firebaseArray, ModalService, $firebase) {
   $scope.foods = foodFactory.food();
 
   var points = PointsFactory;
@@ -71,9 +71,10 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase', '
 
 })
 
-.controller('QsCtrl', function($scope, QuestionFactory, $cordovaLocalNotification) {
+.controller('QsCtrl', function($scope, QuestionFactory, $cordovaLocalNotification, $interval, $timeout, $firebaseArray, $firebase) {
 
   $scope.items = QuestionFactory;
+
 
   $scope.addQuestion = function(){
     $scope.items.$add({
@@ -95,11 +96,51 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase', '
     });
   };
   
-  var addTime = 
   $scope.timerRunning = true;
-  $scope.intervalTime = function(item) {
-    return (item.interval).toString();
-  };
+
+  
+  
+  var qRef =  new Firebase('https://studymemoria.firebaseio.com/MyStudies');
+  
+  qRef.on("child_changed", function(Childsnapshot) {    
+    var childRef = $firebaseArray(new Firebase('https://studymemoria.firebaseio.com/MyStudies/-JwWpE3EB6sY1fQ0rnM7'))
+    // if (Childsnapshot.val().isAvailable === true) {$scope.$broadcast('timer-start');}
+    childRef.$loaded().then(function() {
+        console.log(Childsnapshot.val().interval)
+      $timeout(function() { changeAvailability(Childsnapshot.key()); }, Childsnapshot.val().interval * 1000);
+    });
+      
+  });
+  
+  
+  var changeAvailability = function(id) {
+    var availableRef = new Firebase('https://studymemoria.firebaseio.com/MyStudies/'+ id + '/isAvailable');
+    availableRef.transaction(function(current_value) {
+      return (current_value = true);
+      
+  });
+  
+};
+
+  // $interval( function() {$scope.changeStatus();}, 5 * 1000);
+  // 
+  // $scope.changeStatus = function() {
+  //   console.log("works");
+  // }
+
+  // 
+  // $scope.start = function() {
+  //   $scope.$broadcast('timer-start');
+  //   $scope.timerRunning = true;
+  //       };
+  // 
+  // $scope.trigger = function(item) {
+  //   $scope.$on('timer-stopped', function() {
+  //            console.log(item)
+  //        });
+  // }
+
+
 
   $scope.questionLink = function(item) {
     if(item.isAvailable) {
@@ -128,7 +169,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase', '
       });
       timerFactory.addTime($stateParams.studyItemId);
       addPoints();
-        console.log(timerFactory.addNotificationTime(studyItem.interval));
+      availability($stateParams.studyItemId);
       questionNotify(timerFactory.addNotificationTime(studyItem.interval));
     }
     else {
@@ -139,10 +180,22 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase', '
         });
       timerFactory.minusTime($stateParams.studyItemId);
       reducePower();
+      availability($stateParams.studyItemId);
       questionNotify(timerFactory.minusNotificationTime(studyItem.interval));
     }
   };
+  
+  // var id = $stateParams.studyItemId
 
+  var availability = function(id) {
+    var availableRef = new Firebase('https://studymemoria.firebaseio.com/MyStudies/'+ id +'/isAvailable');
+    availableRef.transaction(function(current_value) {
+
+      return (current_value = false);
+      
+    });
+  };
+  
   var questionNotify = function (time) {
     var now = new Date().getTime();
     var scheduledTime = new Date(now + (time * 1000));
