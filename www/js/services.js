@@ -55,16 +55,12 @@ angular.module('starter.services', [])
 .factory('foodFactory', function(){
   var availableFoods = [{
     id: 0,
-    name: 'Sandwich',
-    location: './img/sammich.png'
+    name: 'milk',
+    location: './img/milk.png'
   }, {
     id: 1,
-    name: 'Rice',
-    location: './img/rice.png'
-  }, {
-    id: 2,
-    name: 'Taco',
-    location: './img/taco.png'
+    name: 'salmon',
+    location: './img/salmon.png'
   }];
 
   var food = [];
