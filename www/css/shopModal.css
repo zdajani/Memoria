@@ -15,9 +15,74 @@
 }
 
 .shop {
-  text-align: center;
-  margin-left: 30px;
+  text-align: right;
+  margin-left: 20px;
   font-size: 16px;
-  margin-top: 80px;
-  width: 80%;
+  margin-top: 50px;
+  width: 82%;
+
+}
+
+#salmon {
+  position: absolute;
+  margin-top: 50px;
+  margin-left: 120px;
+}
+
+#salmon img {
+  width: 4em;
+}
+
+#salmon span {
+  position: absolute;
+  margin-left: -50px;
+  margin-top: 13px;
+}
+
+#milk {
+  position: absolute;
+  margin-top: 50px;
+  margin-left: 35px;
+}
+
+#milk img {
+  width: 3.5em;
+}
+
+#milk span {
+  position: absolute;
+  margin-left: -50px;
+}
+
+.priceInfo {
+  color: green;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #E8FAF1;
+  border-radius: 10px;
+  opacity: 0.8;
+  border: dashed;
+  padding: 2px;
+  border-radius: 25px;
+}
+
+#vendorImage {
+  position: absolute;
+  width: 94.5px;
+  height: 115px;
+  background-repeat: no-repeat;
+  background-image: url("../img/vendorspritesheet.png");
+
+  -webkit-animation: vendor .7s steps(16) infinite;
+          animation: vendor .7s steps(16) infinite;
+}
+
+@-webkit-keyframes vendor {
+  from { background-position:    0px; }
+  to { background-position: -1518px; }
+}
+
+@keyframes vendor {
+  from { background-position:    0px; }
+  to { background-position: -1518px; }
 }
