@@ -73,15 +73,12 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
 .controller('QsCtrl', function($scope, QuestionFactory, $cordovaLocalNotification) {
 
-  $scope.setBadge = function() {
-    console.log("Argh")
+
     var qRef =  new Firebase('https://studymemoria.firebaseio.com/MyStudies');
-      qRef.once("value", function(snapshot) {
+      qRef.on("value", function(snapshot) {
       $scope.availableQuestions = snapshot.numChildren();
     });
-  };
 
-  $scope.setBadge();
 
   $scope.items = QuestionFactory;
 
