@@ -95,6 +95,14 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     });
   };
 
+  $scope.questionLink = function(item) {
+    if(item.isAvailable) {
+
+      return "#/tab/questions/" + item.$id
+    } else {
+      return "#"
+    }
+  }
 
 })
 
