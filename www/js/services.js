@@ -105,20 +105,19 @@ angular.module('starter.services', [])
           return current_value;
         }
       });
+    },
+    addNotificationTime: function(time) {
+      var newTime = time_array.indexOf(time) + 1;
+      return time_array[newTime];
+    },
+    minusNotificationTime: function(time) {
+      if (time > 5) {
+      var newTime = time_array.indexOf(time) - 1;
+    } else {
+      var newTime = 1;
     }
-  };  
+      return time_array[newTime]
+    } 
+  };
+  
 })
-
-// .service('PopUpService', function($ionicPopup, $rootScope) {
-// 
-//   $scope.showAlert = function(setTitle) {
-//     var alertPopup = $ionicPopup.alert({
-//       title: setTitle,
-//       templateUrl: 
-//     })
-//       alertPopup.then(function(res) {
-//         console.log('Thank you for not eating my delicious ice cream cone');
-//     });
-//   };
-//   
-// })
