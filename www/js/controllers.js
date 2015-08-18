@@ -2,7 +2,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
 .controller('KnomiCtrl', function($scope, $cordovaLocalNotification, foodFactory, PointsFactory, PowerFactory, $firebaseArray, ModalService) {
   $scope.foods = foodFactory.food();
-  
+
   var points = PointsFactory;
   $scope.points = points;
   var power = PowerFactory;
@@ -28,12 +28,12 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       reducePoints();
     }
   };
-  
+
   $scope.onDropComplete = function(){
     foodFactory.removeFood();
     addPower();
   };
-  
+
   var reducePoints = function() {
     var pointsRef =  new Firebase('https://studymemoria.firebaseio.com/Points/user_points');
     pointsRef.transaction(function(current_value) {
@@ -47,7 +47,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     });
   };
 
-  
+
 
   $scope.notify = function() {
     var pointsRef =  new Firebase('https://studymemoria.firebaseio.com/Points/user_points');
@@ -68,7 +68,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       at: _X_sec_from_now,
     });
   };
-  
+
 })
 
 .controller('QsCtrl', function($scope, QuestionFactory, $cordovaLocalNotification) {
@@ -80,7 +80,8 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     question: $scope.items.question,
     answer: $scope.items.answer,
     date: Date.now(),
-    interval: 5
+    interval: 5,
+    isAvailable: false
     });
   };
   $scope.addQuestionNotify = function () {
@@ -93,7 +94,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       at: scheduledTime
     });
   };
-  
+
 
 })
 
@@ -102,9 +103,9 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   var studyItem = list.$getRecord($stateParams.studyItemId);
   var points = PointsFactory;
   $scope.points = points;
-  
+
   $scope.studyItem = studyItem;
-  
+
   $scope.validateAnswer = function(answer) {
     if (answer === studyItem.answer) {
       ModalService
@@ -116,7 +117,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       addPoints();
         console.log(timerFactory.addNotificationTime(studyItem.interval));
       questionNotify(timerFactory.addNotificationTime(studyItem.interval));
-    } 
+    }
     else {
       ModalService
         .init('modals/wrongAnswer-modal.html', $scope)
@@ -128,7 +129,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       questionNotify(timerFactory.minusNotificationTime(studyItem.interval));
     }
   };
-  
+
   var questionNotify = function (time) {
     var now = new Date().getTime();
     var scheduledTime = new Date(now + (time * 1000));
@@ -139,7 +140,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       at: scheduledTime
     });
   };
-  
+
   var addPoints = function() {
     var pointsRef =  new Firebase('https://studymemoria.firebaseio.com/Points/user_points');
     pointsRef.transaction(function(current_value) {
