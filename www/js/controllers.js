@@ -106,7 +106,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   $scope.studyItem = studyItem;
 
   $scope.validateAnswer = function(answer) {
-    if (answer === studyItem.answer) {
+    if (answer.toLowerCase() === studyItem.answer.toLowerCase()) {
       ModalService
         .init('modals/correctAnswer-modal.html', $scope)
         .then(function(modal) {
