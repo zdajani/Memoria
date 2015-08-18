@@ -7,7 +7,7 @@
   position: absolute;
   font-size: 20px;
   font-weight: bold;
-  margin-top: 15px;
+  margin-top: 5px;
   margin-left: 200px;
 }
 
@@ -87,9 +87,14 @@
   margin-right: 10px;
 }
 
+#moneySack img {
+  width: 3.5em;
+}
+
 #moneySack div {
   margin-left: 5px;
   width: 3em;
+
 }
 
 .numberInfo {
