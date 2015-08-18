@@ -7,11 +7,11 @@
       <p>Buy items here for your knomi</p>
       <p>Just make sure you can pay</p>
 
-      <div id="milk">
+      <div ng-if="points.$value > 1" id="milk">
         <img src="./img/milk.png" ng-click="closeModal()" />
         <span class="priceInfo" >$1</span>
       </div>
-      <div id="salmon">
+      <div ng-if="points.$value > 3" id="salmon">
         <img src="./img/salmon.png" ng-click="closeModal()" />
         <span class="priceInfo" >$3</span>
       </div>
