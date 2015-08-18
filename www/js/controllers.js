@@ -71,13 +71,13 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
 })
 
-.controller('QsCtrl', function($scope, QuestionFactory, $cordovaLocalNotification) {
+.controller('QsCtrl', function($scope, QuestionFactory, $cordovaLocalNotification, DataFormatting) {
 
   $scope.items = QuestionFactory;
 
   $scope.addQuestion = function(){
     $scope.items.$add({
-    question: $scope.items.question,
+    question: DataFormatting.addQuestionMark(DataFormatting.capitalizeFirstLetter($scope.items.question)),
     answer: $scope.items.answer,
     date: Date.now(),
     interval: 5
@@ -167,7 +167,6 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     })
     $scope.availableQuestions = availableCount;
   });
-
 
 })
 
