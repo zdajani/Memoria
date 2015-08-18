@@ -150,7 +150,9 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   var reducePower = function() {
     var powerRef =  new Firebase('https://studymemoria.firebaseio.com/Points/knomi_power');
     powerRef.transaction(function(current_value) {
-      return (current_value -= 1);
+      if(current_value !== 0) {
+        return (current_value -= 1);
+      }
     });
   };
 })
