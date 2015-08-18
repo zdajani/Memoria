@@ -1,12 +1,3 @@
-#okay {
-  margin-top: 260px;
-  border-radius: 15px;
-  background-color: #FAF3E3;
-  border-color: #8A8660;
-  color: #8A8660;
-  box-shadow: 5px 5px 2px #969478;
-}
-
 #shopModal {
   background-repeat: no-repeat;
   background-image: url("../img/parchment-background.png");
