@@ -71,14 +71,14 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
 })
 
-.controller('QsCtrl', function($scope, QuestionFactory, $cordovaLocalNotification) {
+.controller('QsCtrl', function($scope, QuestionFactory, $cordovaLocalNotification, DataFormatting) {
 
   $scope.items = QuestionFactory;
 
   $scope.addQuestion = function(){
     $scope.items.$add({
-    question: $scope.items.question,
-    answer: $scope.items.answer,
+    question: DataFormatting.addQuestionMark(DataFormatting.capitalizeFirstLetter($scope.items.question)),
+    answer: $scope.items.answer.replace(/^\s+|\s+$/g,''),
     date: Date.now(),
     interval: 5
     });
@@ -106,7 +106,8 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   $scope.studyItem = studyItem;
 
   $scope.validateAnswer = function(answer) {
-    if (answer === studyItem.answer) {
+    answer = answer.replace(/^\s+|\s+$/g,'');
+    if (answer.toLowerCase() === studyItem.answer.toLowerCase()) {
       ModalService
         .init('modals/correctAnswer-modal.html', $scope)
         .then(function(modal) {
@@ -149,7 +150,9 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   var reducePower = function() {
     var powerRef =  new Firebase('https://studymemoria.firebaseio.com/Points/knomi_power');
     powerRef.transaction(function(current_value) {
-      return (current_value -= 1);
+      if(current_value !== 0) {
+        return (current_value -= 1);
+      }
     });
   };
 })
@@ -167,7 +170,6 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     })
     $scope.availableQuestions = availableCount;
   });
-
 
 })
 
