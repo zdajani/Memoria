@@ -35,7 +35,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     .state('tab', {
     url: '/tab',
     abstract: true,
-    templateUrl: 'templates/tabs.html'
+    templateUrl: 'templates/tabs.html',
+    controller: 'QsCtrl'
   })
 
   // Each tab has its own nav history stack:
@@ -81,13 +82,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     }
   })
-  
+
   .state("correctAnswerModal", {
     views: {
       templateUrl: "modals/correctAnswerModal.html"
     },
   })
-  
+
   .state("wrongAnswerModal", {
     views: {
       templateUrl: "modals/wrongAnswerModal.html"
