@@ -78,7 +78,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   $scope.addQuestion = function(){
     $scope.items.$add({
     question: DataFormatting.addQuestionMark(DataFormatting.capitalizeFirstLetter($scope.items.question)),
-    answer: $scope.items.answer,
+    answer: $scope.items.answer.replace(/^\s+|\s+$/g,''),
     date: Date.now(),
     interval: 5
     });
@@ -106,6 +106,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   $scope.studyItem = studyItem;
 
   $scope.validateAnswer = function(answer) {
+    answer = answer.replace(/^\s+|\s+$/g,'');
     if (answer.toLowerCase() === studyItem.answer.toLowerCase()) {
       ModalService
         .init('modals/correctAnswer-modal.html', $scope)
