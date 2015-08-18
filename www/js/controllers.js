@@ -16,6 +16,14 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       });
   };
 
+  $scope.shopModal = function() {
+    ModalService
+      .init('modals/shop-modal.html', $scope)
+      .then(function(modal) {
+        modal.show();
+      });
+  };
+
   $scope.foodModal = function(points) {
     if (points < 5) {
       ModalService
