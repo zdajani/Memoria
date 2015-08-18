@@ -101,43 +101,18 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase', '
   
   qRef.on("child_changed", function(Childsnapshot) {    
     var childRef = $firebaseArray(new Firebase('https://studymemoria.firebaseio.com/MyStudies/' + Childsnapshot.key()));
-    // if (Childsnapshot.val().isAvailable === true) {$scope.$broadcast('timer-start');}
     childRef.$loaded().then(function() {
-        console.log(Childsnapshot.val().interval);
       $timeout(function() { changeAvailability(Childsnapshot.key()); }, Childsnapshot.val().interval * 1000);
     });
       
   });
-  
-  
+
   var changeAvailability = function(id) {
     var availableRef = new Firebase('https://studymemoria.firebaseio.com/MyStudies/'+ id + '/isAvailable');
     availableRef.transaction(function(current_value) {
-      return (current_value = true);
-      
-  });
-  
-};
-
-  // $interval( function() {$scope.changeStatus();}, 5 * 1000);
-  // 
-  // $scope.changeStatus = function() {
-  //   console.log("works");
-  // }
-
-  // 
-  // $scope.start = function() {
-  //   $scope.$broadcast('timer-start');
-  //   $scope.timerRunning = true;
-  //       };
-  // 
-  // $scope.trigger = function(item) {
-  //   $scope.$on('timer-stopped', function() {
-  //            console.log(item)
-  //        });
-  // }
-
-
+      return (current_value = true);  
+    });
+  };
 
   $scope.questionLink = function(item) {
     if(item.isAvailable) {
@@ -183,8 +158,6 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase', '
     }
   };
   
-  // var id = $stateParams.studyItemId
-
   var availability = function(id) {
     var availableRef = new Firebase('https://studymemoria.firebaseio.com/MyStudies/'+ id +'/isAvailable');
     availableRef.transaction(function(current_value) {
