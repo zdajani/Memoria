@@ -74,10 +74,17 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 .controller('QsCtrl', function($scope, QuestionFactory, $cordovaLocalNotification) {
 
 
-    var qRef =  new Firebase('https://studymemoria.firebaseio.com/MyStudies');
-      qRef.on("value", function(snapshot) {
-      $scope.availableQuestions = snapshot.numChildren();
-    });
+  var qRef =  new Firebase('https://studymemoria.firebaseio.com/MyStudies');
+
+  qRef.on("value", function(snapshot) {
+    var availableCount = 0;
+    snapshot.forEach(function(question) {
+      if (question.child('isAvailable').val()) {
+        availableCount += 1
+      }
+    })
+    $scope.availableQuestions = availableCount;
+  });
 
 
   $scope.items = QuestionFactory;
