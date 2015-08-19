@@ -1,3 +1,17 @@
+#speechBubble {
+
+}
+
+#speechBubble img {
+  width: 230px;
+  margin-left: 50px;
+  margin-top: -10px;
+}
+
+#vendorImage button {
+  margin-left: 50px;
+}
+
 #shopModal {
   background-repeat: no-repeat;
   background-image: url("../img/parchment-background.png");
@@ -17,6 +31,7 @@
   text-align: center;
   height: 90px;
   margin-top: -10px;
+  width: 320px;
 }
 
 #messages button {
@@ -25,13 +40,13 @@
 
 .notAvailable span {
   opacity: 0.4;
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
+  -webkit-filter: grayscale(80%);
+  filter: grayscale(80%);
 }
 
 .notAvailable img {
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
+  -webkit-filter: grayscale(80%);
+  filter: grayscale(80%);
 }
 
 #salmon {
