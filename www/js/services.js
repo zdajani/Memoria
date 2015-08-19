@@ -98,7 +98,7 @@ angular.module('starter.services', [])
         if (current_value > 5) {
           return (current_value = time_array[i - 1]);
         } else {
-          return current_value;
+          return current_value = 5;
         }
       });
     },
