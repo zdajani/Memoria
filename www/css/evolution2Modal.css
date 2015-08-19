@@ -1,0 +1,30 @@
+#evolveModal {
+  background-repeat: no-repeat;
+  background-image: url("../img/evolution-background.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+#evolveModal h2 {
+  color: #4A5772 !important;
+}
+
+#evolveModal h3 {
+  color: #4A5772 !important;
+}
+
+#close {
+  margin-top: 120px;
+  border-radius: 15px;
+  background-color: #FB7E23;
+  border-color: #4A5772;
+  color: #4A5772;
+  font-weight: bold;
+  box-shadow: 5px 5px 2px #4A5772;
+}
+
+.kitty {
+  text-align: center;
+  font-size: 16px;
+  margin-top: 200px;
+}
