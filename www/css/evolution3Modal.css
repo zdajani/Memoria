@@ -28,3 +28,26 @@
   font-size: 16px;
   margin-top: 200px;
 }
+
+.knomikittyCappear {
+  position: absolute;
+  margin-top: -35px;
+  margin-left: 50px;
+  width: 204px;
+  height: 173px;
+  background-repeat: no-repeat;
+  background-image: url("../img/Cappear.png");
+
+  -webkit-animation: Cappear 1.3s steps(47) infinite alternate;
+          animation: Cappear 1.3s steps(47) infinite alternate ;
+}
+
+@-webkit-keyframes Cappear {
+  from { background-position:    0px; }
+  to { background-position: -9588px; }
+}
+
+@keyframes Cappear {
+  from { background-position:    0px; }
+  to { background-position: -9588px; }
+}

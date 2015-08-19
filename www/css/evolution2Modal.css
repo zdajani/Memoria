@@ -30,17 +30,17 @@
 }
 
 .knomikittyBhitball {
- position: absolute;
- margin-top: -55px;
- margin-left: 50px;
+   position: absolute;
+   margin-top: -55px;
+   margin-left: 50px;
 
- width: 204px;
- height: 173px;
- background-repeat: no-repeat;
- background-image: url("../img/Bhitball.png");
+   width: 204px;
+   height: 173px;
+   background-repeat: no-repeat;
+   background-image: url("../img/Bhitball.png");
 
- -webkit-animation: Bhitball .7s steps(9) infinite;
-         animation: Bhitball .7s steps(9) infinite;
+   -webkit-animation: Bhitball .7s steps(9) infinite;
+           animation: Bhitball .7s steps(9) infinite;
 }
 
 @-webkit-keyframes Bhitball {
