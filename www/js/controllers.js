@@ -34,6 +34,21 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     addPower();
   };
 
+  $scope.brownRug = function() {
+    $scope.knomiBrownRug = true;
+    reducePoints(10);
+  };
+
+  $scope.leopardRug = function() {
+    $scope.knomiLeopardRug = true;
+    reducePoints(10);
+  };
+
+  $scope.starfishRug = function() {
+    $scope.knomiStarfishRug = true;
+    reducePoints(10);
+  };
+
   var reducePoints = function(points) {
     var pointsRef =  new Firebase('https://studymemoria.firebaseio.com/Points/user_points');
     pointsRef.transaction(function(current_value) {

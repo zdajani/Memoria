@@ -16,11 +16,11 @@
     </button>
 
     <img ng-if="power.$value > 0" class="health1" src="./img/health.png">
-    <img ng-if="power.$value > 1" class="health2" src="./img/health.png">
-    <img ng-if="power.$value > 2" class="health3" src="./img/health.png">
-    <img ng-if="power.$value > 3" class="health4" src="./img/health.png">
-    <img ng-if="power.$value > 4" class="health5" src="./img/health.png">
-    <img ng-if="power.$value > 5" class="health6" src="./img/health.png">
+    <img ng-if="power.$value > 5" class="health2" src="./img/health.png">
+    <img ng-if="power.$value > 15" class="health3" src="./img/health.png">
+    <img ng-if="power.$value > 30" class="health4" src="./img/health.png">
+    <img ng-if="power.$value > 60" class="health5" src="./img/health.png">
+    <img ng-if="power.$value > 100" class="health6" src="./img/health.png">
 
     <button id="moneySack" style="border: 0; background: transparent" >
       <img src="./img/bag.png" />
@@ -32,6 +32,12 @@
       <div class="starterKnomi" ng-if="power.$value === 0" ng-drop="true" ng-drop-success="onDropComplete()"></div>
 
       <div class="knomileveltwo" ng-if="power.$value > 0" ng-drop="true" ng-drop-success="onDropComplete()"></div>
+    </div>
+
+    <div class="rugs">
+      <img src="./img/brown-rug.png" ng-if="knomiBrownRug" >
+      <img src="./img/leopard-rug.png" ng-if="knomiLeopardRug" >
+      <img src="./img/starfish-rug.png" ng-if="knomiStarfishRug" >
     </div>
 
     <div class="foodItem" ng-repeat="item in foods" ng-drag="true" ng-drag-data="item">

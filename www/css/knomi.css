@@ -68,8 +68,9 @@
 }
 
 .foodItem {
-  margin-top: 100%;
-  margin-left: 15%;
+  position: absolute;
+  margin-left: 70px;
+  margin-top: 20px;
 }
 
 .foodItem img {
@@ -103,6 +104,13 @@
   background-color: #E8FAF1;
   border-radius: 10px;
   opacity: 0.8;
+}
+
+.rugs img {
+  width: 15em;
+  margin-left: 70px;
+  margin-top: 240px;
+  z-index: -1;
 }
 
 .knomileveltwo {
