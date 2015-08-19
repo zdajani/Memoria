@@ -58,13 +58,13 @@
 
 .starterKnomi {
   background-image: url('../img/egg.png');
-  background-size: 20% 20%;
+  background-size: cover;
   background-repeat: no-repeat;
-  position: relative;
-  width: 280px;
-  height: 280px;
-  margin-left: -80px;
-  margin-top: -130px;
+  position: absolute;
+  margin-left: 35px;
+  margin-top: 50px;
+  width: 50px;
+  height: 50px;
   border: dashed;
 }
 
@@ -75,11 +75,11 @@
 }
 
 .foodItem img {
-  width: 4em;
+  width: 50px;
 }
 
 #foodCart img {
-  width: 3.5em;
+  width: 50px;
 }
 
 #moneySack {
@@ -108,7 +108,7 @@
 }
 
 .rugs img {
-  width: 15em;
+  width: 50px;
   margin-left: 70px;
   margin-top: 240px;
   z-index: -1;

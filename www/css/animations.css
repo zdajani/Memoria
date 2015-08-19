@@ -71,8 +71,6 @@
 
 .knomikittyAsleepstart {
   position: absolute;
-  margin-top: 70px;
-  margin-left: 85px;
 
   width: 136px;
   height: 115px;
@@ -95,7 +93,8 @@
 
 .knomikittyAsleep {
   position: absolute;
-
+  margin-left: -80px;
+  margin-top: -45px;
   width: 204px;
   height: 173px;
   background-repeat: no-repeat;
