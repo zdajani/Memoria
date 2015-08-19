@@ -1,9 +1,9 @@
 .knomikittyAfulljump {
   position: absolute;
-  margin-top: 70px;
-  margin-left: 15px;
-  width: 136px;
-  height: 115px;
+  margin-left: -80px;
+  margin-top: -45px;
+  width: 204px;
+  height: 173px;
   background-repeat: no-repeat;
   background-image: url("../img/Afulljump.png");
 
@@ -13,12 +13,12 @@
 
 @-webkit-keyframes Afulljump {
   from { background-position:    0px; }
-  to { background-position: -2176px; }
+  to { background-position: -3264px; }
 }
 
 @keyframes Afulljump {
   from { background-position:    0px; }
-  to { background-position: -2176px; }
+  to { background-position: -3264px; }
 }
 
 .knomikittyAfullroll {

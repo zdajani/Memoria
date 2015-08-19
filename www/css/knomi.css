@@ -70,8 +70,8 @@
 
 .foodItem {
   position: absolute;
-  margin-left: 70px;
-  margin-top: 20px;
+  margin-left: -10px;
+  margin-top: 120px;
 }
 
 .foodItem img {
@@ -107,10 +107,11 @@
   opacity: 0.8;
 }
 
-.rugs img {
-  width: 50px;
-  margin-left: 70px;
-  margin-top: 240px;
+.rugs rug {
+  position: absolute;
+  width: 230px;
+  margin-left: 80px;
+  margin-top: 250px;
   z-index: -1;
 }
 
