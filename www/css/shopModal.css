@@ -25,13 +25,13 @@
 
 .notAvailable span {
   opacity: 0.4;
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
+  -webkit-filter: grayscale(80%);
+  filter: grayscale(80%);
 }
 
 .notAvailable img {
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
+  -webkit-filter: grayscale(80%);
+  filter: grayscale(80%);
 }
 
 #salmon {
