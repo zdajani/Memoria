@@ -110,10 +110,17 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
 })
 
-.controller('QsCtrl', function($scope, QuestionFactory, $cordovaLocalNotification, DataFormatting, $firebaseArray, $timeout, $ionicPopup) {
+.controller('QsCtrl', function($scope, QuestionFactory, $cordovaLocalNotification, DataFormatting, $firebaseArray, $timeout, $ionicPopup, ModalService) {
 
   $scope.items = QuestionFactory;
 
+  $scope.questionModal = function() {
+    ModalService
+      .init('modals/question-modal.html', $scope)
+      .then(function(modal) {
+        modal.show();
+      });
+  };
 
   $scope.addQuestion = function(){
     $scope.items.$add({
