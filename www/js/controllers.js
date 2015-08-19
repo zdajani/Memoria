@@ -121,6 +121,10 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       return "#";
     }
   };
+  
+  $scope.qFilter = function (item) {
+    
+  }
 
 })
 
