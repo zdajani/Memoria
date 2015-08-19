@@ -23,8 +23,15 @@
   float: right;
 }
 
-.notAvailable {
+.notAvailable span {
   opacity: 0.4;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.notAvailable img {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
 }
 
 #salmon {
