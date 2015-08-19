@@ -8,11 +8,7 @@
     <ion-list>
 
       <ion-item class="questionList item-icon-right" ng-repeat="item in items" type="item-text-wrap" ng-href={{questionLink(item)}}>
-        <p>
-        {{item.question}}<br> 
-        Time = {{item.interval}}
-      </p>
-      
+        <p>{{item.question}}</p>
         <i class="icon ion-chevron-right icon-accessory"></i>
       </ion-item>
     </ion-list>
