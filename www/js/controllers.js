@@ -71,7 +71,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
 })
 
-.controller('QsCtrl', function($scope, QuestionFactory, $cordovaLocalNotification, DataFormatting, $firebaseArray, $timeout) {
+.controller('QsCtrl', function($scope, QuestionFactory, $cordovaLocalNotification, DataFormatting, $firebaseArray, $timeout, $ionicPopup) {
 
   $scope.items = QuestionFactory;
 
@@ -118,13 +118,26 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     if(item.isAvailable) {
       return "#/tab/questions/" + item.$id;
     } else {
-      return "#";
+      return '#'
     }
   };
+
+  var QuestionTime = 
   
-  $scope.qFilter = function (item) {
+  $scope.showAlert = function(item) {
+    var now = new Date().getTime()
+    $scope.Questiontime = new Date(now + (item.interval * 1000));
+    console.log(humanizeDuration($scope.Questiontime ))
+    console.log($scope.Questiontime)
     
-  }
+    var alertPopup = $ionicPopup.alert({
+      scope: $scope,
+      templateUrl: '../modals/questionInfo-popup.html'
+    });
+      alertPopup.then(function(res) {
+      
+    });
+  };
 
 })
 
