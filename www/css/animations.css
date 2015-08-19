@@ -239,8 +239,8 @@
   margin-top: 100px;
   margin-left: 45px;
 
-  width: 136px;
-  height: 115px;
+  width: 204px;
+  height: 173px;
   background-repeat: no-repeat;
   background-image: url("../img/Bhitball.png");
 
@@ -250,12 +250,12 @@
 
 @-webkit-keyframes Bhitball {
   from { background-position:    0px; }
-  to { background-position: -1224px; }
+  to { background-position: -1836px; }
 }
 
 @keyframes Bhitball {
   from { background-position:    0px; }
-  to { background-position: -1224px; }
+  to { background-position: -1836px; }
 }
 
 .knomikittyBsleepstart {
@@ -356,11 +356,9 @@
 
 .knomikittyCappear {
   position: absolute;
-  margin-top: 130px;
-  margin-left: 185px;
 
-  width: 136px;
-  height: 115px;
+  width: 204px;
+  height: 173px;
   background-repeat: no-repeat;
   background-image: url("../img/Cappear.png");
 
@@ -370,12 +368,12 @@
 
 @-webkit-keyframes Cappear {
   from { background-position:    0px; }
-  to { background-position: -6392px; }
+  to { background-position: -9588px; }
 }
 
 @keyframes Cappear {
   from { background-position:    0px; }
-  to { background-position: -6392px; }
+  to { background-position: -9588px; }
 }
 
 .knomikittyCchew {
@@ -404,11 +402,10 @@
 
 .knomikittyCfly {
   position: absolute;
-  margin-top: 130px;
-  margin-left: 250px;
 
-  width: 136px;
-  height: 115px;
+
+  width: 204px;
+  height: 173px;
   background-repeat: no-repeat;
   background-image: url("../img/Cfly.png");
 
@@ -418,12 +415,12 @@
 
 @-webkit-keyframes Cfly {
   from { background-position:    0px; }
-  to { background-position: -2720px; }
+  to { background-position: -4080px; }
 }
 
 @keyframes Cfly {
   from { background-position:    0px; }
-  to { background-position: -2720px; }
+  to { background-position: -4080px; }
 }
 
 .knomikittyCdisappear {
