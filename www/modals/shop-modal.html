@@ -6,8 +6,10 @@
     <div class="shop">
       <div id="vendorImage"></div>
         <div id="messages">
-          <button ng-click="closeModal()" class="button button-icon ion-arrow-down-b"></button>
+          <button ng-click="closeModal()" class="button button-icon ion-close-circled"></button>
+          <div id="speechBubble"><img src="./img/shopexplanation.png"></div>
         </div>
+
 
       <div id="milk" ng-class="{notAvailable: points.$value < 1}">
         <img src="./img/milk.png" ng-click="points.$value < 1 || feed(1); closeModal()" />
