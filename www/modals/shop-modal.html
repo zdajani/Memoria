@@ -10,23 +10,23 @@
         </div>
 
       <div id="milk" ng-class="{notAvailable: points.$value < 1}">
-        <img src="./img/milk.png" ng-click="points.$value < 1 || closeModal(); feed(1)" />
+        <img src="./img/milk.png" ng-click="points.$value < 1 || feed(1); closeModal()" />
         <span class="priceInfo" >$1</span>
       </div>
       <div id="salmon" ng-class="{notAvailable: points.$value < 3}">
-        <img src="./img/salmon.png" ng-click="points.$value < 3 || closeModal(); ; feed(2)" />
+        <img src="./img/salmon.png" ng-click="points.$value < 3 || feed(2); closeModal()" />
         <span class="priceInfo" >$3</span>
       </div>
       <div id="brown-rug" ng-class="{notAvailable: points.$value < 10}">
-        <img src="./img/brown-rug.png" ng-click="points.$value < 10 || closeModal()" />
+        <img src="./img/brown-rug.png" ng-click="points.$value < 10 || closeModal(); brownRug()" />
         <span class="priceInfo" >$10</span>
       </div>
       <div id="leopard-rug" ng-class="{notAvailable: points.$value < 10}">
-        <img src="./img/leopard-rug.png" ng-click="points.$value < 10 || closeModal()" />
+        <img src="./img/leopard-rug.png" ng-click="points.$value < 10 || closeModal(); leopardRug()" />
         <span class="priceInfo" >$10</span>
       </div>
       <div id="starfish-rug" ng-class="{notAvailable: points.$value < 10}">
-        <img src="./img/starfish-rug.png" ng-click="points.$value < 10 || closeModal()" />
+        <img src="./img/starfish-rug.png" ng-click="points.$value < 10 || closeModal(); starfishRug()" />
         <span class="priceInfo" >$10</span>
       </div>
       <div id="essence-hairball" ng-class="{notAvailable: points.$value < 30}">
