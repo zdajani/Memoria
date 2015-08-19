@@ -32,7 +32,7 @@
         <span class="priceInfo" >$10</span>
       </div>
       <div id="essence-hairball" ng-class="{notAvailable: points.$value < 30}">
-        <img src="./img/essence-hairball.png" />
+        <img src="./img/essence-hairball.png" ng-click="points.$value < 30 || feed(30); closeModal()" />
         <span class="priceInfo" >$30</span>
       </div>
       <div id="pink-bear" ng-class="{notAvailable: points.$value < 20}">

@@ -29,6 +29,30 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       });
   };
 
+  $scope.evolution1Modal = function() {
+    ModalService
+      .init('modals/evolution1-modal.html', $scope)
+      .then(function(modal) {
+        modal.show();
+      });
+  };
+
+  $scope.evolution2Modal = function() {
+    ModalService
+      .init('modals/evolution2-modal.html', $scope)
+      .then(function(modal) {
+        modal.show();
+      });
+  };
+
+  $scope.evolution3Modal = function() {
+    ModalService
+      .init('modals/evolution3-modal.html', $scope)
+      .then(function(modal) {
+        modal.show();
+      });
+  };
+
   $scope.onDropComplete = function(){
     foodFactory.removeFood();
     addPower();

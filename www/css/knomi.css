@@ -1,3 +1,7 @@
+#help {
+  width: 40px;;
+}
+
 .gameArea {
   background-image: url('../img/field.png');
 }

@@ -59,9 +59,14 @@ angular.module('starter.services', [])
     location: './img/milk.png'
   },
   {
-    id: 2,
+    id: 3,
     name: 'salmon',
     location: './img/salmon.png'
+  },
+  {
+    id: 30,
+    name: 'essence',
+    location: './img/essence-hairball.png'
   }];
 
   var food = [];
