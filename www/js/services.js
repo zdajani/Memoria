@@ -59,9 +59,14 @@ angular.module('starter.services', [])
     location: './img/milk.png'
   },
   {
-    id: 2,
+    id: 3,
     name: 'salmon',
     location: './img/salmon.png'
+  },
+  {
+    id: 30,
+    name: 'essence',
+    location: './img/essence-hairball.png'
   }];
 
   var food = [];
@@ -135,3 +140,14 @@ angular.module('starter.services', [])
     }
   };
 })
+
+.factory('dateFactory', function(){
+  return {
+    newDate: function (questionId) {
+      var dateRef = new Firebase('https://studymemoria.firebaseio.com/MyStudies/'+ questionId +'/date');
+      dateRef.transaction(function(current_value) {
+        return (current_value = Date.now());
+      });
+    }
+  };
+});

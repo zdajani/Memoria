@@ -57,9 +57,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
-  .state('foodModal', {
+  .state('evolution1Modal', {
     views: {
-      templateUrl: 'modals/food-modal.html'
+      templateUrl: 'modals/evolution1-modal.html'
+    }
+  })
+
+  .state('evolution2Modal', {
+    views: {
+      templateUrl: 'modals/evolution2-modal.html'
+    }
+  })
+
+  .state('evolution3Modal', {
+    views: {
+      templateUrl: 'modals/evolution3-modal.html'
     }
   })
 
