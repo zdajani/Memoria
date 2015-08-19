@@ -11,7 +11,11 @@
   font-size: 16px;
   margin-top: 50px;
   width: 82%;
+}
 
+.notAvailable {
+  opacity: 0.4;
+  filter: alpha(opacity=40);
 }
 
 #salmon {
@@ -43,6 +47,118 @@
 #milk span {
   position: absolute;
   margin-left: -50px;
+}
+
+#brown-rug {
+  position: absolute;
+  margin-top: 65px;
+  margin-left: 200px;
+}
+
+#brown-rug img {
+  width: 6.5em;
+}
+
+#brown-rug span {
+  position: absolute;
+  margin-left: -70px;
+  margin-top: 20px;
+}
+
+#leopard-rug {
+  position: absolute;
+  margin-top: 200px;
+  margin-left: 8px;
+}
+
+#leopard-rug img {
+  width: 6.5em;
+}
+
+#leopard-rug span {
+  position: absolute;
+  margin-left: -70px;
+  margin-top: 20px;
+}
+
+#starfish-rug {
+  position: absolute;
+  margin-top: 200px;
+  margin-left: 120px;
+}
+
+#starfish-rug img {
+  width: 6.5em;
+}
+
+#starfish-rug span {
+  position: absolute;
+  margin-left: -70px;
+  margin-top: 20px;
+}
+
+#essence-hairball {
+  position: absolute;
+  margin-top: 175px;
+  margin-left: 250px;
+}
+
+#essence-hairball img {
+  width: 2em;
+}
+
+#essence-hairball span {
+  position: absolute;
+  margin-left: -36px;
+  margin-top: 15px;
+}
+
+#pink-bear {
+  position: absolute;
+  margin-top: 310px;
+  margin-left: 30px;
+}
+
+#pink-bear img {
+  width: 3.5em;
+}
+
+#pink-bear span {
+  position: absolute;
+  margin-left: -50px;
+  margin-top: 10px;
+}
+
+#play-cube {
+  position: absolute;
+  margin-top: 330px;
+  margin-left: 120px;
+}
+
+#play-cube img {
+  width: 4em;
+}
+
+#play-cube span {
+  position: absolute;
+  margin-left: -50px;
+  margin-top: 20px;
+}
+
+#camera {
+  position: absolute;
+  margin-top: 330px;
+  margin-left: 200px;
+}
+
+#camera img {
+  width: 6em;
+}
+
+#camera span {
+  position: absolute;
+  margin-left: -65px;
+  margin-top: 15px;
 }
 
 .priceInfo {
