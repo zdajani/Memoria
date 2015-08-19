@@ -13,6 +13,16 @@
   width: 82%;
 }
 
+#messages {
+  text-align: center;
+  height: 90px;
+  margin-top: -10px;
+}
+
+#messages button {
+  float: right;
+}
+
 .notAvailable {
   opacity: 0.4;
 }

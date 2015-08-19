@@ -2,10 +2,12 @@
 <ion-modal-view>
 
   <ion-content class="padding" id="shopModal">
+
     <div class="shop">
-      <div id="vendorImage"></div><h4>Welcome to my shop</h4>
-      <p>Buy items here for your knomi</p>
-      <p>Just make sure you can pay</p>
+      <div id="vendorImage"></div>
+        <div id="messages">
+          <button ng-click="closeModal()" class="button button-icon ion-arrow-down-b"></button>
+        </div>
 
       <div id="milk" ng-class="{notAvailable: points.$value < 1}">
         <img src="./img/milk.png" ng-click="points.$value < 1 || closeModal(); feed()" />
