@@ -70,12 +70,12 @@
 
 .foodItem {
   position: absolute;
-  margin-left: -10px;
-  margin-top: 120px;
+  margin-left: 50px;
+  margin-top: 370px;
 }
 
 .foodItem img {
-  width: 50px;
+  width: 60px;
 }
 
 #foodCart img {
@@ -107,8 +107,7 @@
   opacity: 0.8;
 }
 
-.rugs rug {
-  position: absolute;
+.rugs .rug {
   width: 230px;
   margin-left: 80px;
   margin-top: 250px;
