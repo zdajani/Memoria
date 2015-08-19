@@ -15,7 +15,6 @@
 
 .notAvailable {
   opacity: 0.4;
-  filter: alpha(opacity=40);
 }
 
 #salmon {
@@ -29,9 +28,9 @@
 }
 
 #salmon span {
-  position: absolute;
-  margin-left: -50px;
-  margin-top: 13px;
+  position: relative;
+  left: -50px;
+  top: 40px;
 }
 
 #milk {
@@ -45,14 +44,17 @@
 }
 
 #milk span {
-  position: absolute;
-  margin-left: -50px;
+  position: relative;
+  left: -50px;
+  top: 30px;
 }
 
 #brown-rug {
   position: absolute;
   margin-top: 65px;
-  margin-left: 200px;
+  margin-left: 186px;
+  width: 110px;
+  height: 40px;
 }
 
 #brown-rug img {
@@ -60,15 +62,17 @@
 }
 
 #brown-rug span {
-  position: absolute;
-  margin-left: -70px;
-  margin-top: 20px;
+  position: relative;
+  left: -30px;
+  top: 25px;
 }
 
 #leopard-rug {
   position: absolute;
   margin-top: 200px;
   margin-left: 8px;
+  width: 110px;
+  height: 40px;
 }
 
 #leopard-rug img {
@@ -76,15 +80,17 @@
 }
 
 #leopard-rug span {
-  position: absolute;
-  margin-left: -70px;
-  margin-top: 20px;
+  position: relative;
+  left: -40px;
+  top: 20px;
 }
 
 #starfish-rug {
   position: absolute;
   margin-top: 200px;
   margin-left: 120px;
+  width: 110px;
+  height: 40px;
 }
 
 #starfish-rug img {
@@ -92,15 +98,17 @@
 }
 
 #starfish-rug span {
-  position: absolute;
-  margin-left: -70px;
-  margin-top: 20px;
+  position: relative;
+  left: -40px;
+  top: 20px;
 }
 
 #essence-hairball {
   position: absolute;
   margin-top: 175px;
-  margin-left: 250px;
+  margin-left: 230px;
+  width: 50px;
+  height: 70px;
 }
 
 #essence-hairball img {
@@ -108,15 +116,17 @@
 }
 
 #essence-hairball span {
-  position: absolute;
-  margin-left: -36px;
-  margin-top: 15px;
+  position: relative;
+  left: 0px;
+  top: 20px;
 }
 
 #pink-bear {
   position: absolute;
   margin-top: 310px;
-  margin-left: 30px;
+  margin-left: 10px;
+  width: 70px;
+  height: 90px;
 }
 
 #pink-bear img {
@@ -124,15 +134,17 @@
 }
 
 #pink-bear span {
-  position: absolute;
-  margin-left: -50px;
-  margin-top: 10px;
+  position: relative;
+  left: -10px;
+  top: 20px;
 }
 
 #play-cube {
   position: absolute;
   margin-top: 330px;
-  margin-left: 120px;
+  margin-left: 100px;
+  width: 70px;
+  height: 60px;
 }
 
 #play-cube img {
@@ -140,15 +152,17 @@
 }
 
 #play-cube span {
-  position: absolute;
-  margin-left: -50px;
-  margin-top: 20px;
+  position: relative;
+  left: -10px;
+  top: 30px;
 }
 
 #camera {
   position: absolute;
   margin-top: 330px;
-  margin-left: 200px;
+  margin-left: 180px;
+  width: 100px;
+  height: 70px;
 }
 
 #camera img {
@@ -156,9 +170,9 @@
 }
 
 #camera span {
-  position: absolute;
-  margin-left: -65px;
-  margin-top: 15px;
+  position: relative;
+  left: -25px;
+  top: 30px;
 }
 
 .priceInfo {
