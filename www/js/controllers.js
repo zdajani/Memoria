@@ -11,7 +11,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   $scope.feed = function() {
     foodFactory.addFood();
     reducePoints();
-  }
+  };
 
   $scope.vendorModal = function() {
     ModalService
@@ -118,16 +118,15 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     if(item.isAvailable) {
       return "#/tab/questions/" + item.$id;
     } else {
-      return '#'
+      return '#';
     }
   };
 
-  var QuestionTime = 
-  
   $scope.showAlert = function(item) {
-    var now = new Date().getTime()
-    $scope.Questiontime = new Date(now + (item.interval * 1000));
-    console.log(humanizeDuration($scope.Questiontime ))
+    var now = item.date
+    var newTime = Date.now() - now
+    $scope.Questiontime = new Date(now + (item.interval * 1000)).toLocaleString();
+    console.log(humanizeDuration(newTime ))
     console.log($scope.Questiontime)
     
     var alertPopup = $ionicPopup.alert({
@@ -141,7 +140,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
 })
 
-.controller('questionAnswerCtrl', function($scope, $stateParams, QuestionFactory, ModalService, timerFactory, PointsFactory, $cordovaLocalNotification) {
+.controller('questionAnswerCtrl', function($scope, $stateParams, QuestionFactory, ModalService, timerFactory, PointsFactory, $cordovaLocalNotification, dateFactory) {
   var list = QuestionFactory;
   var studyItem = list.$getRecord($stateParams.studyItemId);
   var points = PointsFactory;
@@ -160,6 +159,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       timerFactory.addTime($stateParams.studyItemId);
       addPoints();
       availability($stateParams.studyItemId);
+      dateFactory.newDate($stateParams.studyItemId)
       questionNotify(timerFactory.addNotificationTime(studyItem.interval));
     }
     else {
@@ -171,6 +171,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       timerFactory.minusTime($stateParams.studyItemId);
       reducePower();
       availability($stateParams.studyItemId);
+      dateFactory.newDate($stateParams.studyItemId)
       questionNotify(timerFactory.minusNotificationTime(studyItem.interval));
     }
   };
@@ -178,9 +179,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   var availability = function(id) {
     var availableRef = new Firebase('https://studymemoria.firebaseio.com/MyStudies/'+ id +'/isAvailable');
     availableRef.transaction(function(current_value) {
-
       return (current_value = false);
-
     });
   };
 
