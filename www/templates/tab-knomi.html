@@ -1,5 +1,6 @@
 <link href="css/knomi.css" rel="stylesheet">
 
+
 <ion-view view-title="Knomi">
   <ion-nav-buttons side="right">
 
@@ -30,6 +31,8 @@
     <div class="knomiContainer">
 
       <div class="starterKnomi" ng-if="power.$value === 0" ng-drop="true" ng-drop-success="onDropComplete()"></div>
+
+      <div class="knomikittyAsleep" ng-if="power.$value === 0" ng-drop="true" ng-drop-success="onDropComplete()"></div>
 
       <div class="knomileveltwo" ng-if="power.$value > 0" ng-drop="true" ng-drop-success="onDropComplete()"></div>
     </div>

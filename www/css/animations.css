@@ -95,11 +95,9 @@
 
 .knomikittyAsleep {
   position: absolute;
-  margin-top: 70px;
-  margin-left: 115px;
 
-  width: 136px;
-  height: 115px;
+  width: 204px;
+  height: 173px;
   background-repeat: no-repeat;
   background-image: url("../img/Asleep.png");
 
@@ -109,12 +107,12 @@
 
 @-webkit-keyframes Asleep {
   from { background-position:    0px; }
-  to { background-position: -7752px; }
+  to { background-position: -11628px; }
 }
 
 @keyframes Asleep {
   from { background-position:    0px; }
-  to { background-position: -7752px; }
+  to { background-position: -11628px; }
 }
 
 .knomikittyAblink {
@@ -575,8 +573,7 @@
 
 .knomikittyCsleep {
   position: absolute;
-  margin-top: 160px;
-  margin-left: 250px;
+
 
   width: 136px;
   height: 115px;

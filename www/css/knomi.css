@@ -57,14 +57,15 @@
 }
 
 .starterKnomi {
-  background-image: url('../img/speechrock.png');
-  background-size: 70% 80%;
+  background-image: url('../img/egg.png');
+  background-size: 20% 20%;
   background-repeat: no-repeat;
   position: relative;
-  width: 300px;
-  height: 320px;
+  width: 280px;
+  height: 280px;
   margin-left: -80px;
   margin-top: -130px;
+  border: dashed;
 }
 
 .foodItem {
