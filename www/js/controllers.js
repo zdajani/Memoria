@@ -8,9 +8,9 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   var power = PowerFactory;
   $scope.power = power;
 
-  $scope.feed = function() {
-    foodFactory.addFood();
-    reducePoints();
+  $scope.feed = function(id) {
+    foodFactory.addFood(id);
+    reducePoints(id);
   };
 
   $scope.vendorModal = function() {
@@ -34,10 +34,25 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     addPower();
   };
 
-  var reducePoints = function() {
+  $scope.brownRug = function() {
+    $scope.knomiBrownRug = true;
+    reducePoints(10);
+  };
+
+  $scope.leopardRug = function() {
+    $scope.knomiLeopardRug = true;
+    reducePoints(10);
+  };
+
+  $scope.starfishRug = function() {
+    $scope.knomiStarfishRug = true;
+    reducePoints(10);
+  };
+
+  var reducePoints = function(points) {
     var pointsRef =  new Firebase('https://studymemoria.firebaseio.com/Points/user_points');
     pointsRef.transaction(function(current_value) {
-      return (current_value -= 1);
+      return (current_value -= points);
     });
   };
   var addPower = function() {
