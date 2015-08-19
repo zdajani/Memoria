@@ -6,6 +6,7 @@
   height: 173px;
   background-repeat: no-repeat;
   background-image: url("../img/Afulljump.png");
+  border: dashed;
 
   -webkit-animation: Afulljump .8s steps(16) infinite;
           animation: Afulljump .8s steps(16) infinite;
@@ -99,6 +100,7 @@
   height: 173px;
   background-repeat: no-repeat;
   background-image: url("../img/Asleep.png");
+  border: dashed;
 
   -webkit-animation: Asleep 1.9s steps(57) infinite;
           animation: Asleep 1.9s steps(57) infinite;
