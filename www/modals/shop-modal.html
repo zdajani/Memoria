@@ -10,11 +10,11 @@
         </div>
 
       <div id="milk" ng-class="{notAvailable: points.$value < 1}">
-        <img src="./img/milk.png" ng-click="points.$value < 1 || closeModal(); feed()" />
+        <img src="./img/milk.png" ng-click="points.$value < 1 || closeModal(); feed(1)" />
         <span class="priceInfo" >$1</span>
       </div>
       <div id="salmon" ng-class="{notAvailable: points.$value < 3}">
-        <img src="./img/salmon.png" ng-click="points.$value < 3 || closeModal()" />
+        <img src="./img/salmon.png" ng-click="points.$value < 3 || closeModal(); ; feed(2)" />
         <span class="priceInfo" >$3</span>
       </div>
       <div id="brown-rug" ng-class="{notAvailable: points.$value < 10}">
