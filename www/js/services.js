@@ -135,3 +135,14 @@ angular.module('starter.services', [])
     }
   };
 })
+
+.factory('dateFactory', function(){
+  return {
+    newDate: function (questionId) {
+      var dateRef = new Firebase('https://studymemoria.firebaseio.com/MyStudies/'+ questionId +'/date');
+      dateRef.transaction(function(current_value) {
+        return (current_value = Date.now());
+      });
+    }
+  };
+});

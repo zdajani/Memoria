@@ -1,3 +1,5 @@
+<link href="css/question.css" rel="stylesheet">
+
 <ion-view id="questions-main" view-title="Questions">
   <ion-nav-buttons side="right">
     <a id='goAddQbtn' href="#/tab/add-question" class="button button-icon ion-plus"></a>
@@ -7,11 +9,13 @@
 
     <ion-list>
 
-      <ion-item class="questionList item-icon-right" ng-repeat="item in items" type="item-text-wrap" ng-href={{questionLink(item)}}>
-        <p>{{item.question}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
+      <ion-item class="item item-icon-right" ng-repeat="item in items| orderBy: '-interval' : 'reverse' | orderBy: '-isAvailable'" type="item-text-wrap" ng-href={{questionLink(item)}}>
+      <span id="questionName" ng-class="{available: item.isAvailable == true}"> {{item.question}}</span>
+        <i ng-show="item.isAvailable === false" class="icon ion-information-circled" ng-click="showAlert(item)"></i>
+        <i ng-show="item.isAvailable === true"  class="icon ion-chevron-right icon-accessory"></i>
       </ion-item>
     </ion-list>
 
   </ion-content>
 </ion-view>
+
