@@ -163,6 +163,11 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
   $scope.studyItem = studyItem;
 
+  $scope.timeConversion = function(sec) {
+    var timeConverterHash = { 5: "5 seconds", 25: "25 seconds", 120: "2 minutes", 600: "10 minutes", 3600: "an hour"};
+    return timeConverterHash[sec]
+  }
+
   $scope.validateAnswer = function(answer) {
     answer = answer.replace(/^\s+|\s+$/g,'');
     if (answer.toLowerCase() === studyItem.answer.toLowerCase()) {
