@@ -1,0 +1,13 @@
+#background {
+  background-repeat: no-repeat;
+  background-image: url("../img/parchment-background.png");
+  background-size: 100% 100%;
+  background-color: #E3D2B6;
+}
+
+.about {
+  width: 80%;
+  height: 80%;
+  margin-left: 30px;
+  margin-top: 20px;
+}

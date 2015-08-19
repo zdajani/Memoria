@@ -8,6 +8,11 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   var power = PowerFactory;
   $scope.power = power;
 
+  $scope.feed = function() {
+    foodFactory.addFood();
+    reducePoints();
+  }
+
   $scope.vendorModal = function() {
     ModalService
       .init('modals/vendor-modal.html', $scope)
@@ -16,17 +21,12 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       });
   };
 
-  $scope.foodModal = function(points) {
-    if (points < 5) {
-      ModalService
-        .init('modals/food-modal.html', $scope)
-        .then(function(modal) {
-          modal.show();
-        });
-    } else {
-      foodFactory.addFood();
-      reducePoints();
-    }
+  $scope.shopModal = function() {
+    ModalService
+      .init('modals/shop-modal.html', $scope)
+      .then(function(modal) {
+        modal.show();
+      });
   };
 
   $scope.onDropComplete = function(){
@@ -37,7 +37,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   var reducePoints = function() {
     var pointsRef =  new Firebase('https://studymemoria.firebaseio.com/Points/user_points');
     pointsRef.transaction(function(current_value) {
-      return (current_value -= 5);
+      return (current_value -= 1);
     });
   };
   var addPower = function() {
