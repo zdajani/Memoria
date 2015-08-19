@@ -1,0 +1,226 @@
+#shopModal {
+  background-repeat: no-repeat;
+  background-image: url("../img/parchment-background.png");
+  background-size: 100% 100%;
+  background-color: #E3D2B6;
+}
+
+.shop {
+  text-align: right;
+  margin-left: 20px;
+  font-size: 16px;
+  margin-top: 50px;
+  width: 82%;
+}
+
+#messages {
+  text-align: center;
+  height: 90px;
+  margin-top: -10px;
+}
+
+#messages button {
+  float: right;
+}
+
+.notAvailable span {
+  opacity: 0.4;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.notAvailable img {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+#salmon {
+  position: absolute;
+  margin-top: 50px;
+  margin-left: 120px;
+}
+
+#salmon img {
+  width: 4em;
+}
+
+#salmon span {
+  position: relative;
+  left: -50px;
+  top: 40px;
+}
+
+#milk {
+  position: absolute;
+  margin-top: 50px;
+  margin-left: 35px;
+}
+
+#milk img {
+  width: 3.5em;
+}
+
+#milk span {
+  position: relative;
+  left: -50px;
+  top: 30px;
+}
+
+#brown-rug {
+  position: absolute;
+  margin-top: 65px;
+  margin-left: 186px;
+  width: 110px;
+  height: 40px;
+}
+
+#brown-rug img {
+  width: 6.5em;
+}
+
+#brown-rug span {
+  position: relative;
+  left: -30px;
+  top: 25px;
+}
+
+#leopard-rug {
+  position: absolute;
+  margin-top: 200px;
+  margin-left: 8px;
+  width: 110px;
+  height: 40px;
+}
+
+#leopard-rug img {
+  width: 6.5em;
+}
+
+#leopard-rug span {
+  position: relative;
+  left: -40px;
+  top: 20px;
+}
+
+#starfish-rug {
+  position: absolute;
+  margin-top: 200px;
+  margin-left: 120px;
+  width: 110px;
+  height: 40px;
+}
+
+#starfish-rug img {
+  width: 6.5em;
+}
+
+#starfish-rug span {
+  position: relative;
+  left: -40px;
+  top: 20px;
+}
+
+#essence-hairball {
+  position: absolute;
+  margin-top: 175px;
+  margin-left: 230px;
+  width: 50px;
+  height: 70px;
+}
+
+#essence-hairball img {
+  width: 2em;
+}
+
+#essence-hairball span {
+  position: relative;
+  left: 0px;
+  top: 20px;
+}
+
+#pink-bear {
+  position: absolute;
+  margin-top: 310px;
+  margin-left: 10px;
+  width: 70px;
+  height: 90px;
+}
+
+#pink-bear img {
+  width: 3.5em;
+}
+
+#pink-bear span {
+  position: relative;
+  left: -10px;
+  top: 20px;
+}
+
+#play-cube {
+  position: absolute;
+  margin-top: 330px;
+  margin-left: 100px;
+  width: 70px;
+  height: 60px;
+}
+
+#play-cube img {
+  width: 4em;
+}
+
+#play-cube span {
+  position: relative;
+  left: -10px;
+  top: 30px;
+}
+
+#camera {
+  position: absolute;
+  margin-top: 330px;
+  margin-left: 180px;
+  width: 100px;
+  height: 70px;
+}
+
+#camera img {
+  width: 6em;
+}
+
+#camera span {
+  position: relative;
+  left: -25px;
+  top: 30px;
+}
+
+.priceInfo {
+  color: green;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #E8FAF1;
+  border-radius: 10px;
+  opacity: 0.8;
+  border: dashed;
+  padding: 2px;
+  border-radius: 25px;
+}
+
+#vendorImage {
+  position: absolute;
+  width: 94.5px;
+  height: 115px;
+  background-repeat: no-repeat;
+  background-image: url("../img/vendorspritesheet.png");
+
+  -webkit-animation: vendor .7s steps(16) infinite;
+          animation: vendor .7s steps(16) infinite;
+}
+
+@-webkit-keyframes vendor {
+  from { background-position:    0px; }
+  to { background-position: -1518px; }
+}
+
+@keyframes vendor {
+  from { background-position:    0px; }
+  to { background-position: -1518px; }
+}
