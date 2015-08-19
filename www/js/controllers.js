@@ -8,6 +8,12 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   var power = PowerFactory;
   $scope.power = power;
 
+  $scope.isExcited = false
+
+  $scope.excite = function() {
+    $scope.isExcited = true;
+  }
+
   $scope.feed = function(id) {
     foodFactory.addFood(id);
     reducePoints(id);
@@ -89,6 +95,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
 
   $scope.notify = function() {
+    $scope.isExcited = false;
     var pointsRef =  new Firebase('https://studymemoria.firebaseio.com/Points/user_points');
     pointsRef.transaction(function(current_value) {
       return (current_value = 10);

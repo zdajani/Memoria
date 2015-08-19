@@ -308,11 +308,8 @@
 
 .knomikittyBblink {
   position: absolute;
-  margin-top: 100px;
-  margin-left: 145px;
-
-  width: 136px;
-  height: 115px;
+  width: 204px;
+  height: 173px;
   background-repeat: no-repeat;
   background-image: url("../img/Bblink.png");
 
@@ -322,12 +319,12 @@
 
 @-webkit-keyframes Bblink {
   from { background-position:    0px; }
-  to { background-position: -680px; }
+  to { background-position: -1020px; }
 }
 
 @keyframes Bblink {
   from { background-position:    0px; }
-  to { background-position: -680px; }
+  to { background-position: -1020px; }
 }
 
 .knomikittyCblink {
@@ -340,16 +337,16 @@
   background-repeat: no-repeat;
   background-image: url("../img/Cblink.png");
 
-  -webkit-animation: Bblink .4s steps(5) infinite alternate;
-          animation: Bblink .4s steps(5) infinite alternate;
+  -webkit-animation: Cblink .4s steps(5) infinite alternate;
+          animation: Cblink .4s steps(5) infinite alternate;
 }
 
-@-webkit-keyframes Bblink {
+@-webkit-keyframes Cblink {
   from { background-position:    0px; }
   to { background-position: -680px; }
 }
 
-@keyframes Bblink {
+@keyframes Cblink {
   from { background-position:    0px; }
   to { background-position: -680px; }
 }
