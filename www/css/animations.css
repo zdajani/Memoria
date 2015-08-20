@@ -163,11 +163,11 @@
 
 .knomikittyBfly {
   position: absolute;
-  margin-top: 70px;
-  margin-left: 200px;
+  margin-left: -80px;
+  margin-top: -85px;
 
-  width: 136px;
-  height: 115px;
+  width: 204px;
+  height: 173px;
   background-repeat: no-repeat;
   background-image: url("../img/Bfly.png");
 
@@ -177,12 +177,12 @@
 
 @-webkit-keyframes Bfly {
   from { background-position:    0px; }
-  to { background-position: -2720px; }
+  to { background-position: -4080px; }
 }
 
 @keyframes Bfly {
   from { background-position:    0px; }
-  to { background-position: -2720px; }
+  to { background-position: -4080px; }
 }
 
 .knomikittyBfulljump {
