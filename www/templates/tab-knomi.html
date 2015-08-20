@@ -1,7 +1,8 @@
 <link href="css/knomi.css" rel="stylesheet">
 
+
 <ion-view view-title="Knomi">
-  <ion-nav-buttons side="right">
+  <ion-nav-buttons side="left">
 
     <img id="help" src="./img/glassrock.png" ng-click="vendorModal()" />
     <button id="notify" class="button" ng-click="notify()">
@@ -16,33 +17,48 @@
     </button>
 
     <img ng-if="power.$value > 0" class="health1" src="./img/health.png">
-    <img ng-if="power.$value > 5" class="health2" src="./img/health.png">
-    <img ng-if="power.$value > 15" class="health3" src="./img/health.png">
-    <img ng-if="power.$value > 30" class="health4" src="./img/health.png">
-    <img ng-if="power.$value > 60" class="health5" src="./img/health.png">
-    <img ng-if="power.$value > 100" class="health6" src="./img/health.png">
+    <img ng-if="power.$value > 1" class="health2" src="./img/health.png">
+    <img ng-if="power.$value > 2" class="health3" src="./img/health.png">
+    <img ng-if="power.$value > 3" class="health4" src="./img/health.png">
+    <img ng-if="power.$value > 4" class="health5" src="./img/health.png">
+    <img ng-if="power.$value > 5" class="health6" src="./img/health.png">
 
     <button id="moneySack" style="border: 0; background: transparent" >
+
       <img src="./img/bag.png" />
       <div class="userPoints numberInfo" >${{points.$value}}</div>
+
     </button>
 
     <div class="knomiContainer">
 
-      <div class="starterKnomi" ng-if="power.$value === 0" ng-drop="true" ng-drop-success="onDropComplete()"></div>
+      <div class="starterKnomi" ng-if="power.$value === 0" ng-drop="true" ng-drop-success="evolution1Modal();onDropComplete()"></div>
 
-      <div class="knomileveltwo" ng-if="power.$value > 0" ng-drop="true" ng-drop-success="onDropComplete()"></div>
+      <div ng-class="{rollContainer: isRolling == true}">
+        <div ng-if="power.$value === 1" ng-drop="true" ng-drop-success="evolution2Modal(); devolve(); onDropComplete()" ng-class="{knomikittyAsleep: isExcited == false, knomikittyAfulljump: isExcited == true, knomikittyAfullroll: isRolling == true}"></div>
+      </div>
+
+      <div ng-if="essencePresence === true" ng-class="{knomikittyAcrazyjump: true}" ng-drop="true" ng-drop-success="evolution3Modal(); onPotionComplete()"></div>
+
+      <div ng-class="{knomikittyBfly: true}" ng-if="power.$value === 2" ng-drop="true" ng-drop-success="onDropComplete()"></div>
+
+      <div ng-class="{rollContainer: isRolling == true}">
+        <div ng-class="{knomikittyChitball: true}" ng-if="power.$value > 2" ng-drop="true" ng-drop-success="onDropComplete()"></div>
+      </div>
+
     </div>
 
-    <div class="rugs">
-      <img src="./img/brown-rug.png" ng-if="knomiBrownRug" >
-      <img src="./img/leopard-rug.png" ng-if="knomiLeopardRug" >
-      <img src="./img/starfish-rug.png" ng-if="knomiStarfishRug" >
+      <div class="rugs">
+        <div class="foodItem" ng-repeat="item in foods" ng-drag="true" ng-drag-data="item">
+        <img ng-src="{{item.location}}" />
+      </div>
+
+      <img class="rug" src="./img/brown-rug.png" ng-if="knomiBrownRug">
+      <img class="rug" src="./img/leopard-rug.png" ng-if="knomiLeopardRug">
+      <img class="rug" src="./img/starfish-rug.png" ng-if="knomiStarfishRug">
+
     </div>
 
-    <div class="foodItem" ng-repeat="item in foods" ng-drag="true" ng-drag-data="item">
-      <img ng-src="{{item.location}}" />
-    </div>
 
   </ion-content>
 </ion-view>

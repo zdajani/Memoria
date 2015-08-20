@@ -16,23 +16,23 @@
         <span class="priceInfo" >$1</span>
       </div>
       <div id="salmon" ng-class="{notAvailable: points.$value < 3}">
-        <img src="./img/salmon.png" ng-click="points.$value < 3 || feed(2); closeModal()" />
+        <img src="./img/salmon.png" ng-click="points.$value < 3 || feed(3); excite(); closeModal()" />
         <span class="priceInfo" >$3</span>
       </div>
       <div id="brown-rug" ng-class="{notAvailable: points.$value < 10}">
-        <img src="./img/brown-rug.png" ng-click="points.$value < 10 || brownRug(); closeModal()" />
+        <img src="./img/brown-rug.png" ng-click="points.$value < 10 || brownRug(); roll(); closeModal()" />
         <span class="priceInfo" >$10</span>
       </div>
       <div id="leopard-rug" ng-class="{notAvailable: points.$value < 10}">
-        <img src="./img/leopard-rug.png" ng-click="points.$value < 10 || leopardRug(); closeModal()" />
+        <img src="./img/leopard-rug.png" ng-click="points.$value < 10 || leopardRug();  roll(); closeModal()" />
         <span class="priceInfo" >$10</span>
       </div>
       <div id="starfish-rug" ng-class="{notAvailable: points.$value < 10}">
-        <img src="./img/starfish-rug.png" ng-click="points.$value < 10 || starfishRug(); closeModal()" />
+        <img src="./img/starfish-rug.png" ng-click="points.$value < 10 || starfishRug();  roll(); closeModal()" />
         <span class="priceInfo" >$10</span>
       </div>
       <div id="essence-hairball" ng-class="{notAvailable: points.$value < 30}">
-        <img src="./img/essence-hairball.png" ng-click="points.$value < 30 || feed(30); closeModal()" />
+        <img src="./img/essence-hairball.png" ng-click="points.$value < 30 || feed(30); preSuperEvolve(); closeModal()" />
         <span class="priceInfo" >$30</span>
       </div>
       <div id="pink-bear" ng-class="{notAvailable: points.$value < 20}">
