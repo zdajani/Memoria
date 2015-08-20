@@ -123,12 +123,12 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   };
 
   $scope.addQuestion = function(){
-    var answerStripped = $scope.items.answer.replace(/^\s+|\s+$/g,'')
+    var answerStripped = $scope.items.answer.replace(/^\s+|\s+$/g,'');
     var questionWithoutSpaces = $scope.items.question.replace(/^\s+|\s+$/g,'');
-    var questionCapitalized = DataFormatting.capitalizeFirstLetter(questionWithoutSpaces);
-    var questionAddMark = DataFormatting.addQuestionMark(questionCapitalized);
+    // var questionCapitalized = DataFormatting.capitalizeFirstLetter(questionWithoutSpaces);
+    // var questionAddMark = DataFormatting.addQuestionMark(questionCapitalized);
     $scope.items.$add({
-      question: questionAddMark,
+      question: questionWithoutSpaces,
       answer: answerStripped,
       date: Date.now(),
       interval: 5,
@@ -158,20 +158,6 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     }
   };
 
-  var qRef =  new Firebase('https://studymemoria.firebaseio.com/MyStudies');
-
-  qRef.on("child_changed", function(Qsnapshot) {
-    if (Qsnapshot.val().isAvailable === false) {
-      Qsnapshot.child('isAvailable').ref().on("value", function(availableSnapshot){
-        $timeout(function(){ setTrue(Qsnapshot); }, Qsnapshot.val().interval * 1000);
-      });
-    }
-  });
-
-  var setTrue = function (Qsnapshot){
-    Qsnapshot.child('isAvailable').ref().set(true);
-  };
-
   $scope.showAlert = function(item) {
     var now = item.date;
     var newTime = Date.now() - (new Date(now + (item.interval * 1000)));
@@ -183,19 +169,17 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   };
 })
 
-.controller('questionAnswerCtrl', function($scope, $stateParams, QuestionFactory, ModalService, timerFactory, PointsFactory, $cordovaLocalNotification, dateFactory, $timeout) {
-  // var list = QuestionFactory;
+.controller('questionAnswerCtrl', function($scope, $stateParams, QuestionFactory, ModalService, timerFactory, PointsFactory, $cordovaLocalNotification, $timeout, changeInfo) {
   var studyItem = QuestionFactory.$getRecord($stateParams.studyItemId);
-  var points = PointsFactory;
-  $scope.points = points;
+  var questionRef = changeInfo.getRef($stateParams.studyItemId);
+  $scope.points = PointsFactory;
 
   $scope.studyItem = studyItem;
 
   $scope.timeConversion = function(sec) {
-    var time = humanizeDuration(sec * 1000, { round: true })
-    // var timeConverterHash = { 5: "5 seconds", 25: "25 seconds", 120: "2 minutes", 600: "10 minutes", 3600: "an hour"};
-    return time
-  }
+    var time = humanizeDuration(sec * 1000, { round: true });
+    return time;
+  };
 
   $scope.validateAnswer = function(answer) {
     answer = answer.replace(/^\s+|\s+$/g,'');
@@ -205,10 +189,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
         .then(function(modal) {
           modal.show();
       });
-      timerFactory.addTime($stateParams.studyItemId);
-      addPoints();
-      setAvailability($stateParams.studyItemId);
-      dateFactory.newDate($stateParams.studyItemId);
+      changeInfo.correctAnswer(questionRef, studyItem.interval );
       questionNotify(timerFactory.addNotificationTime(studyItem.interval));
     }
     else {
@@ -217,17 +198,9 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
         .then(function(modal) {
           modal.show();
         });
-      timerFactory.minusTime($stateParams.studyItemId);
-      reducePower();
-      setAvailability($stateParams.studyItemId);
-      dateFactory.newDate($stateParams.studyItemId);
+      changeInfo.wrongAnswer(questionRef, studyItem.interval);
       questionNotify(timerFactory.minusNotificationTime(studyItem.interval));
     }
-  };
-
-  var setAvailability = function (id){
-    var availableRef = new Firebase('https://studymemoria.firebaseio.com/MyStudies/'+ id +'/isAvailable');
-    availableRef.set(false);
   };
 
 
@@ -242,20 +215,21 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     });
   };
 
-  var addPoints = function() {
+  function addPoints() {
     var pointsRef =  new Firebase('https://studymemoria.firebaseio.com/Points/user_points');
     pointsRef.transaction(function(current_value) {
       return (current_value += 1);
     });
-  };
-  var reducePower = function() {
+  }
+  
+  function reducePower() {
     var powerRef =  new Firebase('https://studymemoria.firebaseio.com/Points/knomi_power');
-    if (powerRef.key() > 0){
-    powerRef.transpaction(function(current_value) {
+    powerRef.transaction(function(current_value) {
+      // if (current_value > 0){
         return (current_value -= 1);
-      });
-    }
-  };
+      // }
+    });
+  }
 })
 
 .controller('TabCtrl', function($scope) {

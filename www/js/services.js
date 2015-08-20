@@ -91,26 +91,8 @@ angular.module('starter.services', [])
 .factory('timerFactory', function(){
 
   var time_array = [ 0, 5, 25, 120, 600, 3600];
-
+  
   return {
-    addTime: function (questionId) {
-      var intervalRef = new Firebase('https://studymemoria.firebaseio.com/MyStudies/'+ questionId + '/interval');
-      intervalRef.transaction(function(current_value) {
-        var i = time_array.indexOf(current_value);
-        return (current_value = time_array[i + 1]);
-      });
-    },
-    minusTime: function (questionId) {
-      var intervalRef = new Firebase('https://studymemoria.firebaseio.com/MyStudies/'+ questionId + '/interval');
-      intervalRef.transaction(function(current_value) {
-        var i = time_array.indexOf(current_value);
-        if (current_value > 5) {
-          return (current_value = time_array[i - 1]);
-        } else {
-          return current_value = 5;
-        }
-      });
-    },
     addNotificationTime: function(time) {
       var newTime = time_array.indexOf(time) + 1;
       return time_array[newTime];
@@ -142,13 +124,47 @@ angular.module('starter.services', [])
   };
 })
 
-.factory('dateFactory', function(){
+
+.factory('changeInfo', function($timeout){
+
+  var itemRef;
+  var time_array = [ 0, 5, 25, 120, 600, 3600];
+  
+  function findIntervalCorrect(interval) {
+    currentInterval = interval;
+    i = time_array.indexOf(currentInterval);
+    return time_array[i + 1];
+  }
+  function findIntervalWrong(interval) {
+    if (interval > 5){
+    currentInterval = interval;
+    i = time_array.indexOf(currentInterval);
+    return time_array[i - 1];
+  } else {
+      return interval; 
+    }
+    
+  }
+  
+  function callAtTimeout(questionRef) {
+    questionRef.update({"isAvailable": true});
+  }
+  
   return {
-    newDate: function (questionId) {
-      var dateRef = new Firebase('https://studymemoria.firebaseio.com/MyStudies/'+ questionId +'/date');
-      dateRef.transaction(function(current_value) {
-        return (current_value = Date.now());
-      });
+    getRef: function (questionId) {
+      itemRef = new Firebase('https://studymemoria.firebaseio.com/MyStudies/'+ questionId);  
+      return itemRef;
+    },
+
+    correctAnswer: function(questionRef, interval) {
+      questionRef.update({ "date": Date.now(), "interval": findIntervalCorrect(interval), "isAvailable": false});
+      $timeout(function() { callAtTimeout(questionRef);}, findIntervalCorrect(interval) * 1000);
+  },
+  
+  wrongAnswer: function(questionRef, interval) {
+      questionRef.update({ "date": Date.now(), "interval": findIntervalWrong(interval), "isAvailable": false});
+      $timeout(function() { callAtTimeout(questionRef);}, findIntervalWrong(interval) * 1000);
     }
   };
 });
+
