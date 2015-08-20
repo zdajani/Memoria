@@ -255,6 +255,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
           modal.show();
       });
       changeInfo.correctAnswer(questionRef, studyItem.interval );
+      addPoints();
       questionNotify(timerFactory.addNotificationTime(studyItem.interval));
     }
     else {
@@ -264,6 +265,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
           modal.show();
         });
       changeInfo.wrongAnswer(questionRef, studyItem.interval);
+      reducePower();
       questionNotify(timerFactory.minusNotificationTime(studyItem.interval));
     }
   };
