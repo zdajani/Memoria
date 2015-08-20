@@ -10,12 +10,16 @@
     <ion-list>
 
       <ion-item class="item item-icon-right" ng-repeat="item in items| orderBy: '-interval' : 'reverse' | orderBy: '-isAvailable'" type="item-text-wrap" ng-href={{questionLink(item)}}>
-      <span id="questionName" ng-class="{available: item.isAvailable == true}"> {{item.question}}</span>
+      <span id="questionName" ng-class="{available: item.isAvailable === true}"> {{item.question}}</span>
         <i ng-show="item.isAvailable === false" class="icon ion-information-circled" ng-click="showAlert(item)"></i>
         <i ng-show="item.isAvailable === true"  class="icon ion-chevron-right icon-accessory"></i>
       </ion-item>
     </ion-list>
-
+    <script id="questionInfo-popup.html" type="text/ng-template">
+          <span style="text-align: center">In {{countDown}}</span>
+      </script>
   </ion-content>
+
+
 </ion-view>
 

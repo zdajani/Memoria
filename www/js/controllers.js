@@ -117,13 +117,17 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
   $scope.addQuestion = function(){
     $scope.items.$add({
-    question: DataFormatting.addQuestionMark(DataFormatting.capitalizeFirstLetter($scope.items.question)),
-    answer: $scope.items.answer.replace(/^\s+|\s+$/g,''),
-    date: Date.now(),
-    interval: 5,
-    isAvailable: false
-    });
+      question: $scope.items.question,
+      answer: $scope.items.answer.replace(/^\s+|\s+$/g,''),
+      date: Date.now(),
+      interval: 5,
+      isAvailable: false
+    }).then(function(ref) {
+      var available = ref.child('isAvailable');
+      $timeout(function() { available.ref().set(true); }, 5 * 1000);
+    });    
   };
+  
   $scope.addQuestionNotify = function () {
     var now = new Date().getTime();
     var scheduledTime = new Date(now + (5 * 1000));
@@ -142,6 +146,20 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       return '#';
     }
   };
+  
+  var qRef =  new Firebase('https://studymemoria.firebaseio.com/MyStudies');
+  // 
+  // qRef.on("child_changed", function(Qsnapshot) {
+  //   if (Qsnapshot.val().isAvailable === true) {
+  //     Qsnapshot.child('isAvailable').ref().on("value", function(availableSnapshot){
+  //       $timeout(function(){ setTrue(Qsnapshot); }, Qsnapshot.val().interval * 1000);
+  //     });
+  //   }
+  // });
+  
+  var setTrue = function (Qsnapshot){
+    Qsnapshot.child('isAvailable').ref().set(true);
+  };
 
   $scope.showAlert = function(item) {
     var now = item.date;
@@ -149,13 +167,12 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     $scope.countDown = humanizeDuration(newTime, { round: true });
     var alertPopup = $ionicPopup.alert({
       scope: $scope,
-      templateUrl: '../modals/questionInfo-popup.html'
+      templateUrl: 'questionInfo-popup.html'
     });
   };
-
 })
 
-.controller('questionAnswerCtrl', function($scope, $stateParams, QuestionFactory, ModalService, timerFactory, PointsFactory, $cordovaLocalNotification, dateFactory) {
+.controller('questionAnswerCtrl', function($scope, $stateParams, QuestionFactory, ModalService, timerFactory, PointsFactory, $cordovaLocalNotification, dateFactory, $timeout) {
   var list = QuestionFactory;
   var studyItem = list.$getRecord($stateParams.studyItemId);
   var points = PointsFactory;
@@ -173,7 +190,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       });
       timerFactory.addTime($stateParams.studyItemId);
       addPoints();
-      availability($stateParams.studyItemId);
+      setAvailability($stateParams.studyItemId);
       dateFactory.newDate($stateParams.studyItemId);
       questionNotify(timerFactory.addNotificationTime(studyItem.interval));
     }
@@ -185,19 +202,18 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
         });
       timerFactory.minusTime($stateParams.studyItemId);
       reducePower();
-      availability($stateParams.studyItemId);
+      setAvailability($stateParams.studyItemId);
       dateFactory.newDate($stateParams.studyItemId);
       questionNotify(timerFactory.minusNotificationTime(studyItem.interval));
     }
   };
 
-  var availability = function(id) {
+  var setAvailability = function (id){
     var availableRef = new Firebase('https://studymemoria.firebaseio.com/MyStudies/'+ id +'/isAvailable');
-    availableRef.transaction(function(current_value) {
-      return (current_value = false);
-    });
+    availableRef.set(false);
   };
-
+  
+  
   var questionNotify = function (time) {
     var now = new Date().getTime();
     var scheduledTime = new Date(now + (time * 1000));
@@ -217,11 +233,11 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   };
   var reducePower = function() {
     var powerRef =  new Firebase('https://studymemoria.firebaseio.com/Points/knomi_power');
+    if (powerRef.key() > 0){
     powerRef.transpaction(function(current_value) {
-      if(current_value !== 0) {
         return (current_value -= 1);
-      }
-    });
+      });
+    }
   };
 })
 
