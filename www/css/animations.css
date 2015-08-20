@@ -586,3 +586,27 @@
   from { background-position:    0px; }
   to { background-position: -7752px; }
 }
+
+.poof {
+  position: absolute;
+
+
+  width: 64px;
+  height: 64px;
+  background-repeat: no-repeat;
+  background-image: url("../img/poof.png");
+
+  -webkit-animation: poof .3s steps(6);
+          animation: poof .3s steps(6);
+}
+
+@-webkit-keyframes poof {
+  from { background-position:    0px; }
+  to { background-position: -384px; }
+}
+
+@keyframes poof {
+  from { background-position:    0px; }
+  to { background-position: -384px; }
+}
+
