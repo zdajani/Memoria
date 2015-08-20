@@ -1,5 +1,5 @@
 .available {
-    color: #1b9828;
+    color: #0E7338;
 }
 
 #questionName {
@@ -8,4 +8,8 @@
 
 #help {
   width: 40px;;
+}
+
+.custom-icon {
+    color: gray;
 }
