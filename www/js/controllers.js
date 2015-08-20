@@ -29,7 +29,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   //    text: "I love you oh so much 😻",
   //    at: _X_sec_from_now,
   //  });
- }
+};
 
   $scope.onPotionComplete = function(){
     foodFactory.removeFood();
@@ -43,7 +43,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     powerRef.transaction(function(current_value) {
       return (current_value += 2);
     });
-  };
+  }
 
   $scope.essencePresence = false;
 
@@ -51,24 +51,24 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     $scope.essencePresence = true;
     $scope.isExcited = 'super';
     $scope.isRolling = 'super';
-  }
+  };
 
   $scope.devolve = function() {
     $scope.isExcited = false;
     $scope.isRolling = false;
-  }
+  };
 
-  $scope.isRolling = false
+  $scope.isRolling = false;
 
   $scope.roll = function() {
-    $scope.isRolling = true
-  }
+    $scope.isRolling = true;
+  };
 
-  $scope.isExcited = false
+  $scope.isExcited = false;
 
   $scope.excite = function() {
     $scope.isExcited = true;
-  }
+  };
 
   $scope.feed = function(id) {
     foodFactory.addFood(id);
@@ -147,7 +147,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     powerRef.transaction(function(current_value) {
       return (current_value += 1);
     });
-  };
+  }
 
 
 
@@ -188,14 +188,22 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   };
 
   $scope.addQuestion = function(){
+    var answerStripped = $scope.items.answer.replace(/^\s+|\s+$/g,'');
+    var questionWithoutSpaces = $scope.items.question.replace(/^\s+|\s+$/g,'');
+    // var questionCapitalized = DataFormatting.capitalizeFirstLetter(questionWithoutSpaces);
+    // var questionAddMark = DataFormatting.addQuestionMark(questionCapitalized);
     $scope.items.$add({
-    question: DataFormatting.addQuestionMark(DataFormatting.capitalizeFirstLetter($scope.items.question)),
-    answer: $scope.items.answer.replace(/^\s+|\s+$/g,''),
-    date: Date.now(),
-    interval: 5,
-    isAvailable: false
+      question: questionWithoutSpaces,
+      answer: answerStripped,
+      date: Date.now(),
+      interval: 5,
+      isAvailable: false
+    }).then(function(ref) {
+      var available = ref.child('isAvailable');
+      $timeout(function() { available.ref().set(true); }, 5 * 1000);
     });
   };
+
   $scope.addQuestionNotify = function () {
     var now = new Date().getTime();
     var scheduledTime = new Date(now + (5 * 1000));
@@ -221,24 +229,22 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     $scope.countDown = humanizeDuration(newTime, { round: true });
     var alertPopup = $ionicPopup.alert({
       scope: $scope,
-      templateUrl: '../modals/questionInfo-popup.html'
+      templateUrl: 'questionInfo-popup.html'
     });
   };
-
 })
 
-.controller('questionAnswerCtrl', function($scope, $stateParams, QuestionFactory, ModalService, timerFactory, PointsFactory, $cordovaLocalNotification, dateFactory) {
-  var list = QuestionFactory;
-  var studyItem = list.$getRecord($stateParams.studyItemId);
-  var points = PointsFactory;
-  $scope.points = points;
+.controller('questionAnswerCtrl', function($scope, $stateParams, QuestionFactory, ModalService, timerFactory, PointsFactory, $cordovaLocalNotification, $timeout, changeInfo) {
+  var studyItem = QuestionFactory.$getRecord($stateParams.studyItemId);
+  var questionRef = changeInfo.getRef($stateParams.studyItemId);
+  $scope.points = PointsFactory;
 
   $scope.studyItem = studyItem;
 
   $scope.timeConversion = function(sec) {
-    var timeConverterHash = { 5: "5 seconds", 25: "25 seconds", 120: "2 minutes", 600: "10 minutes", 3600: "an hour"};
-    return timeConverterHash[sec]
-  }
+    var time = humanizeDuration(sec * 1000, { round: true });
+    return time;
+  };
 
   $scope.validateAnswer = function(answer) {
     answer = answer.replace(/^\s+|\s+$/g,'');
@@ -248,10 +254,8 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
         .then(function(modal) {
           modal.show();
       });
-      timerFactory.addTime($stateParams.studyItemId);
+      changeInfo.correctAnswer(questionRef, studyItem.interval );
       addPoints();
-      availability($stateParams.studyItemId);
-      dateFactory.newDate($stateParams.studyItemId);
       questionNotify(timerFactory.addNotificationTime(studyItem.interval));
     }
     else {
@@ -260,20 +264,12 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
         .then(function(modal) {
           modal.show();
         });
-      timerFactory.minusTime($stateParams.studyItemId);
+      changeInfo.wrongAnswer(questionRef, studyItem.interval);
       reducePower();
-      availability($stateParams.studyItemId);
-      dateFactory.newDate($stateParams.studyItemId);
       questionNotify(timerFactory.minusNotificationTime(studyItem.interval));
     }
   };
 
-  var availability = function(id) {
-    var availableRef = new Firebase('https://studymemoria.firebaseio.com/MyStudies/'+ id +'/isAvailable');
-    availableRef.transaction(function(current_value) {
-      return (current_value = false);
-    });
-  };
 
   var questionNotify = function (time) {
     var now = new Date().getTime();
@@ -286,20 +282,21 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     });
   };
 
-  var addPoints = function() {
+  function addPoints() {
     var pointsRef =  new Firebase('https://studymemoria.firebaseio.com/Points/user_points');
     pointsRef.transaction(function(current_value) {
       return (current_value += 1);
     });
-  };
-
+  }
+  
   function reducePower() {
     var powerRef =  new Firebase('https://studymemoria.firebaseio.com/Points/knomi_power');
     powerRef.transaction(function(current_value) {
-      return (current_value -= 1);
+      // if (current_value > 0){
+        return (current_value -= 1);
+      // }
     });
   }
-
 })
 
 .controller('TabCtrl', function($scope) {
