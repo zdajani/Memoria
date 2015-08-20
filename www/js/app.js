@@ -85,6 +85,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     })
 
+  .state('questionModal', {
+    views: {
+      templateUrl: 'modals/question-modal.html'
+    }
+  })
+
   .state('tab.question-answer', {
     url: '/questions/:studyItemId',
     views: {

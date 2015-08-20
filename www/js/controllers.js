@@ -117,10 +117,17 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
 })
 
-.controller('QsCtrl', function($scope, QuestionFactory, $cordovaLocalNotification, DataFormatting, $firebaseArray, $timeout, $ionicPopup) {
+.controller('QsCtrl', function($scope, QuestionFactory, $cordovaLocalNotification, DataFormatting, $firebaseArray, $timeout, $ionicPopup, ModalService) {
 
   $scope.items = QuestionFactory;
 
+  $scope.questionModal = function() {
+    ModalService
+      .init('modals/question-modal.html', $scope)
+      .then(function(modal) {
+        modal.show();
+      });
+  };
 
   $scope.addQuestion = function(){
     $scope.items.$add({
@@ -169,6 +176,11 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   $scope.points = points;
 
   $scope.studyItem = studyItem;
+
+  $scope.timeConversion = function(sec) {
+    var timeConverterHash = { 5: "5 seconds", 25: "25 seconds", 120: "2 minutes", 600: "10 minutes", 3600: "an hour"};
+    return timeConverterHash[sec]
+  }
 
   $scope.validateAnswer = function(answer) {
     answer = answer.replace(/^\s+|\s+$/g,'');

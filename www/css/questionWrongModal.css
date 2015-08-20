@@ -1,0 +1,16 @@
+.questionWrong {
+  padding-top: 30px;
+  font-size: 18px;
+  text-align: center;
+}
+
+#wrongRock {
+  width: 100px;
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+
+#poison {
+  width: 100px;
+  padding-top: 20px;
+}
