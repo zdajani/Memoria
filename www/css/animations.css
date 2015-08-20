@@ -548,8 +548,8 @@
   background-repeat: no-repeat;
   background-image: url("../img/Chitball.png");
 
-  -webkit-animation: Chitball 1.11s steps(9) infinite;
-          animation: Chitball 1.11s steps(9) infinite;
+  -webkit-animation: Chitball .55s steps(9) infinite;
+          animation: Chitball .55s steps(9) infinite;
 }
 
 @-webkit-keyframes Chitball {
