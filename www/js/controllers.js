@@ -8,6 +8,29 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   var power = PowerFactory;
   $scope.power = power;
 
+  $scope.knomiTalk = function() {
+   var now = new Date().getTime();
+   var _X_sec_from_now = new Date(now + 5 * 1000);
+   // $cordovaLocalNotification.schedule({
+   //   id: 1839650917265738612378658,
+   //   title: "Knomi says:",
+   //   text: "Goodbye cruel world 🙀🔫💥🚑",
+   //   at: _X_sec_from_now,
+   // });
+   // $cordovaLocalNotification.schedule({
+   //   id: 183965096598236577257582,
+   //   title: "Knomi says:",
+   //   text: "Mommy are we poor? 😿",
+   //   at: _X_sec_from_now,
+   // });
+  //  $cordovaLocalNotification.schedule({
+  //    id: 183969826519767592875984635,
+  //    title: "Knomi says:",
+  //    text: "I love you oh so much 😻",
+  //    at: _X_sec_from_now,
+  //  });
+ }
+
   $scope.onPotionComplete = function(){
     foodFactory.removeFood();
     add2Power();
