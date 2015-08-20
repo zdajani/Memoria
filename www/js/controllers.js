@@ -180,16 +180,17 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 })
 
 .controller('questionAnswerCtrl', function($scope, $stateParams, QuestionFactory, ModalService, timerFactory, PointsFactory, $cordovaLocalNotification, dateFactory, $timeout) {
-  var list = QuestionFactory;
-  var studyItem = list.$getRecord($stateParams.studyItemId);
+  // var list = QuestionFactory;
+  var studyItem = QuestionFactory.$getRecord($stateParams.studyItemId);
   var points = PointsFactory;
   $scope.points = points;
 
   $scope.studyItem = studyItem;
 
   $scope.timeConversion = function(sec) {
-    var timeConverterHash = { 5: "5 seconds", 25: "25 seconds", 120: "2 minutes", 600: "10 minutes", 3600: "an hour"};
-    return timeConverterHash[sec]
+    var time = humanizeDuration(sec * 1000, { round: true })
+    // var timeConverterHash = { 5: "5 seconds", 25: "25 seconds", 120: "2 minutes", 600: "10 minutes", 3600: "an hour"};
+    return time
   }
 
   $scope.validateAnswer = function(answer) {
