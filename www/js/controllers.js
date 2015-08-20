@@ -8,6 +8,68 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   var power = PowerFactory;
   $scope.power = power;
 
+  $scope.knomiTalk = function() {
+   var now = new Date().getTime();
+   var _X_sec_from_now = new Date(now + 5 * 1000);
+   // $cordovaLocalNotification.schedule({
+   //   id: 1839650917265738612378658,
+   //   title: "Knomi says:",
+   //   text: "Goodbye cruel world 🙀🔫💥🚑",
+   //   at: _X_sec_from_now,
+   // });
+   // $cordovaLocalNotification.schedule({
+   //   id: 183965096598236577257582,
+   //   title: "Knomi says:",
+   //   text: "Mommy are we poor? 😿",
+   //   at: _X_sec_from_now,
+   // });
+  //  $cordovaLocalNotification.schedule({
+  //    id: 183969826519767592875984635,
+  //    title: "Knomi says:",
+  //    text: "I love you oh so much 😻",
+  //    at: _X_sec_from_now,
+  //  });
+};
+
+  $scope.onPotionComplete = function(){
+    foodFactory.removeFood();
+    add2Power();
+    $scope.essencePresence = false;
+    $scope.isRolling = true;
+  };
+
+  function add2Power() {
+    var powerRef =  new Firebase('https://studymemoria.firebaseio.com/Points/knomi_power');
+    powerRef.transaction(function(current_value) {
+      return (current_value += 2);
+    });
+  }
+
+  $scope.essencePresence = false;
+
+  $scope.preSuperEvolve = function() {
+    $scope.essencePresence = true;
+    $scope.isExcited = 'super';
+    $scope.isRolling = 'super';
+  };
+
+  $scope.devolve = function() {
+    $scope.isExcited = false;
+    $scope.isRolling = false;
+  };
+
+  $scope.isRolling = false;
+
+  $scope.roll = function() {
+    $scope.isRolling = true;
+  };
+
+  $scope.isExcited = false;
+
+  $scope.excite = function() {
+    $scope.isExcited = true;
+  };
+
   $scope.feed = function(id) {
     foodFactory.addFood(id);
     reducePoints(id);
@@ -79,19 +141,22 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       return (current_value -= points);
     });
   };
-  var addPower = function() {
+
+  function addPower() {
     var powerRef =  new Firebase('https://studymemoria.firebaseio.com/Points/knomi_power');
     powerRef.transaction(function(current_value) {
       return (current_value += 1);
     });
-  };
+  }
 
 
 
   $scope.notify = function() {
+    $scope.isExcited = false;
+    $scope.isRolling = false;
     var pointsRef =  new Firebase('https://studymemoria.firebaseio.com/Points/user_points');
     pointsRef.transaction(function(current_value) {
-      return (current_value = 10);
+      return (current_value = 500);
     });
     var powerRef =  new Firebase('https://studymemoria.firebaseio.com/Points/knomi_power');
     powerRef.transaction(function(current_value) {

@@ -1,11 +1,4 @@
-#okay {
-  margin-top: 260px;
-  border-radius: 15px;
-  background-color: #FAF3E3;
-  border-color: #8A8660;
-  color: #8A8660;
-  box-shadow: 5px 5px 2px #969478;
-}
+
 
 #vendorModal {
   background-repeat: no-repeat;
@@ -14,17 +7,18 @@
   background-color: #E3D2B6;
 }
 
+
+
 .vendor {
   text-align: center;
   margin-left: 30px;
-  font-size: 16px;
-  margin-top: 80px;
   width: 80%;
 }
 
-#vendorImage {
+#vendorImageExplanation {
   position: absolute;
-  margin-left: 50px;
+  margin-left: 10px;
+  margin-top: 320px;
   width: 189px;
   height: 230px;
   background-repeat: no-repeat;
@@ -42,4 +36,21 @@
 @keyframes vendor {
   from { background-position:    0px; }
   to { background-position: -3024px; }
+}
+
+#speechBubble2 {
+  position: absolute;
+  margin-top: 30px;
+  margin-left: -120px;
+}
+
+#okay {
+  position: absolute;
+  margin-top: 550px;
+  margin-left: -50px;
+  border-radius: 15px;
+  background-color: #FAF3E3;
+  border-color: #8A8660;
+  color: #8A8660;
+  box-shadow: 5px 5px 2px #969478;
 }

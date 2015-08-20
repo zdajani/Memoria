@@ -61,28 +61,28 @@
 }
 
 .starterKnomi {
-  background-image: url('../img/speechrock.png');
-  background-size: 70% 80%;
+  background-image: url('../img/egg.png');
+  background-size: cover;
   background-repeat: no-repeat;
-  position: relative;
-  width: 300px;
-  height: 320px;
-  margin-left: -80px;
-  margin-top: -130px;
+  position: absolute;
+  margin-left: 35px;
+  margin-top: 50px;
+  width: 50px;
+  height: 50px;
 }
 
 .foodItem {
   position: absolute;
-  margin-left: 70px;
-  margin-top: 20px;
+  margin-left: 50px;
+  margin-top: 370px;
 }
 
 .foodItem img {
-  width: 4em;
+  width: 60px;
 }
 
 #foodCart img {
-  width: 3.5em;
+  width: 50px;
 }
 
 #moneySack {
@@ -110,10 +110,10 @@
   opacity: 0.8;
 }
 
-.rugs img {
-  width: 15em;
-  margin-left: 70px;
-  margin-top: 240px;
+.rugs .rug {
+  width: 230px;
+  margin-left: 80px;
+  margin-top: 250px;
   z-index: -1;
 }
 
@@ -139,4 +139,26 @@
 @keyframes play {
   from { background-position:    0px; }
   to { background-position: -972px; }
+}
+
+.rollContainer {
+  position: absolute;
+  top: 0px;
+  left: -80px;
+  width: 100px;
+  height: 100px;
+  -webkit-animation: move 2.5s ease infinite;
+          animation: move 2.5s ease infinite;
+}
+
+@-webkit-keyframes move {
+  50% {
+     left: 110px;
+  }
+}
+
+@keyframes move {
+  50% {
+     left: 110px;
+  }
 }
