@@ -12,13 +12,15 @@
 .vendor {
   text-align: center;
   margin-left: 30px;
+  margin-top: 80px;
   width: 80%;
+  font-size: 16px;
 }
 
 #vendorImageExplanation {
   position: absolute;
   margin-left: 10px;
-  margin-top: 320px;
+  margin-top: 10px;
   width: 189px;
   height: 230px;
   background-repeat: no-repeat;
@@ -38,15 +40,10 @@
   to { background-position: -3024px; }
 }
 
-#speechBubble2 {
-  position: absolute;
-  margin-top: 30px;
-  margin-left: -120px;
-}
 
 #okay {
   position: absolute;
-  margin-top: 550px;
+  margin-top: 250px;
   margin-left: -50px;
   border-radius: 15px;
   background-color: #FAF3E3;
