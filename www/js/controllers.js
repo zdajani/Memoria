@@ -123,18 +123,22 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   };
 
   $scope.addQuestion = function(){
+    var answerStripped = $scope.items.answer.replace(/^\s+|\s+$/g,'')
+    var questionWithoutSpaces = $scope.items.question.replace(/^\s+|\s+$/g,'');
+    var questionCapitalized = DataFormatting.capitalizeFirstLetter(questionWithoutSpaces);
+    var questionAddMark = DataFormatting.addQuestionMark(questionCapitalized);
     $scope.items.$add({
-      question: $scope.items.question,
-      answer: $scope.items.answer.replace(/^\s+|\s+$/g,''),
+      question: questionAddMark,
+      answer: answerStripped,
       date: Date.now(),
       interval: 5,
       isAvailable: false
     }).then(function(ref) {
       var available = ref.child('isAvailable');
       $timeout(function() { available.ref().set(true); }, 5 * 1000);
-    });    
+    });
   };
-  
+
   $scope.addQuestionNotify = function () {
     var now = new Date().getTime();
     var scheduledTime = new Date(now + (5 * 1000));
@@ -153,7 +157,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       return '#';
     }
   };
-  
+
   var qRef =  new Firebase('https://studymemoria.firebaseio.com/MyStudies');
 
   qRef.on("child_changed", function(Qsnapshot) {
@@ -163,7 +167,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       });
     }
   });
-  
+
   var setTrue = function (Qsnapshot){
     Qsnapshot.child('isAvailable').ref().set(true);
   };
@@ -225,8 +229,8 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
     var availableRef = new Firebase('https://studymemoria.firebaseio.com/MyStudies/'+ id +'/isAvailable');
     availableRef.set(false);
   };
-  
-  
+
+
   var questionNotify = function (time) {
     var now = new Date().getTime();
     var scheduledTime = new Date(now + (time * 1000));
