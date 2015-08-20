@@ -8,6 +8,33 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   var power = PowerFactory;
   $scope.power = power;
 
+  $scope.onPotionComplete = function(){
+    foodFactory.removeFood();
+    add2Power();
+    $scope.essencePresence = false;
+    $scope.isRolling = true;
+  };
+
+  function add2Power() {
+    var powerRef =  new Firebase('https://studymemoria.firebaseio.com/Points/knomi_power');
+    powerRef.transaction(function(current_value) {
+      return (current_value += 2);
+    });
+  };
+
+  $scope.essencePresence = false;
+
+  $scope.preSuperEvolve = function() {
+    $scope.essencePresence = true;
+    $scope.isExcited = 'super';
+    $scope.isRolling = 'super';
+  }
+
+  $scope.devolve = function() {
+    $scope.isExcited = false;
+    $scope.isRolling = false;
+  }
+
   $scope.isRolling = false
 
   $scope.roll = function() {
@@ -91,7 +118,8 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       return (current_value -= points);
     });
   };
-  var addPower = function() {
+
+  function addPower() {
     var powerRef =  new Firebase('https://studymemoria.firebaseio.com/Points/knomi_power');
     powerRef.transaction(function(current_value) {
       return (current_value += 1);
@@ -241,14 +269,14 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
       return (current_value += 1);
     });
   };
-  var reducePower = function() {
+
+  function reducePower() {
     var powerRef =  new Firebase('https://studymemoria.firebaseio.com/Points/knomi_power');
-    powerRef.transpaction(function(current_value) {
-      if(current_value !== 0) {
-        return (current_value -= 1);
-      }
+    powerRef.transaction(function(current_value) {
+      return (current_value -= 1);
     });
-  };
+  }
+
 })
 
 .controller('TabCtrl', function($scope) {

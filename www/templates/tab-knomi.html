@@ -35,10 +35,16 @@
       <div class="starterKnomi" ng-if="power.$value === 0" ng-drop="true" ng-drop-success="evolution1Modal();onDropComplete()"></div>
 
       <div ng-class="{rollContainer: isRolling == true}">
-        <div ng-if="power.$value === 1" ng-drop="true" ng-drop-success="evolution2Modal(); onDropComplete()" ng-class="{knomikittyAsleep: isExcited == false , knomikittyAfulljump: isExcited == true, knomikittyAfullroll: isRolling == true}"></div>
+        <div ng-if="power.$value === 1" ng-drop="true" ng-drop-success="evolution2Modal(); devolve(); onDropComplete()" ng-class="{knomikittyAsleep: isExcited == false, knomikittyAfulljump: isExcited == true, knomikittyAfullroll: isRolling == true}"></div>
       </div>
 
+      <div ng-if="essencePresence === true" ng-class="{knomikittyAcrazyjump: true}" ng-drop="true" ng-drop-success="evolution3Modal(); onPotionComplete()"></div>
+
       <div ng-class="{knomikittyBfly: true}" ng-if="power.$value === 2" ng-drop="true" ng-drop-success="onDropComplete()"></div>
+
+      <div ng-class="{rollContainer: isRolling == true}">
+        <div ng-class="{knomikittyCdisappear: true}" ng-if="power.$value > 2" ng-drop="true" ng-drop-success="onDropComplete()"></div>
+      </div>
 
     </div>
 
