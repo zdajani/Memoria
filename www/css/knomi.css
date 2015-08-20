@@ -140,3 +140,25 @@
   from { background-position:    0px; }
   to { background-position: -972px; }
 }
+
+.rollContainer {
+  position: absolute;
+  top: 0px;
+  left: -80px;
+  width: 100px;
+  height: 100px;
+  -webkit-animation: move 2.5s ease infinite;
+          animation: move 2.5s ease infinite;
+}
+
+@-webkit-keyframes move {
+  50% {
+     left: 110px;
+  }
+}
+
+@keyframes move {
+  50% {
+     left: 110px;
+  }
+}

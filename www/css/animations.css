@@ -23,26 +23,25 @@
 
 .knomikittyAfullroll {
   position: absolute;
-  margin-top: 70px;
-  margin-left: 15px;
-
-  width: 136px;
-  height: 115px;
+  margin-left: -80px;
+  margin-top: -45px;
+  width: 204px;
+  height: 173px;
   background-repeat: no-repeat;
   background-image: url("../img/Afullroll.png");
 
-  -webkit-animation: Afullroll 1.0s steps(12) infinite;
-          animation: Afullroll 1.0s steps(12) infinite;
+  -webkit-animation: Afullroll 1.0s steps(12) infinite alternate;
+          animation: Afullroll 1.0s steps(12) infinite alternate;
 }
 
 @-webkit-keyframes Afullroll {
   from { background-position:    0px; }
-  to { background-position: -1632px; }
+  to { background-position: -2448px; }
 }
 
 @keyframes Afullroll {
   from { background-position:    0px; }
-  to { background-position: -1632px; }
+  to { background-position: -2448px; }
 }
 
 .knomikittyAhalfjump {

@@ -8,6 +8,12 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   var power = PowerFactory;
   $scope.power = power;
 
+  $scope.isRolling = false
+
+  $scope.roll = function() {
+    $scope.isRolling = true
+  }
+
   $scope.isExcited = false
 
   $scope.excite = function() {
@@ -96,9 +102,10 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
   $scope.notify = function() {
     $scope.isExcited = false;
+    $scope.isRolling = false;
     var pointsRef =  new Firebase('https://studymemoria.firebaseio.com/Points/user_points');
     pointsRef.transaction(function(current_value) {
-      return (current_value = 10);
+      return (current_value = 500);
     });
     var powerRef =  new Firebase('https://studymemoria.firebaseio.com/Points/knomi_power');
     powerRef.transaction(function(current_value) {
