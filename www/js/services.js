@@ -73,17 +73,17 @@ angular.module('starter.services', [])
 
   return {
     food: function() {
-      return food
+      return food;
     },
     addFood: function(id) {
       for (var i = 0; i < availableFoods.length; i++) {
         if (availableFoods[i].id === id) {
-          food.push(availableFoods[i])
-        };
+          food.push(availableFoods[i]);
+        }
       }
     },
     removeFood: function() {
-      food.pop()
+      food.pop();
     }
   };
 })
@@ -116,12 +116,13 @@ angular.module('starter.services', [])
       return time_array[newTime];
     },
     minusNotificationTime: function(time) {
+      var newTime;
       if (time > 5) {
-      var newTime = time_array.indexOf(time) - 1;
+        newTime = time_array.indexOf(time) - 1;
     } else {
-      var newTime = 1;
+        newTime = 1;
     }
-      return time_array[newTime]
+      return time_array[newTime];
     }
   };
 
@@ -135,7 +136,7 @@ angular.module('starter.services', [])
     },
     addQuestionMark: function(string) {
       if(string.slice(-1) !== "?") {
-        return string + "?"
+        return string + "?";
       }
     }
   };

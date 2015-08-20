@@ -114,7 +114,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
 
   $scope.items = QuestionFactory;
 
-
+  
   $scope.addQuestion = function(){
     $scope.items.$add({
       question: $scope.items.question,
@@ -148,14 +148,14 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   };
   
   var qRef =  new Firebase('https://studymemoria.firebaseio.com/MyStudies');
-  // 
-  // qRef.on("child_changed", function(Qsnapshot) {
-  //   if (Qsnapshot.val().isAvailable === true) {
-  //     Qsnapshot.child('isAvailable').ref().on("value", function(availableSnapshot){
-  //       $timeout(function(){ setTrue(Qsnapshot); }, Qsnapshot.val().interval * 1000);
-  //     });
-  //   }
-  // });
+
+  qRef.on("child_changed", function(Qsnapshot) {
+    if (Qsnapshot.val().isAvailable === false) {
+      Qsnapshot.child('isAvailable').ref().on("value", function(availableSnapshot){
+        $timeout(function(){ setTrue(Qsnapshot); }, Qsnapshot.val().interval * 1000);
+      });
+    }
+  });
   
   var setTrue = function (Qsnapshot){
     Qsnapshot.child('isAvailable').ref().set(true);
