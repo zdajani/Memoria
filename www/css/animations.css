@@ -540,26 +540,26 @@
 
 .knomikittyChitball {
   position: absolute;
-  margin-top: 160px;
-  margin-left: 170px;
+  margin-left: -70px;
+  margin-top: -130px;
 
-  width: 136px;
-  height: 115px;
+  width: 204px;
+  height: 173px;
   background-repeat: no-repeat;
   background-image: url("../img/Chitball.png");
 
-  -webkit-animation: Chitball .5s steps(9) infinite ;
-          animation: Chitball .5s steps(9) infinite ;
+  -webkit-animation: Chitball 1.11s steps(9) infinite;
+          animation: Chitball 1.11s steps(9) infinite;
 }
 
 @-webkit-keyframes Chitball {
   from { background-position:    0px; }
-  to { background-position: -1224px; }
+  to { background-position: -1836px; }
 }
 
 @keyframes Chitball {
   from { background-position:    0px; }
-  to { background-position: -1224px; }
+  to { background-position: -1836px; }
 }
 
 .knomikittyCsad {
