@@ -1,0 +1,49 @@
+#background {
+  background-repeat: no-repeat;
+  background-image: url("../img/parchment-background.png");
+  background-size: 100% 100%;
+  background-color: #E3D2B6;
+}
+
+.technology {
+  width: 80%;
+  height: 80%;
+  margin-left: 30px;
+  margin-top: 60px;
+  font-size: 16px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 150%;
+}
+
+.technology img {
+  float: left;
+}
+
+.technology h2 {
+  text-align: center;
+}
+
+.rockBounceImage {
+  position: absolute;
+  margin-top: 40px;
+  margin-left: 105px;
+
+  width: 80px;
+  height: 76px;
+  background-repeat: no-repeat;
+  background-image: url("../img/level2rock.png");
+
+  -webkit-animation: play .8s steps(12) infinite;
+          animation: play .8s steps(12) infinite;
+}
+
+@-webkit-keyframes play {
+  from { background-position:    0px; }
+  to { background-position: -972px; }
+}
+
+@keyframes play {
+  from { background-position:    0px; }
+  to { background-position: -972px; }
+}

@@ -127,7 +127,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     url: '/about',
     views: {
       'tab-about': {
-        templateUrl: 'templates/tab-about.html',
+        templateUrl: 'templates/technology.html',
         controller: 'AboutCtrl'
       }
     }
