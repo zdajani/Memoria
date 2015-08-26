@@ -7,15 +7,19 @@ What if memorisation could be fun? What if a life depended on your memory? What 
 
 Memoria is an app based on the [spaced repetition learning technique](https://en.wikipedia.org/wiki/Spaced_repetition) that incorporates increasing intervals of time between subsequent review of previously learned questions and exploits the psychological spacing effect (which is based on the theory that humans and animals are more likely to remember something if it is recalled multiple times spaced over a long span of time). This learning technique can be used across a vast number of fields from learning languages to the periodical table. 
 
-However, to make learning actually fun and to motivate people to study we integrated space repetition learning with a virtual pet that requires attention and nurture to survive and grow. You add the information you want to remember and the app prompts you to answer according to specific time intervals that depend on whether you remember correctly or not. In turn you get money to spend on taking care of your pet and if you don’t study or get answers wrong your pet’s health deteriorates. 
+However, to make learning actually fun and to motivate people to study this app integrates space repetition learning with a virtual pet that requires attention and nurture to survive and grow. You add the information you want to remember and the app prompts you to answer according to specific time intervals that depend on whether you remember correctly or not. In turn you get money to spend on taking care of your pet and if you don’t study or get answers wrong your pet’s health deteriorates. 
 
-[![Memoria](http://img.youtube.com/vi/watch?v=KZX3_Tp1JrA/0.jpg)](http://www.youtube.com/watch?v=watch?v=KZX3_Tp1JrA)
+
+## Video Demonstration
+##### [Memoria Video](http://www.youtube.com/watch?v=KZX3_Tp1JrA)
+[![Memoria](https://github.com/zdajani/memoria/blob/dev/public/Memoira.png)](http://www.youtube.com/watch?v=KZX3_Tp1JrA)
+
 
 ## Job Stories
 ```
-* When I am opening the app for the first time,
-* I want to have an explanation of how the app works,
-* So I won't be confused 
+When I am opening the app for the first time,
+I want to have an explanation of how the app works,
+So I won't be confused 
 ```
 
 ```
@@ -63,9 +67,16 @@ So that my learning is positively reinforced
 * I want to have new feature to explore and for my pet to progress
 * So that I that I keep using the app and learning more
 ```
+## Technologies and Tools Used
+- Language: Javascript
+- Frameworks: Ionic, AngularJs
+- Database: Firebase
+- Testing: Karma, Jasmine, Protractor, PhatomJs
+- Other: ngDraggable, Cordova Local Notifications, ngCordova, HTML, CSS, Bootstrap, HumanizeDuration, gulp
+
 ## How to run
 
-```
+```bash
 git clone https://github.com/zdajani/memoria.git
 cd memoria
 ionic platform add ios
@@ -74,7 +85,7 @@ ionic emulate ios
 
 ## Testing
 
-### Initial setup
+##### Initial setup
 
 ```bash
 npm install
@@ -82,13 +93,13 @@ npm install -g gulp
 npm install -g protractor
 ```
 
-### Running Karma
+##### Running Karma
 
 ```bash
 gulp test
 ```
 
-### Running Protractor
+##### Running Protractor
 
 * Make a new tab and run `ionic serve`
 * Make a new tab and run `webdriver-manager start`
@@ -96,14 +107,6 @@ gulp test
 ```bash
 protractor test/protractor.config.js
 ```
-
-## Technologies and Tools Used
-
-Language: Javascript
-Frameworks: Ionic, AngularJs
-Database: Firebase
-Testing: Karma, Jasmine, Protractor, PhatomJs
-Other: ngDraggable, Cordova Local Notifications, HTML, CSS, Bootstrap, HumanizeDuration, gulp
 
 ## Documentation
 
