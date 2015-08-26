@@ -2,3 +2,23 @@
 .popup-body {
     text-align: center;
 }
+
+ion-content#vendorModal {
+    font-family: "Chalkboard SE", sans-serif;
+}
+
+h3 {
+    font-family: "Chalkboard SE", sans-serif;
+}
+
+ion-content#questionModal {
+    font-family: "Chalkboard SE", sans-serif;
+}
+
+ion-content#wrongAnswerModal {
+  font-family: "Chalkboard SE", sans-serif;
+}
+
+ion-content#correctAnswerModal {
+  font-family: "Chalkboard SE", sans-serif;
+}
