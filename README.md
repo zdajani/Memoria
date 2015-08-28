@@ -5,10 +5,16 @@
 
 What if memorisation could be fun? What if a life depended on your memory? What if all of this is possible? It is now, with Memoria!
 
-Memoria is an app based on the [spaced repetition learning technique](https://en.wikipedia.org/wiki/Spaced_repetition) that incorporates increasing intervals of time between subsequent review of previously learned questions and exploits the psychological spacing effect (which is based on the theory that humans and animals are more likely to remember something if it is recalled multiple times spaced over a long span of time). This learning technique can be used across a vast number of fields from learning languages to the periodical table. 
+Memoria is a memorisation mobile game app based on the [spaced repetition learning technique](https://en.wikipedia.org/wiki/Spaced_repetition), which theorises that humans and animals are more likely to remember something if it is recalled multiple times spaced over a long span of time. This learning technique can be used across a vast number of fields from learning languages to the periodical table. 
 
-However, to make learning actually fun and to motivate people to study this app integrates space repetition learning with a virtual pet that requires attention and nurture to survive and grow. You add the information you want to remember and the app prompts you to answer according to specific time intervals that depend on whether you remember correctly or not. In turn you get money to spend on taking care of your pet and if you don’t study or get answers wrong your pet’s health deteriorates. 
+However, to make learning actually fun and to motivate people to study this app integrates space repetition learning with a virtual pet that requires attention and nurturing to survive and grow. You add the information you want to remember and the app prompts you to answer according to specific time intervals that depend on whether you remember or not. In turn you get money to spend on taking care of your pet, but if you don’t study your pet’s health deteriorates. 
 
+## Technologies and Tools Used
+- Language: Javascript
+- Frameworks: Ionic, AngularJs
+- Database: Firebase
+- Testing: Karma, Jasmine, Protractor, PhatomJs
+- Other: Cordova Local Notifications, ngDraggable, ngCordova, HTML, CSS, Bootstrap, HumanizeDuration, gulp
 
 ## Video Demonstration
 ##### [Memoria Video](http://www.youtube.com/watch?v=KZX3_Tp1JrA)
@@ -63,16 +69,10 @@ I want there to be positive consequences for my pet,
 So that my learning is positively reinforced
 ```
 ```
-* When I have been using the app for awhile,
-* I want to have new feature to explore and for my pet to progress
-* So that I that I keep using the app and learning more
+When I have been using the app for awhile,
+I want to have new feature to explore and for my pet to progress
+So that I that I keep using the app and learning more
 ```
-## Technologies and Tools Used
-- Language: Javascript
-- Frameworks: Ionic, AngularJs
-- Database: Firebase
-- Testing: Karma, Jasmine, Protractor, PhatomJs
-- Other: ngDraggable, Cordova Local Notifications, ngCordova, HTML, CSS, Bootstrap, HumanizeDuration, gulp
 
 ## How to run
 
@@ -85,7 +85,7 @@ ionic emulate ios
 
 ## Testing
 
-##### Initial setup
+##### Setup
 
 ```bash
 npm install
@@ -108,7 +108,8 @@ gulp test
 protractor test/protractor.config.js
 ```
 
-## Documentation
+## Documentation and Practices
 
 [Setting up and using Firebase](https://github.com/zdajani/memoria/wiki/Firebase)
+
 
