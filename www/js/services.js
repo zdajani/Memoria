@@ -159,9 +159,9 @@ angular.module('starter.services', [])
     correctAnswer: function(questionRef, interval) {
       questionRef.update({ "date": Date.now(), "interval": findIntervalCorrect(interval), "isAvailable": false});
       $timeout(function() { callAtTimeout(questionRef);}, findIntervalCorrect(interval) * 1000);
-  },
-  
-  wrongAnswer: function(questionRef, interval) {
+    },
+    
+    wrongAnswer: function(questionRef, interval) {
       questionRef.update({ "date": Date.now(), "interval": findIntervalWrong(interval), "isAvailable": false});
       $timeout(function() { callAtTimeout(questionRef);}, findIntervalWrong(interval) * 1000);
     }

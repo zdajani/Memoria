@@ -190,8 +190,6 @@ angular.module('starter.controllers', ['ngCordova', 'ngDraggable', 'firebase'])
   $scope.addQuestion = function(){
     var answerStripped = $scope.items.answer.replace(/^\s+|\s+$/g,'');
     var questionWithoutSpaces = $scope.items.question.replace(/^\s+|\s+$/g,'');
-    // var questionCapitalized = DataFormatting.capitalizeFirstLetter(questionWithoutSpaces);
-    // var questionAddMark = DataFormatting.addQuestionMark(questionCapitalized);
     $scope.items.$add({
       question: questionWithoutSpaces,
       answer: answerStripped,
